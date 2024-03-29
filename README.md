@@ -165,6 +165,7 @@ Name | Description
 [vmware.alb.avi_systemconfiguration](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_systemconfiguration.rst)|Module to create update or delete SystemConfiguration
 [vmware.alb.avi_systemlimits](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_systemlimits.rst)|Module to create update or delete SystemLimits
 [vmware.alb.avi_systemreport](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_systemreport.rst)|Module to create update or delete SystemReport
+[vmware.alb.avi_taskjournal](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_taskjournal.rst)|Module to create update or delete TaskJournal
 [vmware.alb.avi_tenant](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_tenant.rst)|Module to create update or delete Tenant
 [vmware.alb.avi_tenantsystemconfiguration](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_tenantsystemconfiguration.rst)|Module to create update or delete TenantSystemConfiguration
 [vmware.alb.avi_testsedatastorelevel1](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_testsedatastorelevel1.rst)|Module to create update or delete TestSeDatastoreLevel1
