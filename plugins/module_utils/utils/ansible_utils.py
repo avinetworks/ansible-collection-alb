@@ -170,7 +170,6 @@ HTTP_REF_MATCH_IPV6 = re.compile(r'https://[[\w.0-9:-]+]/api/.+')
 HTTP_REF_W_NAME_MATCH = re.compile(r'https://[\w.0-9:-]+/api/.*#.+')
 HTTP_REF_W_NAME_MATCH_IPV6 = re.compile(r'https://[[\w.0-9:-]+]/api/.*#.+')
 
-
 def ref_n_str_cmp(x, y):
     """
     compares two references
@@ -359,7 +358,6 @@ def get_api_context(module, api_creds):
 NO_UUID_OBJ = ['cluster', 'systemconfiguration', 'inventoryfaultconfig']
 SKIP_DELETE_ERROR = ["Cannot delete system default object", "Method \'DELETE\' not allowed"]
 BUFFER_DELAY = 120
-
 
 def get_idp_class(idp):
     """

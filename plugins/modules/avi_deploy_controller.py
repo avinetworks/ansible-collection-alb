@@ -427,15 +427,13 @@ def is_reconfigure_vm(module):
             is_reserve_memory(module) or is_reserve_cpu(module) or
             is_resize_disk(module))
 
-
 def is_ipv6_address(controller_ip):
-    IPV6 = 6
-    try:
-        ip = ipaddress.ip_address(controller_ip)
-        return ip.version == IPV6
-    except ValueError as ve:
-        return False
-
+        IPV6 = 6
+        try:
+            ip = ipaddress.ip_address(controller_ip)
+            return ip.version == IPV6
+        except ValueError as ve:
+            return False
 
 def controller_wait(controller_ip, round_wait=10, wait_time=3600):
     """
@@ -519,9 +517,9 @@ def main():
             'Some of the python package is not installed. please install the requirements from requirements.txt'))
     try:
         si = SmartConnect(disableSslCertValidation=True,
-                          host=module.params['vcenter_host'],
-                          user=module.params['vcenter_user'],
-                          pwd=module.params['vcenter_password'])
+                               host=module.params['vcenter_host'],
+                               user=module.params['vcenter_user'],
+                               pwd=module.params['vcenter_password'])
         atexit.register(Disconnect, si)
     except vim.fault.InvalidLogin:
         return module.fail_json(

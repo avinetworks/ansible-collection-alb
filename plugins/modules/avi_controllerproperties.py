@@ -318,6 +318,33 @@ options:
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
+    event_manager_max_goroutines:
+        description:
+            - Maximum number of goroutines for event manager process.
+            - Allowed values are 1-64.
+            - Field introduced in 30.2.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 8.
+        type: int
+    event_manager_max_subscribers:
+        description:
+            - Maximum number of subscribers for event manager process.
+            - Allowed values are 1-6.
+            - Special values are 0 - disabled.
+            - Field introduced in 30.2.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 5.
+        type: int
+    event_manager_processing_time_threshold:
+        description:
+            - Log instances for event manager processing delay; recorded whenever event processing delay exceeds configured interval specified in seconds.
+            - Allowed values are 1-5.
+            - Special values are 0 - disabled.
+            - Field introduced in 30.2.1.
+            - Unit is sec.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 4.
+        type: int
     false_positive_learning_config:
         description:
             - False positive learning configuration.
@@ -349,6 +376,7 @@ options:
     file_reference_mappings:
         description:
             - List of mapping for file reference and their absolute path.
+            - Field deprecated in 30.2.1.
             - Field introduced in 30.1.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
@@ -960,6 +988,9 @@ def main():
         enable_memory_balancer=dict(type='bool',),
         enable_per_process_stop=dict(type='bool',),
         enable_resmgr_log_cache_print=dict(type='bool',),
+        event_manager_max_goroutines=dict(type='int',),
+        event_manager_max_subscribers=dict(type='int',),
+        event_manager_processing_time_threshold=dict(type='int',),
         false_positive_learning_config=dict(type='dict',),
         fatal_error_lease_time=dict(type='int',),
         federated_datastore_cleanup_duration=dict(type='int',),
