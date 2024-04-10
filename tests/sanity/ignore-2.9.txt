@@ -15,6 +15,7 @@ plugins/modules/avi_api_version.py validate-modules:missing-gplv3-license
 plugins/modules/avi_api_session.py validate-modules:missing-gplv3-license
 plugins/modules/avi_user.py validate-modules:missing-gplv3-license
 plugins/modules/avi_useraccount.py validate-modules:missing-gplv3-license
+plugins/modules/avi_pingaccessagent.py validate-modules:missing-gplv3-license
 plugins/modules/avi_update_se_data_vnics.py validate-modules:missing-gplv3-license
 plugins/modules/avi_saml_api_session.py validate-modules:missing-gplv3-license
 plugins/modules/avi_gslbservice_patch_member.py validate-modules:missing-gplv3-license

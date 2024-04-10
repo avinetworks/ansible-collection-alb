@@ -62,6 +62,11 @@ options:
             - Name of the object.
         required: true
         type: str
+    con_esx_host:
+        description:
+            - Optional selection of the host.
+        required: false
+        type: str
     con_disk_mode:
         description:
             - Type of disk mode.
@@ -427,13 +432,15 @@ def is_reconfigure_vm(module):
             is_reserve_memory(module) or is_reserve_cpu(module) or
             is_resize_disk(module))
 
+
 def is_ipv6_address(controller_ip):
-        IPV6 = 6
-        try:
-            ip = ipaddress.ip_address(controller_ip)
-            return ip.version == IPV6
-        except ValueError as ve:
-            return False
+    IPV6 = 6
+    try:
+        ip = ipaddress.ip_address(controller_ip)
+        return ip.version == IPV6
+    except ValueError as ve:
+        return False
+
 
 def controller_wait(controller_ip, round_wait=10, wait_time=3600):
     """
@@ -484,6 +491,7 @@ def main():
             con_cluster=dict(required=False, type='str'),
             con_datastore=dict(required=False, type='str'),
             con_mgmt_network=dict(required=True, type='str'),
+            con_esx_host=dict(required=False, type='str'),
             con_disk_mode=dict(required=False, type='str', default='thin',
                                choices=['thin', 'thick', 'eagerzeroedthick']),
             con_ova_path=dict(required=True, type='str'),
@@ -517,9 +525,9 @@ def main():
             'Some of the python package is not installed. please install the requirements from requirements.txt'))
     try:
         si = SmartConnect(disableSslCertValidation=True,
-                               host=module.params['vcenter_host'],
-                               user=module.params['vcenter_user'],
-                               pwd=module.params['vcenter_password'])
+                          host=module.params['vcenter_host'],
+                          user=module.params['vcenter_user'],
+                          pwd=module.params['vcenter_password'])
         atexit.register(Disconnect, si)
     except vim.fault.InvalidLogin:
         return module.fail_json(
@@ -773,6 +781,8 @@ def main():
         command_tokens.append(
             '--vmFolder=%s' % module.params['con_vcenter_folder'])
 
+    if module.params.get('con_esx_host', None):
+        vi_string += '/%s' % (module.params['con_esx_host'])
     command_tokens.extend([ova_file, vi_string])
     ova_tool_result = module.run_command(command_tokens)
 
