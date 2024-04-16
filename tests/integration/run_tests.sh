@@ -23,9 +23,9 @@ do
   st=$( echo "$version < $python38"| bc )
   if [ "$st -eq 1" ]
   then
-    sudo ansible-test integration --exclude test_avi_serviceenginegroup --python $version --docker
+    sudo ansible-test integration --exclude test_avi_serviceenginegroup --python $version --docker --docker-privileged
   else
-    sudo ansible-test integration --python $version --docker
+    sudo ansible-test integration --python $version --docker --docker-privileged
   fi
 done
 echo "Ansible tests integration tests execution completed."
