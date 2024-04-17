@@ -551,7 +551,7 @@ Parameters
                   - Allowed values are 1-1440.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 30.2.1.
+                  - Field introduced in 22.1.5, 30.2.1.
                 </div>
                                 <div style="font-size: small">
                   - Unit is min.
@@ -609,7 +609,7 @@ Parameters
                   - Allowed values are 1-1440.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 30.2.1.
+                  - Field introduced in 22.1.5, 30.2.1.
                 </div>
                                 <div style="font-size: small">
                   - Unit is min.
