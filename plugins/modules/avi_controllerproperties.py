@@ -47,6 +47,13 @@ options:
         description:
             - Patch value to use when using avi_api_update_method as patch.
         type: str
+    alert_manager_use_evms:
+        description:
+            - Enable to use event manager as source of eventsdisable to use log manager as source of events.
+            - Field introduced in 30.2.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as False.
+        type: bool
     allow_admin_network_updates:
         description:
             - Allow non-admin tenants to update admin vrfcontext and network objects.
@@ -952,6 +959,7 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
+        alert_manager_use_evms=dict(type='bool',),
         allow_admin_network_updates=dict(type='bool',),
         allow_ip_forwarding=dict(type='bool',),
         allow_unauthenticated_apis=dict(type='bool',),
