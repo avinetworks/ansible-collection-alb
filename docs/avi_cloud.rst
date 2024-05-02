@@ -740,6 +740,9 @@ Parameters
                   - Enable ipv4 on the management interface of the serviceengine.
                 </div>
                                 <div style="font-size: small">
+                  - Defaults to dhcp if no static config on network present.
+                </div>
+                                <div style="font-size: small">
                   - Field introduced in 30.2.1.
                 </div>
                                 <div style="font-size: small">
@@ -764,6 +767,9 @@ Parameters
             <td>
                                                 <div style="font-size: small">
                   - Enable ipv6 on the management interface of the serviceengine.
+                </div>
+                                <div style="font-size: small">
+                  - Defaults to autocfg if no static config on network present.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 30.2.1.

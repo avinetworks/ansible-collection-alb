@@ -133,6 +133,32 @@ Parameters
                 <tr>
             <td colspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>alert_manager_use_evms</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">bool</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Enable to use event manager as source of eventsdisable to use log manager as source of events.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 30.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>allow_admin_network_updates</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
@@ -551,7 +577,7 @@ Parameters
                   - Allowed values are 1-1440.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 30.2.1.
+                  - Field introduced in 22.1.5, 30.2.1.
                 </div>
                                 <div style="font-size: small">
                   - Unit is min.
@@ -609,7 +635,7 @@ Parameters
                   - Allowed values are 1-1440.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 30.2.1.
+                  - Field introduced in 22.1.5, 30.2.1.
                 </div>
                                 <div style="font-size: small">
                   - Unit is min.

@@ -14,6 +14,7 @@
     state: "{{ avi_role_state_mode }}"
     avi_api_update_method: "{{ item.avi_api_update_method | default(omit) }}"
     avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
+    alert_manager_use_evms: "{{ item.alert_manager_use_evms | default(omit) }}"
     allow_admin_network_updates: "{{ item.allow_admin_network_updates | default(omit) }}"
     allow_ip_forwarding: "{{ item.allow_ip_forwarding | default(omit) }}"
     allow_unauthenticated_apis: "{{ item.allow_unauthenticated_apis | default(omit) }}"
