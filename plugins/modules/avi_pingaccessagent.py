@@ -66,6 +66,7 @@ options:
             - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: list
+        elements: dict
     name:
         description:
             - Name of the pingaccess agent.
@@ -158,7 +159,7 @@ def main():
         avi_patch_value=dict(type='str',),
         configpb_attributes=dict(type='dict',),
         description=dict(type='str',),
-        markers=dict(type='list',),
+        markers=dict(type='list', elements='dict'),
         name=dict(type='str', required=True),
         pingaccess_pool_ref=dict(type='str', required=True),
         primary_server=dict(type='dict', required=True),
