@@ -13,11 +13,11 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 
 DOCUMENTATION = '''
 ---
-module: avi_systemreport
+module: avi_taskjournal
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
-short_description: Module for setup of SystemReport Avi RESTful Object
+short_description: Module for setup of TaskJournal Avi RESTful Object
 description:
-    - This module is used to configure SystemReport object
+    - This module is used to configure TaskJournal object
     - more examples at U(https://github.com/avinetworks/devops)
 options:
     state:
@@ -46,87 +46,64 @@ options:
         description:
             - Patch value to use when using avi_api_update_method as patch.
         type: str
-    archive_ref:
+    errors:
         description:
-            - Relative path to the report archive file on filesystem.the archive includes exported system configuration and current object as json.
-            - Field introduced in 22.1.6, 30.2.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-        type: str
-    controller_patch_image_ref:
-        description:
-            - Controller patch image associated with the report.
-            - It is a reference to an object of type image.
-            - Field introduced in 22.1.6, 30.2.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-        type: str
-    downloadable:
-        description:
-            - Indicates whether this report is downloadable as an archive.
-            - Field introduced in 22.1.6, 30.2.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as False.
-        type: bool
-    events:
-        description:
-            - List of events associated with the report.
-            - Field introduced in 22.1.6, 30.2.1.
+            - List of errors in the process.
+            - Field introduced in 30.2.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
         elements: dict
     image_ref:
         description:
-            - System image associated with the report.
+            - Image uuid for identifying the current base image.
             - It is a reference to an object of type image.
-            - Field introduced in 22.1.6, 30.2.1.
+            - Field introduced in 30.2.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
-    name:
+    info:
         description:
-            - Name of the report derived from operation in a readable format.
-            - Ex  upgrade_system_1a5c.
-            - Field introduced in 22.1.6, 30.2.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-        type: str
-    obj_state:
-        description:
-            - Report state combines all applicable states.
-            - Ex  readiness_reports.system_readiness.state.
-            - Field introduced in 22.1.6, 30.2.1.
+            - Detailed information of journal.
+            - Field introduced in 30.2.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: dict
-    readiness_reports:
+    name:
         description:
-            - Readiness state of the system.
-            - Ex  upgrade pre-check results.
-            - Field introduced in 22.1.6, 30.2.1.
+            - Name for the task journal.
+            - Field introduced in 30.2.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-        type: list
-        elements: dict
-    se_patch_image_ref:
+        type: str
+    obj_cloud_ref:
         description:
-            - Se patch image associated with the report.
+            - Cloud that this object belongs to.
+            - It is a reference to an object of type cloud.
+            - Field introduced in 30.2.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: str
+    operation:
+        description:
+            - Operation for which the task journal created.
+            - Field introduced in 30.2.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: str
+    patch_image_ref:
+        description:
+            - Image uuid for identifying the current patch.
             - It is a reference to an object of type image.
-            - Field introduced in 22.1.6, 30.2.1.
+            - Field introduced in 30.2.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
     summary:
         description:
-            - Summary of the report.
-            - Field introduced in 22.1.6, 30.2.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-        type: dict
-    tasks:
-        description:
-            - List of tasks associated with the report.
+            - Summary of journal.
             - Field introduced in 30.2.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-        type: list
-        elements: dict
+        required: true
+        type: dict
     tenant_ref:
         description:
             - Tenant uuid associated with the object.
             - It is a reference to an object of type tenant.
-            - Field introduced in 22.1.6, 30.2.1.
+            - Field introduced in 30.2.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
     url:
@@ -135,8 +112,8 @@ options:
         type: str
     uuid:
         description:
-            - Uuid identifier for the report.
-            - Field introduced in 22.1.6, 30.2.1.
+            - Uuid identifier for the task journal.
+            - Field introduced in 30.2.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
@@ -152,16 +129,16 @@ EXAMPLES = """
       controller: "192.168.15.18"
       api_version: "21.1.1"
 
-- name: Example to create SystemReport object
-  vmware.alb.avi_systemreport:
+- name: Example to create TaskJournal object
+  vmware.alb.avi_taskjournal:
     avi_credentials: "{{ avi_credentials }}"
     state: present
-    name: sample_systemreport
+    name: sample_taskjournal
 """
 
 RETURN = '''
 obj:
-    description: SystemReport (api/systemreport) object
+    description: TaskJournal (api/taskjournal) object
     returned: success, changed
     type: dict
 '''
@@ -184,17 +161,14 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
-        archive_ref=dict(type='str',),
-        controller_patch_image_ref=dict(type='str',),
-        downloadable=dict(type='bool',),
-        events=dict(type='list', elements='dict',),
+        errors=dict(type='list', elements='dict',),
         image_ref=dict(type='str',),
+        info=dict(type='dict',),
         name=dict(type='str',),
-        obj_state=dict(type='dict',),
-        readiness_reports=dict(type='list', elements='dict',),
-        se_patch_image_ref=dict(type='str',),
-        summary=dict(type='dict',),
-        tasks=dict(type='list', elements='dict',),
+        obj_cloud_ref=dict(type='str',),
+        operation=dict(type='str',),
+        patch_image_ref=dict(type='str',),
+        summary=dict(type='dict', required=True),
         tenant_ref=dict(type='str',),
         url=dict(type='str',),
         uuid=dict(type='str',),
@@ -206,7 +180,7 @@ def main():
         return module.fail_json(msg=(
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
-    return avi_ansible_api(module, 'systemreport',
+    return avi_ansible_api(module, 'taskjournal',
                            set())
 
 

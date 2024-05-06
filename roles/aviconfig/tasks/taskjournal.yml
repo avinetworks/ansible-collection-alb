@@ -1,35 +1,30 @@
 # Automatically Generated File
 # Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
 ---
-- name: Avi SystemReport | Delete SystemReport
+- name: Avi TaskJournal | Create or Update TaskJournal
   no_log: "{{ avi_role_config_log_mode | default(False) }}"
-  vmware.alb.avi_systemreport:
+  vmware.alb.avi_taskjournal:
     controller: "{{ avi_controller | default(omit) }}"
     username: "{{ avi_username | default(omit) }}"
     password: "{{ avi_password | default(omit) }}"
     tenant: "{{ item.tenant | default(omit) }}"
+    state: "{{ avi_role_state_mode }}"
     api_version: "{{ api_version | default(omit) }}"
     avi_credentials: "{{ avi_credentials | default(omit) }}"
     api_context: "{{ avi_api_context | default(omit) }}"
-    state: "{{ avi_role_state_mode }}"
     avi_api_update_method: "{{ item.avi_api_update_method | default(omit) }}"
     avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
-    archive_ref: "{{ item.archive_ref | default(omit) }}"
-    controller_patch_image_ref: "{{ item.controller_patch_image_ref | default(omit) }}"
-    downloadable: "{{ item.downloadable | default(omit) }}"
-    events: "{{ item.events | default(omit) }}"
+    errors: "{{ item.errors | default(omit) }}"
     image_ref: "{{ item.image_ref | default(omit) }}"
+    info: "{{ item.info | default(omit) }}"
     name: "{{ item.name | default(omit) }}"
-    obj_state: "{{ item.obj_state | default(omit) }}"
-    readiness_reports: "{{ item.readiness_reports | default(omit) }}"
-    se_patch_image_ref: "{{ item.se_patch_image_ref | default(omit) }}"
+    obj_cloud_ref: "{{ item.obj_cloud_ref | default(omit) }}"
+    operation: "{{ item.operation | default(omit) }}"
+    patch_image_ref: "{{ item.patch_image_ref | default(omit) }}"
     summary: "{{ item.summary | default(omit) }}"
-    tasks: "{{ item.tasks | default(omit) }}"
     tenant_ref: "{{ item.tenant_ref | default(omit) }}"
     uuid: "{{ item.uuid | default(omit) }}"
   when:
-    - (item.name | length > 0)
-    - (not (item.system_default | default(false)))
-    - (avi_config_state == "absent" or avi_role_state_mode == "absent")
+    - (avi_role_state_mode == "present" and avi_config_state == "present")
     - (item.state | default("present") == avi_role_state_mode or avi_config_state == "absent")
-  with_items: "{{ avi_role_cfg.systemreport | default([]) }}"
+  with_items: "{{ avi_role_cfg.taskjournal | default([]) }}"

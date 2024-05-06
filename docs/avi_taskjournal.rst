@@ -1,11 +1,11 @@
-.. vmware.alb.avi_systemreport:
+.. vmware.alb.avi_taskjournal:
 
 
 **********************************************
-vmware.alb.avi_systemreport
+vmware.alb.avi_taskjournal
 **********************************************
 
-**Module for setup of SystemReport Avi RESTful Object**
+**Module for setup of TaskJournal Avi RESTful Object**
 
 
 .. contents::
@@ -15,7 +15,7 @@ vmware.alb.avi_systemreport
 
 Synopsis
 --------
-- This module is used to configure SystemReport object.
+- This module is used to configure TaskJournal object.
 - More examples at (https://github.com/avinetworks/devops).
 
 
@@ -133,82 +133,7 @@ Parameters
                 <tr>
             <td colspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>archive_ref</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Relative path to the report archive file on filesystem.the archive includes exported system configuration and current object as json.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 22.1.6, 30.2.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-                </div>
-                                            </td>
-        </tr>
-                <tr>
-            <td colspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>controller_patch_image_ref</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Controller patch image associated with the report.
-                </div>
-                                <div style="font-size: small">
-                  - It is a reference to an object of type image.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 22.1.6, 30.2.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-                </div>
-                                            </td>
-        </tr>
-                <tr>
-            <td colspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>downloadable</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Indicates whether this report is downloadable as an archive.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 22.1.6, 30.2.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-                </div>
-                                <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
-                </div>
-                                            </td>
-        </tr>
-                <tr>
-            <td colspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>events</b>
+                <b>errors</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
                     <span style="color: purple">list</span>
@@ -218,10 +143,10 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - List of events associated with the report.
+                  - List of errors in the process.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 22.1.6, 30.2.1.
+                  - Field introduced in 30.2.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed in enterprise edition with any value, enterprise with cloud services edition.
@@ -241,13 +166,36 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - System image associated with the report.
+                  - Image uuid for identifying the current base image.
                 </div>
                                 <div style="font-size: small">
                   - It is a reference to an object of type image.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 22.1.6, 30.2.1.
+                  - Field introduced in 30.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>info</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">dict</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Detailed information of journal.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 30.2.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed in enterprise edition with any value, enterprise with cloud services edition.
@@ -267,13 +215,10 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Name of the report derived from operation in a readable format.
+                  - Name for the task journal.
                 </div>
                                 <div style="font-size: small">
-                  - Ex  upgrade_system_1a5c.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 22.1.6, 30.2.1.
+                  - Field introduced in 30.2.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed in enterprise edition with any value, enterprise with cloud services edition.
@@ -283,59 +228,7 @@ Parameters
                 <tr>
             <td colspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>obj_state</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple">dict</span>
-                </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Report state combines all applicable states.
-                </div>
-                                <div style="font-size: small">
-                  - Ex  readiness_reports.system_readiness.state.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 22.1.6, 30.2.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-                </div>
-                                            </td>
-        </tr>
-                <tr>
-            <td colspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>readiness_reports</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple">list</span>
-                </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Readiness state of the system.
-                </div>
-                                <div style="font-size: small">
-                  - Ex  upgrade pre-check results.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 22.1.6, 30.2.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-                </div>
-                                            </td>
-        </tr>
-                <tr>
-            <td colspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>se_patch_image_ref</b>
+                <b>obj_cloud_ref</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
                     <span style="color: purple">str</span>
@@ -345,13 +238,62 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Se patch image associated with the report.
+                  - Cloud that this object belongs to.
+                </div>
+                                <div style="font-size: small">
+                  - It is a reference to an object of type cloud.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 30.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>operation</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">str</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Operation for which the task journal created.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 30.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>patch_image_ref</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">str</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Image uuid for identifying the current patch.
                 </div>
                                 <div style="font-size: small">
                   - It is a reference to an object of type image.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 22.1.6, 30.2.1.
+                  - Field introduced in 30.2.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed in enterprise edition with any value, enterprise with cloud services edition.
@@ -368,33 +310,13 @@ Parameters
                 </div>
             </td>
             <td>
-                                                            </td>
+                                <div style="font-size: small">
+                <b>required: true</b>
+                </div>
+                            </td>
             <td>
                                                 <div style="font-size: small">
-                  - Summary of the report.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 22.1.6, 30.2.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-                </div>
-                                            </td>
-        </tr>
-                <tr>
-            <td colspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>tasks</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple">list</span>
-                </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - List of tasks associated with the report.
+                  - Summary of journal.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 30.2.1.
@@ -423,7 +345,7 @@ Parameters
                   - It is a reference to an object of type tenant.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 22.1.6, 30.2.1.
+                  - Field introduced in 30.2.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed in enterprise edition with any value, enterprise with cloud services edition.
@@ -460,10 +382,10 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Uuid identifier for the report.
+                  - Uuid identifier for the task journal.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 22.1.6, 30.2.1.
+                  - Field introduced in 30.2.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed in enterprise edition with any value, enterprise with cloud services edition.
@@ -490,11 +412,11 @@ Examples
           controller: "192.168.138.18"
           api_version: "21.1.1"
       tasks:
-        - name: Example to create SystemReport object
-          avi_systemreport:
+        - name: Example to create TaskJournal object
+          avi_taskjournal:
             avi_credentials: "{{ avi_credentials }}"
             state: present
-            name: sample_systemreport
+            name: sample_taskjournal
 
 
 Authors

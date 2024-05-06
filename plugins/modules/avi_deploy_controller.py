@@ -62,6 +62,11 @@ options:
             - Name of the object.
         required: true
         type: str
+    con_esx_host:
+        description:
+            - Optional selection of the host.
+        required: false
+        type: str
     con_disk_mode:
         description:
             - Type of disk mode.
@@ -486,6 +491,7 @@ def main():
             con_cluster=dict(required=False, type='str'),
             con_datastore=dict(required=False, type='str'),
             con_mgmt_network=dict(required=True, type='str'),
+            con_esx_host=dict(required=False, type='str'),
             con_disk_mode=dict(required=False, type='str', default='thin',
                                choices=['thin', 'thick', 'eagerzeroedthick']),
             con_ova_path=dict(required=True, type='str'),
@@ -751,13 +757,11 @@ def main():
         command_tokens.append('--prop:%s=%s' % (
             'avi.default-gw.CONTROLLER', module.params['con_default_gw']))
 
-    if module.params.get('con_mgmt_ip_v6_enable', None):
-        command_tokens.append('--prop:%s=%s' % (
-            'avi.mgmt-ip-v6-enable.CONTROLLER', module.params['con_mgmt_ip_v6_enable']))
+    command_tokens.append('--prop:%s=%s' % (
+        'avi.mgmt-ip-v6-enable.CONTROLLER', module.params['con_mgmt_ip_v6_enable']))
 
-    if module.params.get('con_mgmt_ip_v4_enable', None) and not module.params['con_mgmt_ip_v6_enable']:
-        command_tokens.append('--prop:%s=%s' % (
-            'avi.mgmt-ip-v4-enable.CONTROLLER', module.params['con_mgmt_ip_v4_enable']))
+    command_tokens.append('--prop:%s=%s' % (
+        'avi.mgmt-ip-v4-enable.CONTROLLER', module.params['con_mgmt_ip_v4_enable']))
 
     if module.params.get('con_sysadmin_public_key', None):
         command_tokens.append('--prop:%s=%s' % (
@@ -775,6 +779,8 @@ def main():
         command_tokens.append(
             '--vmFolder=%s' % module.params['con_vcenter_folder'])
 
+    if module.params.get('con_esx_host', None):
+        vi_string += '/%s' % (module.params['con_esx_host'])
     command_tokens.extend([ova_file, vi_string])
     ova_tool_result = module.run_command(command_tokens)
 

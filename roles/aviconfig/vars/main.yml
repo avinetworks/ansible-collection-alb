@@ -40,8 +40,8 @@ avi_resource_types:
   - siteversion
   - statediffoperation
   - image
+  - taskjournal
   - controllerportalregistration
-  - systemreport
   - dynamicdnsrecord
   - role
   - serviceauthprofile
@@ -76,6 +76,7 @@ avi_resource_types:
   - statediffsnapshot
   - upgradestatusinfo
   - upgradestatussummary
+  - systemreport
   - authmappingprofile
   - scheduler
   - sslkeyandcertificate
