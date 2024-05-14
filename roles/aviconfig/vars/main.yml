@@ -46,6 +46,7 @@ avi_resource_types:
   - role
   - serviceauthprofile
   - controllersite
+  - trustedhostprofile
   - inventoryfaultconfig
   - albservicesfileupload
   - webhook

@@ -172,6 +172,7 @@ Name | Description
 [vmware.alb.avi_testsedatastorelevel2](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_testsedatastorelevel2.rst)|Module to create update or delete TestSeDatastoreLevel2
 [vmware.alb.avi_testsedatastorelevel3](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_testsedatastorelevel3.rst)|Module to create update or delete TestSeDatastoreLevel3
 [vmware.alb.avi_trafficcloneprofile](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_trafficcloneprofile.rst)|Module to create update or delete TrafficCloneProfile
+[vmware.alb.avi_trustedhostprofile](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_trustedhostprofile.rst)|Module to create update or delete TrustedHostProfile
 [vmware.alb.avi_update_se_data_vnics](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_update_se_data_vnics.rst)|Module to create update or delete UpdateSeDataVnics
 [vmware.alb.avi_upgradestatusinfo](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_upgradestatusinfo.rst)|Module to create update or delete UpgradeStatusInfo
 [vmware.alb.avi_upgradestatussummary](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_upgradestatussummary.rst)|Module to create update or delete UpgradeStatusSummary
