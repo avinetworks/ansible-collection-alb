@@ -55,7 +55,7 @@ options:
         type: dict
     host_list:
         description:
-            - List of host ip(v4/v6) addresses or fqdns.
+            - Comma separated list of host ip(v4/v6) addresses or fqdns.
             - Field introduced in 31.1.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         required: true

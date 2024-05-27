@@ -172,7 +172,7 @@ Parameters
                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - List of host ip(v4/v6) addresses or fqdns.
+                  - Comma separated list of host ip(v4/v6) addresses or fqdns.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 31.1.1.
