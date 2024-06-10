@@ -52,7 +52,7 @@ options:
             - Enable to use event manager as source of eventsdisable to use log manager as source of events.
             - Field introduced in 30.2.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as False.
+            - Default value when not specified in API or module is interpreted by Avi Controller as True.
         type: bool
     allow_admin_network_updates:
         description:
