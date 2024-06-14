@@ -15,7 +15,7 @@
     avi_api_update_method: "{{ item.avi_api_update_method | default(omit) }}"
     avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
     configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
-    host_list: "{{ item.host_list | default(omit) }}"
+    hosts: "{{ item.hosts | default(omit) }}"
     name: "{{ item.name | default(omit) }}"
     tenant_ref: "{{ item.tenant_ref | default(omit) }}"
     uuid: "{{ item.uuid | default(omit) }}"

@@ -146,7 +146,7 @@ Parameters
                   - Protobuf versioning for config pbs.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 31.1.1.
+                  - Field introduced in 22.1.7, 30.2.2, 31.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
@@ -159,10 +159,10 @@ Parameters
                 <tr>
             <td colspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>host_list</b>
+                <b>hosts</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
+                    <span style="color: purple">list</span>
                 </div>
             </td>
             <td>
@@ -172,10 +172,16 @@ Parameters
                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Comma separated list of host ip(v4/v6) addresses or fqdns.
+                  - List of host ip(v4/v6) addresses or fqdns.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 31.1.1.
+                  - Field introduced in 22.1.7, 30.2.2, 31.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Minimum of 1 items required.
+                </div>
+                                <div style="font-size: small">
+                  - Maximum of 20 items allowed.
                 </div>
                                 <div style="font-size: small">
                   - Allowed in enterprise edition with any value, enterprise with cloud services edition.
@@ -201,7 +207,7 @@ Parameters
                   - Trustedhostprofile name.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 31.1.1.
+                  - Field introduced in 22.1.7, 30.2.2, 31.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed in enterprise edition with any value, enterprise with cloud services edition.
@@ -227,7 +233,7 @@ Parameters
                   - It is a reference to an object of type tenant.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 31.1.1.
+                  - Field introduced in 22.1.7, 30.2.2, 31.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed in enterprise edition with any value, enterprise with cloud services edition.
@@ -267,7 +273,7 @@ Parameters
                   - Trustedhostprofile uuid.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 31.1.1.
+                  - Field introduced in 22.1.7, 30.2.2, 31.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed in enterprise edition with any value, enterprise with cloud services edition.

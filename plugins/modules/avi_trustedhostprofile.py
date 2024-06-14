@@ -49,21 +49,24 @@ options:
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
-            - Field introduced in 31.1.1.
+            - Field introduced in 22.1.7, 30.2.2, 31.1.1.
             - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: dict
-    host_list:
+    hosts:
         description:
-            - Comma separated list of host ip(v4/v6) addresses or fqdns.
-            - Field introduced in 31.1.1.
+            - List of host ip(v4/v6) addresses or fqdns.
+            - Field introduced in 22.1.7, 30.2.2, 31.1.1.
+            - Minimum of 1 items required.
+            - Maximum of 20 items allowed.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         required: true
-        type: str
+        type: list
+        elements: str
     name:
         description:
             - Trustedhostprofile name.
-            - Field introduced in 31.1.1.
+            - Field introduced in 22.1.7, 30.2.2, 31.1.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         required: true
         type: str
@@ -71,7 +74,7 @@ options:
         description:
             - Tenant ref for trusted host profile.
             - It is a reference to an object of type tenant.
-            - Field introduced in 31.1.1.
+            - Field introduced in 22.1.7, 30.2.2, 31.1.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
     url:
@@ -81,7 +84,7 @@ options:
     uuid:
         description:
             - Trustedhostprofile uuid.
-            - Field introduced in 31.1.1.
+            - Field introduced in 22.1.7, 30.2.2, 31.1.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
@@ -130,7 +133,7 @@ def main():
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
         configpb_attributes=dict(type='dict',),
-        host_list=dict(type='str', required=True),
+        hosts=dict(type='list', elements='str', required=True),
         name=dict(type='str', required=True),
         tenant_ref=dict(type='str',),
         url=dict(type='str',),
