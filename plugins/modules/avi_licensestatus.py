@@ -53,6 +53,12 @@ options:
             - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: dict
+    essentials_enforced_at:
+        description:
+            - License enforcement date when we upgrade controller to 31.1.1 and license tier is essential before upgrade.
+            - Field introduced in 31.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: str
     saas_status:
         description:
             - Saas licensing status.
@@ -127,6 +133,7 @@ def main():
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
         configpb_attributes=dict(type='dict',),
+        essentials_enforced_at=dict(type='str',),
         saas_status=dict(type='dict',),
         service_update=dict(type='dict',),
         tenant_uuid=dict(type='str',),
