@@ -385,7 +385,7 @@ Parameters
                   - Host header check.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 30.2.2.
+                  - Field introduced in 22.1.7, 30.2.2, 31.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed in enterprise edition with any value, enterprise with cloud services edition.
@@ -738,7 +738,7 @@ Parameters
                   - It is a reference to an object of type trustedhostprofile.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 30.2.2.
+                  - Field introduced in 22.1.7, 30.2.2, 31.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Maximum of 20 items allowed.

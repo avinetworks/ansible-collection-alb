@@ -114,7 +114,7 @@ options:
     enable_host_header_check:
         description:
             - Host header check.
-            - Field introduced in 30.2.2.
+            - Field introduced in 22.1.7, 30.2.2, 31.1.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
@@ -207,7 +207,7 @@ options:
             - Trusted host profiles for host header validation.
             - Only function when enable_host_header_check is set to true.
             - It is a reference to an object of type trustedhostprofile.
-            - Field introduced in 30.2.2.
+            - Field introduced in 22.1.7, 30.2.2, 31.1.1.
             - Maximum of 20 items allowed.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
