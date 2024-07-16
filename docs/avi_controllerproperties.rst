@@ -2413,6 +2413,9 @@ Parameters
                   - Time interval (in seconds) between retires for skopeo commands.
                 </div>
                                 <div style="font-size: small">
+                  - Field deprecated in 31.1.1.
+                </div>
+                                <div style="font-size: small">
                   - Field introduced in 30.1.1.
                 </div>
                                 <div style="font-size: small">
@@ -2420,9 +2423,6 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-                </div>
-                                <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as 5.
                 </div>
                                             </td>
         </tr>
@@ -2442,13 +2442,13 @@ Parameters
                   - Number of times to try skopeo commands for remote image registries.
                 </div>
                                 <div style="font-size: small">
+                  - Field deprecated in 31.1.1.
+                </div>
+                                <div style="font-size: small">
                   - Field introduced in 30.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-                </div>
-                                <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as 3.
                 </div>
                                             </td>
         </tr>

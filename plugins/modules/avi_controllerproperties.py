@@ -669,17 +669,17 @@ options:
     skopeo_retry_interval:
         description:
             - Time interval (in seconds) between retires for skopeo commands.
+            - Field deprecated in 31.1.1.
             - Field introduced in 30.1.1.
             - Unit is sec.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as 5.
         type: int
     skopeo_retry_limit:
         description:
             - Number of times to try skopeo commands for remote image registries.
+            - Field deprecated in 31.1.1.
             - Field introduced in 30.1.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as 3.
         type: int
     soft_min_mem_per_se_limit:
         description:

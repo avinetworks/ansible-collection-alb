@@ -118,6 +118,13 @@ options:
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
+    enable_telemetry:
+        description:
+            - Enables sending anonymous operational metrics to avi.
+            - Field introduced in 31.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as True.
+        type: bool
     fips_mode:
         description:
             - Fips mode current state.
@@ -298,6 +305,7 @@ def main():
         email_configuration=dict(type='dict',),
         enable_cors=dict(type='bool',),
         enable_host_header_check=dict(type='bool',),
+        enable_telemetry=dict(type='bool',),
         fips_mode=dict(type='bool',),
         global_tenant_config=dict(type='dict',),
         host_key_algorithm_exclude=dict(type='str',),
