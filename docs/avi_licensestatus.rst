@@ -169,10 +169,10 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - License enforcement date when we upgrade controller to 31.1.1 and license tier is essential before upgrade.
+                  - License enforcement date when we upgrade controller to higher version and license tier is essential before upgrade.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 31.1.1.
+                  - Field introduced in 22.1.7, 30.2.2, 31.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed in enterprise edition with any value, enterprise with cloud services edition.
