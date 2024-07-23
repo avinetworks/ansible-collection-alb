@@ -728,9 +728,6 @@ Parameters
                   - Remote image reference of previous base image.
                 </div>
                                 <div style="font-size: small">
-                  - Field deprecated in 31.1.1.
-                </div>
-                                <div style="font-size: small">
                   - Field introduced in 30.1.1.
                 </div>
                                 <div style="font-size: small">
@@ -946,9 +943,6 @@ Parameters
             <td>
                                                 <div style="font-size: small">
                   - Remote image reference of current base image.
-                </div>
-                                <div style="font-size: small">
-                  - Field deprecated in 31.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 30.1.1.

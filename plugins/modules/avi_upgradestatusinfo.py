@@ -205,7 +205,6 @@ options:
     prev_remote_image_ref:
         description:
             - Remote image reference of previous base image.
-            - Field deprecated in 31.1.1.
             - Field introduced in 30.1.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
@@ -266,7 +265,6 @@ options:
     remote_image_ref:
         description:
             - Remote image reference of current base image.
-            - Field deprecated in 31.1.1.
             - Field introduced in 30.1.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
