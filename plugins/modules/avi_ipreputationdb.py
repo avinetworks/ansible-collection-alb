@@ -55,6 +55,15 @@ options:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: str
+    base_file_v6_refs:
+        description:
+            - Ip reputation db base file for ipv6.
+            - It is a reference to an object of type fileobject.
+            - Field introduced in 31.1.1.
+            - Maximum of 1 items allowed.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: list
+        elements: str
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
@@ -74,6 +83,14 @@ options:
             - It is a reference to an object of type fileobject.
             - Field introduced in 20.1.1.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+        type: list
+        elements: str
+    incremental_file_v6_refs:
+        description:
+            - Ip reputation db incremental update files for ipv6.
+            - It is a reference to an object of type fileobject.
+            - Field introduced in 31.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
         elements: str
     markers:
@@ -175,9 +192,11 @@ def main():
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
         base_file_refs=dict(type='list', elements='str',),
+        base_file_v6_refs=dict(type='list', elements='str',),
         configpb_attributes=dict(type='dict',),
         description=dict(type='str',),
         incremental_file_refs=dict(type='list', elements='str',),
+        incremental_file_v6_refs=dict(type='list', elements='str',),
         markers=dict(type='list', elements='dict',),
         name=dict(type='str', required=True),
         service_status=dict(type='dict',),
