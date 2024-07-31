@@ -1,28 +1,25 @@
 # Automatically Generated File
 # Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
 ---
-- name: Avi LicenseStatus | Delete LicenseStatus
+- name: Avi TrustedHostProfile | Create or Update TrustedHostProfile
   no_log: "{{ avi_role_config_log_mode | default(False) }}"
-  vmware.alb.avi_licensestatus:
+  vmware.alb.avi_trustedhostprofile:
     controller: "{{ avi_controller | default(omit) }}"
     username: "{{ avi_username | default(omit) }}"
     password: "{{ avi_password | default(omit) }}"
     tenant: "{{ item.tenant | default(omit) }}"
+    state: "{{ avi_role_state_mode }}"
     api_version: "{{ api_version | default(omit) }}"
     avi_credentials: "{{ avi_credentials | default(omit) }}"
     api_context: "{{ avi_api_context | default(omit) }}"
-    state: "{{ avi_role_state_mode }}"
     avi_api_update_method: "{{ item.avi_api_update_method | default(omit) }}"
     avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
     configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
-    essentials_enforced_at: "{{ item.essentials_enforced_at | default(omit) }}"
-    saas_status: "{{ item.saas_status | default(omit) }}"
-    service_update: "{{ item.service_update | default(omit) }}"
-    tenant_uuid: "{{ item.tenant_uuid | default(omit) }}"
+    hosts: "{{ item.hosts | default(omit) }}"
+    name: "{{ item.name | default(omit) }}"
+    tenant_ref: "{{ item.tenant_ref | default(omit) }}"
     uuid: "{{ item.uuid | default(omit) }}"
   when:
-    - (item.name | length > 0)
-    - (not (item.system_default | default(false)))
-    - (avi_config_state == "absent" or avi_role_state_mode == "absent")
+    - (avi_role_state_mode == "present" and avi_config_state == "present")
     - (item.state | default("present") == avi_role_state_mode or avi_config_state == "absent")
-  with_items: "{{ avi_role_cfg.licensestatus | default([]) }}"
+  with_items: "{{ avi_role_cfg.trustedhostprofile | default([]) }}"

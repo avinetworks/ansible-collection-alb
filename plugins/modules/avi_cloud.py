@@ -88,7 +88,7 @@ options:
         description:
             - Select the ip address management scheme.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as False.
+            - Default value when not specified in API or module is interpreted by Avi Controller as True.
         type: bool
     dns_provider_ref:
         description:
@@ -157,7 +157,7 @@ options:
             - Enable ipv6 auto configuration.
             - Field introduced in 18.1.1.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as False.
+            - Default value when not specified in API or module is interpreted by Avi Controller as True.
         type: bool
     ipam_provider_ref:
         description:
@@ -211,6 +211,7 @@ options:
     mgmt_ip_v4_enabled:
         description:
             - Enable ipv4 on the management interface of the serviceengine.
+            - Defaults to dhcp if no static config on network present.
             - Field introduced in 30.2.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as True.
@@ -218,6 +219,7 @@ options:
     mgmt_ip_v6_enabled:
         description:
             - Enable ipv6 on the management interface of the serviceengine.
+            - Defaults to autocfg if no static config on network present.
             - Field introduced in 30.2.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as True.

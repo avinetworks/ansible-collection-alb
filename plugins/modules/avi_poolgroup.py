@@ -88,13 +88,6 @@ options:
             - Description of pool group.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
-    enable_http2:
-        description:
-            - Enable http/2 for traffic from virtualservice to all the backend servers in all the pools configured under this poolgroup.
-            - Field deprecated in 30.2.1.
-            - Field introduced in 20.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-        type: bool
     fail_action:
         description:
             - Enable an action - close connection, http redirect, or local http response - when a pool group failure happens.
@@ -218,7 +211,6 @@ def main():
         deactivate_primary_pool_on_down=dict(type='bool',),
         deployment_policy_ref=dict(type='str',),
         description=dict(type='str',),
-        enable_http2=dict(type='bool',),
         fail_action=dict(type='dict',),
         implicit_priority_labels=dict(type='bool',),
         markers=dict(type='list', elements='dict',),

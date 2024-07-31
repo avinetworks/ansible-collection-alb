@@ -13,11 +13,11 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 
 DOCUMENTATION = '''
 ---
-module: avi_licensestatus
+module: avi_trustedhostprofile
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
-short_description: Module for setup of LicenseStatus Avi RESTful Object
+short_description: Module for setup of TrustedHostProfile Avi RESTful Object
 description:
-    - This module is used to configure LicenseStatus object
+    - This module is used to configure TrustedHostProfile object
     - more examples at U(https://github.com/avinetworks/devops)
 options:
     state:
@@ -49,32 +49,32 @@ options:
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
-            - Field introduced in 21.1.3.
+            - Field introduced in 22.1.7, 30.2.2, 31.1.1.
             - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: dict
-    essentials_enforced_at:
+    hosts:
         description:
-            - License enforcement date when we upgrade controller to higher version and license tier is essential before upgrade.
-            - Field introduced in 30.2.2, 31.1.1.
+            - List of host ip(v4/v6) addresses or fqdns.
+            - Field introduced in 22.1.7, 30.2.2, 31.1.1.
+            - Minimum of 1 items required.
+            - Maximum of 20 items allowed.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        required: true
+        type: list
+        elements: str
+    name:
+        description:
+            - Trustedhostprofile name.
+            - Field introduced in 22.1.7, 30.2.2, 31.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        required: true
         type: str
-    saas_status:
+    tenant_ref:
         description:
-            - Saas licensing status.
-            - Field introduced in 21.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-        type: dict
-    service_update:
-        description:
-            - Pulse license service update.
-            - Field introduced in 21.1.4.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-        type: dict
-    tenant_uuid:
-        description:
-            - Tenant uuid.
-            - Field introduced in 30.1.1.
+            - Tenant ref for trusted host profile.
+            - It is a reference to an object of type tenant.
+            - Field introduced in 22.1.7, 30.2.2, 31.1.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
     url:
@@ -83,8 +83,8 @@ options:
         type: str
     uuid:
         description:
-            - Uuid.
-            - Field introduced in 21.1.3.
+            - Trustedhostprofile uuid.
+            - Field introduced in 22.1.7, 30.2.2, 31.1.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
@@ -100,16 +100,16 @@ EXAMPLES = """
       controller: "192.168.15.18"
       api_version: "21.1.1"
 
-- name: Example to create LicenseStatus object
-  vmware.alb.avi_licensestatus:
+- name: Example to create TrustedHostProfile object
+  vmware.alb.avi_trustedhostprofile:
     avi_credentials: "{{ avi_credentials }}"
     state: present
-    name: sample_licensestatus
+    name: sample_trustedhostprofile
 """
 
 RETURN = '''
 obj:
-    description: LicenseStatus (api/licensestatus) object
+    description: TrustedHostProfile (api/trustedhostprofile) object
     returned: success, changed
     type: dict
 '''
@@ -133,10 +133,9 @@ def main():
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
         configpb_attributes=dict(type='dict',),
-        essentials_enforced_at=dict(type='str',),
-        saas_status=dict(type='dict',),
-        service_update=dict(type='dict',),
-        tenant_uuid=dict(type='str',),
+        hosts=dict(type='list', elements='str', required=True),
+        name=dict(type='str', required=True),
+        tenant_ref=dict(type='str',),
         url=dict(type='str',),
         uuid=dict(type='str',),
     )
@@ -147,7 +146,7 @@ def main():
         return module.fail_json(msg=(
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
-    return avi_ansible_api(module, 'licensestatus',
+    return avi_ansible_api(module, 'trustedhostprofile',
                            set())
 
 

@@ -287,7 +287,7 @@ Parameters
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                  - Default value when not specified in API or module is interpreted by Avi Controller as True.
                 </div>
                                             </td>
         </tr>
@@ -541,7 +541,7 @@ Parameters
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                  - Default value when not specified in API or module is interpreted by Avi Controller as True.
                 </div>
                                             </td>
         </tr>
@@ -740,6 +740,9 @@ Parameters
                   - Enable ipv4 on the management interface of the serviceengine.
                 </div>
                                 <div style="font-size: small">
+                  - Defaults to dhcp if no static config on network present.
+                </div>
+                                <div style="font-size: small">
                   - Field introduced in 30.2.1.
                 </div>
                                 <div style="font-size: small">
@@ -764,6 +767,9 @@ Parameters
             <td>
                                                 <div style="font-size: small">
                   - Enable ipv6 on the management interface of the serviceengine.
+                </div>
+                                <div style="font-size: small">
+                  - Defaults to autocfg if no static config on network present.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 30.2.1.

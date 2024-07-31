@@ -40,12 +40,13 @@ avi_resource_types:
   - siteversion
   - statediffoperation
   - image
+  - taskjournal
   - controllerportalregistration
-  - systemreport
   - dynamicdnsrecord
   - role
   - serviceauthprofile
   - controllersite
+  - trustedhostprofile
   - inventoryfaultconfig
   - albservicesfileupload
   - webhook
@@ -76,6 +77,7 @@ avi_resource_types:
   - statediffsnapshot
   - upgradestatusinfo
   - upgradestatussummary
+  - systemreport
   - authmappingprofile
   - scheduler
   - sslkeyandcertificate

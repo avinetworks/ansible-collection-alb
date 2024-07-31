@@ -112,14 +112,6 @@ options:
             - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: str
-    operations_config:
-        description:
-            - Operations configuration.
-            - Field deprecated in 30.1.1.
-            - Field introduced in 22.1.3.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
-        type: dict
     polling_interval:
         description:
             - Time interval in minutes.
@@ -264,7 +256,6 @@ def main():
         ip_reputation_config=dict(type='dict', required=True),
         mode=dict(type='str',),
         name=dict(type='str',),
-        operations_config=dict(type='dict',),
         polling_interval=dict(type='int',),
         portal_url=dict(type='str', required=True),
         saas_licensing_config=dict(type='dict', required=True),

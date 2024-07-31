@@ -24,6 +24,8 @@
     docker_mode: "{{ item.docker_mode | default(omit) }}"
     email_configuration: "{{ item.email_configuration | default(omit) }}"
     enable_cors: "{{ item.enable_cors | default(omit) }}"
+    enable_host_header_check: "{{ item.enable_host_header_check | default(omit) }}"
+    enable_telemetry: "{{ item.enable_telemetry | default(omit) }}"
     fips_mode: "{{ item.fips_mode | default(omit) }}"
     global_tenant_config: "{{ item.global_tenant_config | default(omit) }}"
     host_key_algorithm_exclude: "{{ item.host_key_algorithm_exclude | default(omit) }}"
@@ -39,6 +41,7 @@
     snmp_configuration: "{{ item.snmp_configuration | default(omit) }}"
     ssh_ciphers: "{{ item.ssh_ciphers | default(omit) }}"
     ssh_hmacs: "{{ item.ssh_hmacs | default(omit) }}"
+    trusted_host_profiles_refs: "{{ item.trusted_host_profiles_refs | default(omit) }}"
     uuid: "{{ item.uuid | default(omit) }}"
     welcome_workflow_complete: "{{ item.welcome_workflow_complete | default(omit) }}"
   when:
@@ -71,6 +74,8 @@
     docker_mode: "{{ item.docker_mode | default(omit) }}"
     email_configuration: "{{ item.email_configuration | default(omit) }}"
     enable_cors: "{{ item.enable_cors | default(omit) }}"
+    enable_host_header_check: "{{ item.enable_host_header_check | default(omit) }}"
+    enable_telemetry: "{{ item.enable_telemetry | default(omit) }}"
     fips_mode: "{{ item.fips_mode | default(omit) }}"
     global_tenant_config: "{{ item.global_tenant_config | default(omit) }}"
     host_key_algorithm_exclude: "{{ item.host_key_algorithm_exclude | default(omit) }}"
@@ -86,6 +91,7 @@
     snmp_configuration: "{{ item.snmp_configuration | default(omit) }}"
     ssh_ciphers: "{{ item.ssh_ciphers | default(omit) }}"
     ssh_hmacs: "{{ item.ssh_hmacs | default(omit) }}"
+    trusted_host_profiles_refs: "{{ item.trusted_host_profiles_refs | default(omit) }}"
     uuid: "{{ item.uuid | default(omit) }}"
     welcome_workflow_complete: "{{ item.welcome_workflow_complete | default(omit) }}"
   when:
