@@ -56,7 +56,7 @@ options:
     essentials_enforced_at:
         description:
             - License enforcement date when we upgrade controller to higher version and license tier is essential before upgrade.
-            - Field introduced in 22.1.7, 30.2.2, 31.1.1.
+            - Field introduced in 30.2.2, 31.1.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
     saas_status:
