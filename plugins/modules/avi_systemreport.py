@@ -66,6 +66,12 @@ options:
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
+    dryrun_info:
+        description:
+            - Dry-run report.
+            - Field introduced in 31.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: dict
     events:
         description:
             - List of events associated with the report.
@@ -187,6 +193,7 @@ def main():
         archive_ref=dict(type='str',),
         controller_patch_image_ref=dict(type='str',),
         downloadable=dict(type='bool',),
+        dryrun_info=dict(type='dict',),
         events=dict(type='list', elements='dict',),
         image_ref=dict(type='str',),
         name=dict(type='str',),
