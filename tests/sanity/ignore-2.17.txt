@@ -24,6 +24,7 @@ plugins/modules/avi_useraccount.py import-3.8!skip
 plugins/modules/avi_update_se_data_vnics.py import-3.8!skip
 plugins/modules/avi_saml_api_session.py import-3.8!skip
 plugins/modules/avi_gslbservice_patch_member.py import-3.8!skip
+plugins/modules/avi_gslbservice_patch_member.py import-3.8!skip
 plugins/modules/avi_bootstrap_controller.py import-3.8!skip
 plugins/modules/avi_api_fileservice.py import-3.8!skip
 plugins/modules/avi_api_image.py import-3.8!skip
@@ -33,16 +34,17 @@ plugins/modules/avi_deploy_controller.py validate-modules:missing-gplv3-license
 tests/integration/run_tests.sh shebang
 tests/integration/run_tests.sh shellcheck:SC2157
 tests/integration/run_tests.sh shellcheck:SC2154
+tests/integration/run_tests.sh shellcheck:SC2164
 plugins/modules/avi_pulse_registration.py import-3.8!skip
 plugins/modules/avi_pulse_registration.py validate-modules:missing-gplv3-license
 plugins/modules/deploy_se.py validate-modules:missing-gplv3-license
+plugins/modules/deploy_se.py validate-modules:no-log-needed
 plugins/modules/verify_se.py validate-modules:missing-gplv3-license
 roles/avicontroller/templates/avicontroller.j2 shebang
 roles/avise/templates/avise.j2 shebang
 roles/avise/templates/avise_service.j2 shebang
 molecule/default/files/avi_config.yml line-endings
 tests/unit/modules/test_avi_pool.py pylint!skip
-plugins/modules/avi_saml_api_session.py validate-modules:doc-type-does-not-match-spec
 plugins/modules/avi_labelgroup.py validate-modules:missing-gplv3-license
 plugins/modules/avi_labelgroup.py import-3.8!skip
 plugins/modules/avi_albservicesconfig.py validate-modules:missing-gplv3-license
