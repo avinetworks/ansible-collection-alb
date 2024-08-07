@@ -5,11 +5,6 @@ plugins/modules/avi_sslprofile.py pep8:E501
 plugins/module_utils/avi_api.py pylint!skip
 plugins/module_utils/saml_avi_api.py pylint!skip
 plugins/module_utils/utils/ansible_utils.py pylint!skip
-plugins/modules/avi_sslkeyandcertificate.py compile-2.6
-plugins/modules/avi_gslb.py compile-2.6
-plugins/modules/avi_controllerproperties.py compile-2.6
-plugins/modules/avi_cloudconnectoruser.py compile-2.6
-plugins/modules/avi_backupconfiguration.py compile-2.6
 plugins/modules/avi_api_version.py validate-modules:missing-gplv3-license
 plugins/modules/avi_api_session.py validate-modules:missing-gplv3-license
 plugins/modules/avi_user.py validate-modules:missing-gplv3-license
