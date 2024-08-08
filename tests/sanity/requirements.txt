@@ -1,4 +1,0 @@
-requests==2.25.1
-pyVmomi==7.0.2
-pyVim==3.0.2
-PyYAML==6.0.2

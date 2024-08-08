@@ -1,2 +1,4 @@
 -r requirements.txt
 mock
+requests==2.25.1
+PyYAML==6.0.2
