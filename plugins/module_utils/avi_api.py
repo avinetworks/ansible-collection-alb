@@ -15,11 +15,19 @@ else:
     from urllib.parse import urlparse
 
 from datetime import datetime, timedelta
-from requests import ConnectionError
-from requests import Response
-from requests.exceptions import ChunkedEncodingError
-from requests.sessions import Session
 from ssl import SSLError
+try:
+    from requests import ConnectionError
+    from requests import Response
+    from requests.exceptions import ChunkedEncodingError
+    from requests.sessions import Session
+    HAS_REQUESTS = True
+except ImportError:
+    HAS_REQUESTS = False
+if not HAS_REQUESTS:
+    return module.fail_json(msg=(
+        'Python requests package is not installed. '
+        'For installation instructions, visit https://pypi.org/project/requests.'))
 
 
 logger = logging.getLogger(__name__)
