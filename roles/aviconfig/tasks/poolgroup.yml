@@ -21,7 +21,6 @@
     deactivate_primary_pool_on_down: "{{ item.deactivate_primary_pool_on_down | default(omit) }}"
     deployment_policy_ref: "{{ item.deployment_policy_ref | default(omit) }}"
     description: "{{ item.description | default(omit) }}"
-    enable_http2: "{{ item.enable_http2 | default(omit) }}"
     fail_action: "{{ item.fail_action | default(omit) }}"
     implicit_priority_labels: "{{ item.implicit_priority_labels | default(omit) }}"
     markers: "{{ item.markers | default(omit) }}"

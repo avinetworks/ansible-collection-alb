@@ -27,6 +27,10 @@ else:
     log = avi_sdk_syslog_logger()
 
 
+class InvalidRefFormat(Exception):
+    pass
+
+
 class AviCheckModeResponse(object):
     """
     Class to support ansible check mode.
@@ -169,7 +173,6 @@ HTTP_REF_MATCH = re.compile(r'https://[\w.0-9:-]+/api/.+')
 HTTP_REF_MATCH_IPV6 = re.compile(r'https://[[\w.0-9:-]+]/api/.+')
 HTTP_REF_W_NAME_MATCH = re.compile(r'https://[\w.0-9:-]+/api/.*#.+')
 HTTP_REF_W_NAME_MATCH_IPV6 = re.compile(r'https://[[\w.0-9:-]+]/api/.*#.+')
-
 
 def ref_n_str_cmp(x, y):
     """
@@ -421,7 +424,9 @@ def avi_ansible_api(module, obj_type, sensitive_fields):
             port=api_creds.port,
             idp_class=idp,
             csp_host=api_creds.csp_host,
-            csp_token=api_creds.csp_token,)
+            csp_token=api_creds.csp_token,
+            ssl_cert=api_creds.ssl_cert,
+            ssl_key=api_creds.ssl_key)
     state = module.params['state']
     # Get the api version.
     avi_update_method = module.params.get('avi_api_update_method', 'put')
@@ -480,6 +485,9 @@ def avi_ansible_api(module, obj_type, sensitive_fields):
         params = {'include_refs': '', 'include_name': ''}
         if obj.get('cloud_ref', None):
             # this is the case when gets have to be scoped with cloud
+            if not obj['cloud_ref'].startswith("/api/cloud/?name=") and obj['cloud_ref'] is not None:
+                raise InvalidRefFormat(
+                    f"Invalid cloud_ref format: {obj['cloud_ref']}. Expected format: /api/cloud/?name=<name> (specifying the cloud name by name).")
             cloud = obj['cloud_ref'].split('name=')[1]
             params['cloud_ref.name'] = cloud
         existing_obj = api.get_object_by_name(
@@ -490,6 +498,9 @@ def avi_ansible_api(module, obj_type, sensitive_fields):
         # is actually in admin tenant.
         if existing_obj and 'tenant_ref' in obj and 'tenant_ref' in existing_obj:
             # https://10.10.25.42/api/tenant/admin#admin
+            if not obj.get('tenant_ref').startswith("/api/tenant/?name=") and obj.get('tenant_ref') is not None:
+                raise InvalidRefFormat(
+                    f"Invalid tenant_ref format: {obj['tenant_ref']}. Expected format: /api/tenant/?name=<name> (specifying the tenant name by name).")
             existing_obj_tenant = existing_obj['tenant_ref'].split('#')[1]
             obj_tenant = obj['tenant_ref'].split('name=')[1]
             if obj_tenant != existing_obj_tenant:
@@ -613,7 +624,7 @@ def avi_common_argument_spec():
         controller=dict(default=os.environ.get('AVI_CONTROLLER', '')),
         username=dict(default=os.environ.get('AVI_USERNAME', '')),
         password=dict(default=os.environ.get('AVI_PASSWORD', ''), no_log=True),
-        api_version=dict(default='18.2.6', type='str'),
+        api_version=dict(default='20.1.1', type='str'),
         tenant=dict(default='admin'),
         tenant_uuid=dict(default='', type='str'),
         port=dict(type='int'),
@@ -623,7 +634,9 @@ def avi_common_argument_spec():
         csrftoken=dict(default='', type='str', no_log=True),
         idp_class=dict(default='', type='str'),
         csp_host=dict(default='', type='str', no_log=True),
-        csp_token=dict(default='', type='str', no_log=True)
+        csp_token=dict(default='', type='str', no_log=True),
+        ssl_cert=dict(default='', type='str', no_log=True),
+        ssl_key=dict(default='', type='str', no_log=True)
     )
 
     return dict(
@@ -632,7 +645,7 @@ def avi_common_argument_spec():
         password=dict(default=os.environ.get('AVI_PASSWORD', ''), no_log=True),
         tenant=dict(default='admin'),
         tenant_uuid=dict(default=''),
-        api_version=dict(default='18.2.6', type='str'),
+        api_version=dict(default='20.1.1', type='str'),
         avi_credentials=dict(default=None, type='dict',
                              options=credentials_spec),
         api_context=dict(type='dict'),

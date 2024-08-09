@@ -66,6 +66,12 @@ options:
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
+    dryrun_info:
+        description:
+            - Dry-run report.
+            - Field introduced in 31.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: dict
     events:
         description:
             - List of events associated with the report.
@@ -115,6 +121,13 @@ options:
             - Field introduced in 22.1.6, 30.2.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: dict
+    tasks:
+        description:
+            - List of tasks associated with the report.
+            - Field introduced in 30.2.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: list
+        elements: dict
     tenant_ref:
         description:
             - Tenant uuid associated with the object.
@@ -180,6 +193,7 @@ def main():
         archive_ref=dict(type='str',),
         controller_patch_image_ref=dict(type='str',),
         downloadable=dict(type='bool',),
+        dryrun_info=dict(type='dict',),
         events=dict(type='list', elements='dict',),
         image_ref=dict(type='str',),
         name=dict(type='str',),
@@ -187,6 +201,7 @@ def main():
         readiness_reports=dict(type='list', elements='dict',),
         se_patch_image_ref=dict(type='str',),
         summary=dict(type='dict',),
+        tasks=dict(type='list', elements='dict',),
         tenant_ref=dict(type='str',),
         url=dict(type='str',),
         uuid=dict(type='str',),

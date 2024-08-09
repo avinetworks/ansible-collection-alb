@@ -88,13 +88,6 @@ options:
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
         elements: str
-    crls:
-        description:
-            - List of certificate revocation lists.this field is now represented by a file via the fileobject semantics.
-            - Field deprecated in 30.2.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-        type: list
-        elements: dict
     ignore_peer_chain:
         description:
             - When enabled, avi will not trust intermediate and root certs presented by a client.
@@ -199,7 +192,6 @@ def main():
         created_by=dict(type='str',),
         crl_check=dict(type='bool',),
         crl_file_refs=dict(type='list', elements='str',),
-        crls=dict(type='list', elements='dict',),
         ignore_peer_chain=dict(type='bool',),
         is_federated=dict(type='bool',),
         markers=dict(type='list', elements='dict',),

@@ -17,6 +17,7 @@
     archive_ref: "{{ item.archive_ref | default(omit) }}"
     controller_patch_image_ref: "{{ item.controller_patch_image_ref | default(omit) }}"
     downloadable: "{{ item.downloadable | default(omit) }}"
+    dryrun_info: "{{ item.dryrun_info | default(omit) }}"
     events: "{{ item.events | default(omit) }}"
     image_ref: "{{ item.image_ref | default(omit) }}"
     name: "{{ item.name | default(omit) }}"
@@ -24,6 +25,7 @@
     readiness_reports: "{{ item.readiness_reports | default(omit) }}"
     se_patch_image_ref: "{{ item.se_patch_image_ref | default(omit) }}"
     summary: "{{ item.summary | default(omit) }}"
+    tasks: "{{ item.tasks | default(omit) }}"
     tenant_ref: "{{ item.tenant_ref | default(omit) }}"
     uuid: "{{ item.uuid | default(omit) }}"
   when:
