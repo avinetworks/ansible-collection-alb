@@ -3,7 +3,6 @@ NOTICE line-endings
 roles/aviconfig/README.md line-endings
 plugins/modules/avi_sslprofile.py pep8:E501
 plugins/module_utils/avi_api.py pep8:E721
-plugins/module_utils/avi_api.py import-3.10!skip
 plugins/module_utils/utils/ansible_utils.py pep8:E721
 plugins/module_utils/avi_api.py pylint!skip
 plugins/module_utils/saml_avi_api.py pylint!skip
