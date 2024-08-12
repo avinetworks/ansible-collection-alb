@@ -2,8 +2,6 @@ LICENSE line-endings
 NOTICE line-endings
 roles/aviconfig/README.md line-endings
 plugins/modules/avi_sslprofile.py pep8:E501
-plugins/module_utils/avi_api.py pep8:E721
-plugins/module_utils/utils/ansible_utils.py pep8:E721
 plugins/module_utils/avi_api.py pylint!skip
 plugins/module_utils/avi_api.py import-3.9!skip
 plugins/lookup/avi.py import-3.9!skip
@@ -37,7 +35,6 @@ plugins/modules/avi_deploy_controller.py validate-modules:missing-gplv3-license
 tests/integration/run_tests.sh shebang
 tests/integration/run_tests.sh shellcheck:SC2157
 tests/integration/run_tests.sh shellcheck:SC2154
-tests/integration/run_tests.sh shellcheck:SC2164
 plugins/modules/avi_pulse_registration.py import-3.8!skip
 plugins/modules/avi_pulse_registration.py validate-modules:missing-gplv3-license
 plugins/modules/deploy_se.py validate-modules:missing-gplv3-license
