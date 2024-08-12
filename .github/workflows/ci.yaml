@@ -22,10 +22,10 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v2
 
-      - name: Set up Python 3.9.5
+      - name: Set up Python 3.9.19
         uses: actions/setup-python@v1
         with:
-          python-version: 3.9.5
+          python-version: 3.9.19
 
       - name: Get Python and Pip version
         run: echo $(pip --version)
