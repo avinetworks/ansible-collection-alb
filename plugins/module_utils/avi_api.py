@@ -23,7 +23,6 @@ try:
     from requests.sessions import Session
     HAS_REQUESTS = True
 except ImportError:
-    Response = {}
     HAS_REQUESTS = False
 
 logger = logging.getLogger(__name__)
