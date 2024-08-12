@@ -16,9 +16,9 @@ else:
 
 from datetime import datetime, timedelta
 from ssl import SSLError
+from requests import Response
 try:
     from requests import ConnectionError
-    from requests import Response
     from requests.exceptions import ChunkedEncodingError
     from requests.sessions import Session
     HAS_REQUESTS = True
