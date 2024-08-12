@@ -5,7 +5,7 @@ plugins/modules/avi_sslprofile.py pep8:E501
 plugins/module_utils/avi_api.py pep8:E721
 plugins/module_utils/utils/ansible_utils.py pep8:E721
 plugins/module_utils/avi_api.py pylint!skip
-plugins/module_utils/avi_api.py import-3.8!skip
+plugins/module_utils/avi_api.py import-3.9!skip
 plugins/module_utils/saml_avi_api.py pylint!skip
 plugins/module_utils/utils/ansible_utils.py pylint!skip
 plugins/modules/avi_api_version.py validate-modules:missing-gplv3-license
