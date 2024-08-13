@@ -6,6 +6,7 @@ from __future__ import (absolute_import, division, print_function)
 __metaclass__ = type
 
 DOCUMENTATION = '''
+lookup: avi
 name: avi
 author: Sandeep Bandi (@sabndi) <sabandi@vmware.com>
 short_description: Look up ``Avi`` objects.
