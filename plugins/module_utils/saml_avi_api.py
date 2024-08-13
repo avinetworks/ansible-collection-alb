@@ -16,7 +16,6 @@ from requests.exceptions import ChunkedEncodingError
 from ssl import SSLError
 import time
 import logging
-from bs4 import BeautifulSoup
 import warnings
 
 logger = logging.getLogger(__name__)
@@ -134,6 +133,7 @@ class WS1loginSAMLApiSession(ApiSession):
                     idp_resp.status_code, idp_resp.text))
                 raise APIError('Status Code %s msg %s' % (
                     idp_resp.status_code, idp_resp.text), resp)
+            from bs4 import BeautifulSoup
             saml_resp = BeautifulSoup(idp_resp.text, features="html.parser")
             saml_response_match = saml_resp.find('textarea').string
             if not saml_response_match:
@@ -159,6 +159,7 @@ class WS1loginSAMLApiSession(ApiSession):
             # Assert SAML response
             controller_session, resp = self.saml_assertion(username, password)
             content = resp.text
+            from bs4 import BeautifulSoup
             saml_resp = BeautifulSoup(resp.text, features="html.parser")
             saml_response = saml_resp.find('textarea').string
             relay_state = re.search(WS1loginSAMLApiSession.response_relay_state_regex, content, re.M |

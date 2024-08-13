@@ -4,11 +4,14 @@ roles/aviconfig/README.md line-endings
 plugins/modules/avi_sslprofile.py pep8:E501
 plugins/module_utils/avi_api.py pylint!skip
 plugins/module_utils/avi_api.py import-3.9!skip
+plugins/module_utils/csp_avi_api.py import-3.9!skip
 plugins/lookup/avi.py import-3.9!skip
 plugins/module_utils/saml_avi_api.py import-3.9!skip
 plugins/module_utils/utils/ansible_utils.py import-3.9!skip
 plugins/module_utils/saml_avi_api.py pylint!skip
 plugins/module_utils/utils/ansible_utils.py pylint!skip
+plugins/modules/avi_serviceenginegroup_advanced.py import-3.9!skip
+ plugins/modules/avi_serviceenginegroup_advanced.py validate-modules:missing-gplv3-license
 plugins/modules/avi_api_version.py validate-modules:missing-gplv3-license
 plugins/modules/avi_api_session.py validate-modules:missing-gplv3-license
 plugins/modules/avi_user.py validate-modules:missing-gplv3-license

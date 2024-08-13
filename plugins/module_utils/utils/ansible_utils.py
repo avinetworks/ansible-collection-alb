@@ -16,6 +16,8 @@ import logging
 from copy import deepcopy
 from ansible_collections.vmware.alb.plugins.module_utils.avi_api import ApiSession, ObjectNotFound, avi_sdk_syslog_logger, \
     AviCredentials
+from ansible_collections.vmware.alb.plugins.module_utils.csp_avi_api import CSPApiSession
+from ansible_collections.vmware.alb.plugins.module_utils.saml_avi_api import OneloginSAMLApiSession, OktaSAMLApiSession
 
 if os.environ.get('AVI_LOG_HANDLER', '') != 'syslog':
     log = logging.getLogger(__name__)
@@ -355,6 +357,23 @@ NO_UUID_OBJ = ['cluster', 'systemconfiguration', 'inventoryfaultconfig']
 SKIP_DELETE_ERROR = ["Cannot delete system default object", "Method \'DELETE\' not allowed"]
 
 
+def get_idp_class(idp):
+    """
+    This return corresponding idp class.
+    :param idp: idp type such as okta, onelogin, pingfed
+    :return: IDP class or ApiSession class
+    """
+    if str(idp).lower() == "cspapisession":
+        idp_class = CSPApiSession
+    elif str(idp).lower() == "oktasamlapisession":
+        idp_class = OktaSAMLApiSession
+    elif str(idp).lower() == 'oneloginsamlapisession':
+        idp_class = OneloginSAMLApiSession
+    else:
+        idp_class = None
+    return idp_class
+
+
 def avi_ansible_api(module, obj_type, sensitive_fields):
     """
     This converts the Ansible module into AVI object and invokes APIs
@@ -369,6 +388,11 @@ def avi_ansible_api(module, obj_type, sensitive_fields):
     api_creds = AviCredentials()
     api_creds.update_from_ansible_module(module)
     api_context = get_api_context(module, api_creds)
+    idp_class = api_creds.idp_class
+    idp = get_idp_class(idp_class)
+    if idp_class and not idp:
+        msg = "IDP {0} not supported yet.".format(idp_class)
+        return module.fail_json(msg=msg)
     if api_context:
         api = ApiSession.get_session(
             api_creds.controller,
@@ -390,7 +414,10 @@ def avi_ansible_api(module, obj_type, sensitive_fields):
             tenant=api_creds.tenant,
             tenant_uuid=api_creds.tenant_uuid,
             token=api_creds.token,
-            port=api_creds.port,)
+            port=api_creds.port,
+            idp_class=idp,
+            csp_host=api_creds.csp_host,
+            csp_token=api_creds.csp_token,)
     state = module.params['state']
     # Get the api version.
     avi_update_method = module.params.get('avi_api_update_method', 'put')
@@ -579,14 +606,17 @@ def avi_common_argument_spec():
         controller=dict(default=os.environ.get('AVI_CONTROLLER', '')),
         username=dict(default=os.environ.get('AVI_USERNAME', '')),
         password=dict(default=os.environ.get('AVI_PASSWORD', ''), no_log=True),
-        api_version=dict(default='18.2.6', type='str'),
+        api_version=dict(default='20.1.1', type='str'),
         tenant=dict(default='admin'),
         tenant_uuid=dict(default='', type='str'),
         port=dict(type='int'),
         token=dict(default='', type='str', no_log=True),
         timeout=dict(default=300, type='int'),
         session_id=dict(default='', type='str', no_log=True),
-        csrftoken=dict(default='', type='str', no_log=True)
+        csrftoken=dict(default='', type='str', no_log=True),
+        idp_class=dict(default='', type='str'),
+        csp_host=dict(default='', type='str', no_log=True),
+        csp_token=dict(default='', type='str', no_log=True)
     )
 
     return dict(
@@ -595,7 +625,7 @@ def avi_common_argument_spec():
         password=dict(default=os.environ.get('AVI_PASSWORD', ''), no_log=True),
         tenant=dict(default='admin'),
         tenant_uuid=dict(default=''),
-        api_version=dict(default='18.2.6', type='str'),
+        api_version=dict(default='20.1.1', type='str'),
         avi_credentials=dict(default=None, type='dict',
                              options=credentials_spec),
         api_context=dict(type='dict'),

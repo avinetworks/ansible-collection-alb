@@ -1,0 +1,20 @@
+# Automatically Generated File
+# Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
+---
+- name: Avi ServiceEngineGroup
+  no_log: "False"
+  vmware.alb.avi_serviceenginegroup_advanced:
+
+    controller: "{{ avi_controller | default(omit) }}"
+    username: "{{ avi_username | default(omit) }}"
+    password: "{{ avi_password | default(omit) }}"
+    tenant: "{{ item.tenant | default(omit) }}"
+    api_version: "{{ api_version | default(omit) }}"
+    avi_credentials: "{{ avi_credentials | default(omit) }}"
+    name: "{{ item.name | default(omit) }}"
+  with_items: "{{ avi_role_cfg.serviceenginegroup_advanced | default([]) }}"
+  when:
+    - (item.name | length > 0)
+    - (not (item.system_default | default(false)))
+    - (avi_config_state == "absent" or avi_role_state_mode == "absent")
+    - (item.state | default("present") == avi_role_state_mode or avi_config_state == "absent")

@@ -99,6 +99,7 @@ avi_resource_types:
   - trafficcloneprofile
   - vsvip
   - serviceengine
+  - serviceenginegroup_advanced
   - networkservice
   - poolgroup
   - pingaccessagent
