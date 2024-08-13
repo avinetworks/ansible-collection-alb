@@ -59,6 +59,7 @@ obj:
     type: dict
 '''
 
+import json
 import os
 from ansible.module_utils.basic import AnsibleModule
 
@@ -69,7 +70,9 @@ except ImportError:
     HAS_LIB = False
 
 try:
-    from ansible_collections.vmware.alb.plugins.module_utils.utils.ansible_utils import avi_common_argument_spec
+    from ansible_collections.vmware.alb.plugins.module_utils.utils.ansible_utils import (
+        avi_common_argument_spec, ansible_return, avi_obj_cmp,
+        cleanup_absent_fields)
     from ansible_collections.vmware.alb.plugins.module_utils.avi_api import (
         ApiSession, AviCredentials)
     HAS_REQUESTS = True
@@ -77,7 +80,9 @@ except ImportError:
     HAS_REQUESTS = False
 try:
     from avi.sdk.avi_api import ApiSession, AviCredentials
-    from avi.sdk.utils.ansible_utils import avi_common_argument_spec
+    from avi.sdk.utils.ansible_utils import (
+        avi_obj_cmp, cleanup_absent_fields, avi_common_argument_spec,
+        ansible_return)
     HAS_AVI = True
 except ImportError:
     HAS_AVI = False
