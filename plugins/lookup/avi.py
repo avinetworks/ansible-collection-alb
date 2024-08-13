@@ -7,8 +7,7 @@ __metaclass__ = type
 
 DOCUMENTATION = '''
 lookup: avi
-name: avi
-author: Sandeep Bandi (@sabndi) <sabandi@vmware.com>
+author: Sandeep Bandi <sabandi@vmware.com>
 short_description: Look up ``Avi`` objects.
 description:
     - Given an object_type, fetch all the objects of that type or fetch

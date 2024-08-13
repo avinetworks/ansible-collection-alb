@@ -119,5 +119,5 @@ options:
 
 notes:
   - For more information on using Ansible to manage Avi Network 
-devices see U(https://www.ansible.com/ansible-avi-networks).
+    devices see U(https://www.ansible.com/ansible-avi-networks).
 '''
