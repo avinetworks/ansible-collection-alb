@@ -118,5 +118,6 @@ options:
         default: false
 
 notes:
-  - For more information on using Ansible to manage Avi Network devices see U(https://www.ansible.com/ansible-avi-networks).
+  - For more information on using Ansible to manage Avi Network
+    devices see U(https://www.ansible.com/ansible-avi-networks).
 '''
