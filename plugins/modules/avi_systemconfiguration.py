@@ -219,6 +219,14 @@ options:
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
         elements: str
+    truststore_pkiprofile_ref:
+        description:
+            - Reference to pkiprofile used for validating the ca certificates for external comminications from avi load balancer controller  this acts as trust
+            - store for avi load balancer controller.
+            - It is a reference to an object of type pkiprofile.
+            - Field introduced in 31.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: str
     url:
         description:
             - Avi controller URL of the object.
@@ -322,6 +330,7 @@ def main():
         ssh_ciphers=dict(type='list', elements='str',),
         ssh_hmacs=dict(type='list', elements='str',),
         trusted_host_profiles_refs=dict(type='list', elements='str',),
+        truststore_pkiprofile_ref=dict(type='str',),
         url=dict(type='str',),
         uuid=dict(type='str',),
         welcome_workflow_complete=dict(type='bool',),

@@ -42,6 +42,7 @@
     ssh_ciphers: "{{ item.ssh_ciphers | default(omit) }}"
     ssh_hmacs: "{{ item.ssh_hmacs | default(omit) }}"
     trusted_host_profiles_refs: "{{ item.trusted_host_profiles_refs | default(omit) }}"
+    truststore_pkiprofile_ref: "{{ item.truststore_pkiprofile_ref | default(omit) }}"
     uuid: "{{ item.uuid | default(omit) }}"
     welcome_workflow_complete: "{{ item.welcome_workflow_complete | default(omit) }}"
   when:
