@@ -146,7 +146,7 @@ Parameters
                   - Protobuf versioning for config pbs.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 30.2.2, 31.1.1.
+                  - Field introduced in 31.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
@@ -175,7 +175,7 @@ Parameters
                   - List of host ip(v4/v6) addresses or fqdns.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 30.2.2, 31.1.1.
+                  - Field introduced in 31.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Minimum of 1 items required.
@@ -207,7 +207,7 @@ Parameters
                   - Trustedhostprofile name.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 30.2.2, 31.1.1.
+                  - Field introduced in 31.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed in enterprise edition with any value, enterprise with cloud services edition.
@@ -233,7 +233,7 @@ Parameters
                   - It is a reference to an object of type tenant.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 30.2.2, 31.1.1.
+                  - Field introduced in 31.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed in enterprise edition with any value, enterprise with cloud services edition.
@@ -273,7 +273,7 @@ Parameters
                   - Trustedhostprofile uuid.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 30.2.2, 31.1.1.
+                  - Field introduced in 31.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed in enterprise edition with any value, enterprise with cloud services edition.
