@@ -17,6 +17,7 @@
     app_cookie_persistence_profile: "{{ item.app_cookie_persistence_profile | default(omit) }}"
     configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
     description: "{{ item.description | default(omit) }}"
+    diameter_app_cookie_persistence_profile: "{{ item.diameter_app_cookie_persistence_profile | default(omit) }}"
     hdr_persistence_profile: "{{ item.hdr_persistence_profile | default(omit) }}"
     http_cookie_persistence_profile: "{{ item.http_cookie_persistence_profile | default(omit) }}"
     ip_persistence_profile: "{{ item.ip_persistence_profile | default(omit) }}"

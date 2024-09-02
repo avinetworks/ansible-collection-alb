@@ -63,6 +63,12 @@ options:
         description:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
+    diameter_app_cookie_persistence_profile:
+        description:
+            - Specifies the diameter persistence profile parameters.
+            - Field introduced in 31.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: dict
     hdr_persistence_profile:
         description:
             - Specifies the custom http header persistence profile parameters.
@@ -195,6 +201,7 @@ def main():
         app_cookie_persistence_profile=dict(type='dict',),
         configpb_attributes=dict(type='dict',),
         description=dict(type='str',),
+        diameter_app_cookie_persistence_profile=dict(type='dict',),
         hdr_persistence_profile=dict(type='dict',),
         http_cookie_persistence_profile=dict(type='dict',),
         ip_persistence_profile=dict(type='dict',),

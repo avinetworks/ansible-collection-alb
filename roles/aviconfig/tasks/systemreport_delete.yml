@@ -22,11 +22,13 @@
     image_ref: "{{ item.image_ref | default(omit) }}"
     name: "{{ item.name | default(omit) }}"
     obj_state: "{{ item.obj_state | default(omit) }}"
+    operation: "{{ item.operation | default(omit) }}"
     readiness_reports: "{{ item.readiness_reports | default(omit) }}"
     se_patch_image_ref: "{{ item.se_patch_image_ref | default(omit) }}"
     summary: "{{ item.summary | default(omit) }}"
     tasks: "{{ item.tasks | default(omit) }}"
     tenant_ref: "{{ item.tenant_ref | default(omit) }}"
+    type: "{{ item.type | default(omit) }}"
     uuid: "{{ item.uuid | default(omit) }}"
   when:
     - (item.name | length > 0)

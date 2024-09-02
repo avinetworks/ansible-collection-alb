@@ -100,6 +100,13 @@ options:
             - Field introduced in 22.1.6, 30.2.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: dict
+    operation:
+        description:
+            - Nature of operation.
+            - Ex  controller upgrade, system patch, etc.
+            - Field introduced in 31.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: str
     readiness_reports:
         description:
             - Readiness state of the system.
@@ -133,6 +140,13 @@ options:
             - Tenant uuid associated with the object.
             - It is a reference to an object of type tenant.
             - Field introduced in 22.1.6, 30.2.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: str
+    type:
+        description:
+            - Type of report.
+            - Pre-checks, dry-run or an upgrade operation.
+            - Field introduced in 31.1.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
     url:
@@ -198,11 +212,13 @@ def main():
         image_ref=dict(type='str',),
         name=dict(type='str',),
         obj_state=dict(type='dict',),
+        operation=dict(type='str',),
         readiness_reports=dict(type='list', elements='dict',),
         se_patch_image_ref=dict(type='str',),
         summary=dict(type='dict',),
         tasks=dict(type='list', elements='dict',),
         tenant_ref=dict(type='str',),
+        type=dict(type='str',),
         url=dict(type='str',),
         uuid=dict(type='str',),
     )
