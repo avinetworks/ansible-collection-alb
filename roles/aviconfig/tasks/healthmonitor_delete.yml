@@ -24,6 +24,8 @@
     failed_checks: "{{ item.failed_checks | default(omit) }}"
     ftp_monitor: "{{ item.ftp_monitor | default(omit) }}"
     ftps_monitor: "{{ item.ftps_monitor | default(omit) }}"
+    http2_monitor: "{{ item.http2_monitor | default(omit) }}"
+    http2s_monitor: "{{ item.http2s_monitor | default(omit) }}"
     http_monitor: "{{ item.http_monitor | default(omit) }}"
     https_monitor: "{{ item.https_monitor | default(omit) }}"
     imap_monitor: "{{ item.imap_monitor | default(omit) }}"

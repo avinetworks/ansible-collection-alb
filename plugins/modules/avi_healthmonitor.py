@@ -110,6 +110,18 @@ options:
             - Field introduced in 21.1.3.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: dict
+    http2_monitor:
+        description:
+            - Health monitor for http2.
+            - Field introduced in 31.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: dict
+    http2s_monitor:
+        description:
+            - Health monitor for http2s.
+            - Field introduced in 31.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: dict
     http_monitor:
         description:
             - Allowed in enterprise edition with any value, basic, enterprise with cloud services edition.
@@ -339,6 +351,8 @@ def main():
         failed_checks=dict(type='int',),
         ftp_monitor=dict(type='dict',),
         ftps_monitor=dict(type='dict',),
+        http2_monitor=dict(type='dict',),
+        http2s_monitor=dict(type='dict',),
         http_monitor=dict(type='dict',),
         https_monitor=dict(type='dict',),
         imap_monitor=dict(type='dict',),
