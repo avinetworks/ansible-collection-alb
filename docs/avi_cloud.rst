@@ -910,6 +910,9 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
+                  - Field deprecated in 31.1.1.
+                </div>
+                                <div style="font-size: small">
                   - Allowed in enterprise edition with any value, enterprise with cloud services edition.
                 </div>
                                             </td>

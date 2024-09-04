@@ -256,6 +256,7 @@ options:
         type: str
     openstack_configuration:
         description:
+            - Field deprecated in 31.1.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: dict
     prefer_static_routes:
