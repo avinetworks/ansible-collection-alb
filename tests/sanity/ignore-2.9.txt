@@ -21,8 +21,6 @@ plugins/modules/avi_gslbservice_patch_member.py validate-modules:missing-gplv3-l
 plugins/modules/avi_bootstrap_controller.py validate-modules:missing-gplv3-license
 plugins/modules/avi_api_fileservice.py validate-modules:missing-gplv3-license
 plugins/modules/avi_api_image.py validate-modules:missing-gplv3-license
-plugins/modules/avi_pingaccessagent.py validate-modules:missing-gplv3-license
-plugins/modules/avi_pingaccessagent.py import-3.8!skip
 plugins/modules/avi_api_version.py import-3.8!skip
 plugins/modules/avi_api_session.py import-3.8!skip
 plugins/modules/avi_user.py import-3.8!skip
