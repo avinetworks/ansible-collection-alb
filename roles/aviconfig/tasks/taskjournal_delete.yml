@@ -22,6 +22,7 @@
     operation: "{{ item.operation | default(omit) }}"
     patch_image_ref: "{{ item.patch_image_ref | default(omit) }}"
     summary: "{{ item.summary | default(omit) }}"
+    tasks: "{{ item.tasks | default(omit) }}"
     tenant_ref: "{{ item.tenant_ref | default(omit) }}"
     uuid: "{{ item.uuid | default(omit) }}"
   when:

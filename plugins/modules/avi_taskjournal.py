@@ -99,6 +99,14 @@ options:
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         required: true
         type: dict
+    tasks:
+        description:
+            - List of all the tasks executed with details.
+            - For example, details of tasks to be executed for upgrade filecopy.
+            - Field introduced in 31.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: list
+        elements: dict
     tenant_ref:
         description:
             - Tenant uuid associated with the object.
@@ -169,6 +177,7 @@ def main():
         operation=dict(type='str',),
         patch_image_ref=dict(type='str',),
         summary=dict(type='dict', required=True),
+        tasks=dict(type='list', elements='dict',),
         tenant_ref=dict(type='str',),
         url=dict(type='str',),
         uuid=dict(type='str',),

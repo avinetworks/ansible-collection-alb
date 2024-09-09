@@ -11,7 +11,6 @@ avi_resource_types:
   - licensestatus
   - seproperties
   - tenant
-  - webapput
   - cloudconnectoruser
   - hardwaresecuritymodulegroup
   - alertscriptconfig
@@ -90,6 +89,7 @@ avi_resource_types:
   - cloud
   - healthmonitor
   - alertsyslogconfig
+  - webapput
   - vrfcontext
   - vcenterserver
   - prioritylabels

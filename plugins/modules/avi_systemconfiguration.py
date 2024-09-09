@@ -185,6 +185,12 @@ options:
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as default.
         type: str
+    sddcmanager_fqdn:
+        description:
+            - Fqdn of sddc manager in vcf responsible for management of this alb controller cluster.
+            - Field introduced in 22.1.6,31.1.1.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+        type: str
     secure_channel_configuration:
         description:
             - Configure secure channel properties.
@@ -325,6 +331,7 @@ def main():
         proxy_configuration=dict(type='dict',),
         rekey_time_limit=dict(type='str',),
         rekey_volume_limit=dict(type='str',),
+        sddcmanager_fqdn=dict(type='str',),
         secure_channel_configuration=dict(type='dict',),
         snmp_configuration=dict(type='dict',),
         ssh_ciphers=dict(type='list', elements='str',),

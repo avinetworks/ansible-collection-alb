@@ -69,8 +69,6 @@ plugins/modules/avi_seproperties.py validate-modules:missing-gplv3-license
 plugins/modules/avi_seproperties.py import-3.8!skip
 plugins/modules/avi_tenant.py validate-modules:missing-gplv3-license
 plugins/modules/avi_tenant.py import-3.8!skip
-plugins/modules/avi_webapput.py validate-modules:missing-gplv3-license
-plugins/modules/avi_webapput.py import-3.8!skip
 plugins/modules/avi_cloudconnectoruser.py validate-modules:missing-gplv3-license
 plugins/modules/avi_cloudconnectoruser.py import-3.8!skip
 plugins/modules/avi_hardwaresecuritymodulegroup.py validate-modules:missing-gplv3-license
@@ -227,6 +225,8 @@ plugins/modules/avi_healthmonitor.py validate-modules:missing-gplv3-license
 plugins/modules/avi_healthmonitor.py import-3.8!skip
 plugins/modules/avi_alertsyslogconfig.py validate-modules:missing-gplv3-license
 plugins/modules/avi_alertsyslogconfig.py import-3.8!skip
+plugins/modules/avi_webapput.py validate-modules:missing-gplv3-license
+plugins/modules/avi_webapput.py import-3.8!skip
 plugins/modules/avi_vrfcontext.py validate-modules:missing-gplv3-license
 plugins/modules/avi_vrfcontext.py import-3.8!skip
 plugins/modules/avi_vcenterserver.py validate-modules:missing-gplv3-license
