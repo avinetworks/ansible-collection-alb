@@ -191,6 +191,7 @@ options:
     cluster_ip_gratuitous_arp_period:
         description:
             - Period for cluster ip gratuitous arp job.
+            - Allowed values are 1-1440.
             - Unit is min.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 60.
@@ -307,6 +308,15 @@ options:
             - Enable/disable memory balancer.
             - Field introduced in 17.2.8.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as True.
+        type: bool
+    enable_nsx_streaming_agent:
+        description:
+            - When set to true, avi controller will connect to dynamic config streaming agent on nsx manager to get live updates.
+            - If it cannot connect, it will fallback to using rest apis based periodic polling.
+            - Dynamic streaming is supported from nsx version 4.2.1 onwards.
+            - Field introduced in 31.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as True.
         type: bool
     enable_per_process_stop:
@@ -696,6 +706,12 @@ options:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: int
+    statecache_properties:
+        description:
+            - Configure statecache behavior for config, se, resmgr.
+            - Field introduced in 31.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: dict
     system_report_cleanup_interval:
         description:
             - Time in minutes to wait between cleanup of systemreports.
@@ -986,6 +1002,7 @@ def main():
         edit_system_limits=dict(type='bool',),
         enable_api_sharding=dict(type='bool',),
         enable_memory_balancer=dict(type='bool',),
+        enable_nsx_streaming_agent=dict(type='bool',),
         enable_per_process_stop=dict(type='bool',),
         enable_resmgr_log_cache_print=dict(type='bool',),
         event_manager_max_goroutines=dict(type='int',),
@@ -1037,6 +1054,7 @@ def main():
         skopeo_retry_limit=dict(type='int',),
         soft_min_mem_per_se_limit=dict(type='int',),
         ssl_certificate_expiry_warning_days=dict(type='list', elements='int',),
+        statecache_properties=dict(type='dict',),
         system_report_cleanup_interval=dict(type='int',),
         system_report_limit=dict(type='int',),
         unresponsive_se_reboot=dict(type='int',),
