@@ -105,6 +105,14 @@ options:
                 description:
                   - Specifies whether it is an Avi controller or Saas controller
                 type: str
+            ssl_cert:
+                 description:
+                   - Specifies the ssl cert
+                 type: str
+            ssl_key:
+                 description:
+                   - Specifies the ssl key
+                 type: str
         type: dict
     api_context:
         description:
