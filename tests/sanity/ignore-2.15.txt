@@ -388,4 +388,19 @@ plugins/modules/avi_systemconfiguration.py import-3.9!skip
 plugins/modules/avi_virtualservice.py validate-modules:missing-gplv3-license
 plugins/modules/avi_virtualservice.py validate-modules:import-error
 plugins/modules/avi_virtualservice.py import-3.9!skip
+plugins/modules/avi_albservicesfiledownload.py import-3.9!skip
+plugins/modules/avi_albservicesfiledownload.py validate-modules:import-error
+plugins/modules/avi_albservicesfiledownload.py validate-modules:missing-gplv3-license
+plugins/modules/avi_csrfpolicy.py import-3.9!skip
+plugins/modules/avi_csrfpolicy.py validate-modules:import-error
+plugins/modules/avi_csrfpolicy.py validate-modules:missing-gplv3-license
+plugins/modules/avi_serviceauthprofile.py import-3.9!skip
+plugins/modules/avi_serviceauthprofile.py validate-modules:import-error
+plugins/modules/avi_serviceauthprofile.py validate-modules:missing-gplv3-license
+plugins/modules/avi_taskjournal.py import-3.9!skip
+plugins/modules/avi_taskjournal.py validate-modules:import-error
+plugins/modules/avi_taskjournal.py validate-modules:missing-gplv3-license
+plugins/modules/avi_tenantsystemconfiguration.py import-3.9!skip
+plugins/modules/avi_tenantsystemconfiguration.py validate-modules:import-error
+plugins/modules/avi_tenantsystemconfiguration.py
 plugins/modules/avi_bootstrap_controller.py validate-modules:no-default-for-required-parameter
