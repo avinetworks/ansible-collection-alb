@@ -6,7 +6,6 @@ from __future__ import (absolute_import, division, print_function)
 __metaclass__ = type
 
 from ansible_collections.vmware.alb.plugins.module_utils.avi_api import ApiSession, APIError
-import sys
 import logging
 import time
 from requests import ConnectionError
