@@ -5,25 +5,11 @@ from __future__ import (absolute_import, division, print_function)
 
 __metaclass__ = type
 
-from ansible_collections.vmware.alb.plugins.module_utils.avi_api import ApiSession, \
-    sessionDict, APIError, AviCredentials
-import os
-import sys
-import copy
-import json
+from ansible_collections.vmware.alb.plugins.module_utils.avi_api import ApiSession, APIError
 import logging
 import time
-
-if sys.version_info < (3, 5):
-    from urlparse import urlparse
-else:
-    from urllib.parse import urlparse
-
-from datetime import datetime, timedelta
 from requests import ConnectionError
-from requests import Response
 from requests.exceptions import ChunkedEncodingError
-from requests.sessions import Session
 from ssl import SSLError
 
 logger = logging.getLogger(__name__)

@@ -74,13 +74,9 @@ obj:
 import time
 from ansible.module_utils.basic import AnsibleModule
 try:
-    from ansible_collections.vmware.alb.plugins.module_utils.utils.ansible_utils import (
-        avi_common_argument_spec, ansible_return, avi_obj_cmp,
-        cleanup_absent_fields)
+    from ansible_collections.vmware.alb.plugins.module_utils.utils.ansible_utils import avi_common_argument_spec
     from ansible_collections.vmware.alb.plugins.module_utils.avi_api import (
         ApiSession, AviCredentials)
-
-    from pkg_resources import parse_version
     import subprocess
     import requests
     HAS_REQUESTS = True
