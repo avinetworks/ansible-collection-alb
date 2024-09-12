@@ -284,8 +284,6 @@ plugins/modules/avi_ssopolicy.py import-3.8!skip
 plugins/modules/avi_systemconfiguration.py validate-modules:missing-gplv3-license
 plugins/modules/avi_systemconfiguration.py import-3.8!skip
 plugins/modules/avi_virtualservice.py validate-modules:missing-gplv3-license
-plugins/modules/avi_pingaccessagent.py validate-modules:missing-gplv3-license
-plugins/modules/avi_pingaccessagent.py import-3.8!skip
 plugins/modules/avi_virtualservice.py import-3.8!skip
 plugins/lookup/avi.py import-3.8!skip
 plugins/module_utils/avi_api.py import-3.8!skip

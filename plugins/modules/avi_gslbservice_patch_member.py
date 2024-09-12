@@ -107,6 +107,8 @@ obj:
     type: dict
 '''
 
+import json
+import time
 from ansible.module_utils.basic import AnsibleModule
 from copy import deepcopy
 
@@ -135,9 +137,11 @@ def delete_member(module, check_mode, api, tenant, tenant_uuid,
                   if group['name'] == data['group']['name']]
         if groups:
             changed = any(
-                (m['ip']['addr'] in patched_member_ids) for m in groups[0].get('members', []) if 'fqdn' not in m)
+                [(lambda g: g['ip']['addr'] in patched_member_ids)(m)
+                    for m in groups[0].get('members', []) if 'fqdn' not in m])
             changed = changed or any(
-                (m['fqdn'] in patched_member_fqdns) for m in groups[0].get('members', []) if 'fqdn' in m)
+                [(lambda g: g['fqdn'] in patched_member_fqdns)(m)
+                    for m in groups[0].get('members', []) if 'fqdn' in m])
     if check_mode or not changed:
         return changed, rsp
     # should not come here if not found

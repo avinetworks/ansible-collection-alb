@@ -113,6 +113,7 @@ obj:
 '''
 
 
+import json
 import atexit
 try:
     import requests
@@ -126,7 +127,8 @@ except ImportError:
 try:
     from pkg_resources import parse_version
     import avi.sdk
-    from avi.sdk.avi_api import ApiSession
+    from avi.sdk.avi_api import (ApiSession, ObjectNotFound, APIError, ApiResponse,
+                                 avi_timedelta, sessionDict)
 
     sdk_version = getattr(avi.sdk, '__version__', None)
     if ((sdk_version is None) or

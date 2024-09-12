@@ -207,6 +207,7 @@ obj:
 
 
 import atexit
+import json
 try:
     from urllib import quote
 except ImportError:
@@ -214,6 +215,7 @@ except ImportError:
 try:
     import requests
     import os
+    import time
     from pyVim.connect import SmartConnectNoSSL, Disconnect
     from pyVmomi import vim, vmodl
     HAS_IMPORT = True
