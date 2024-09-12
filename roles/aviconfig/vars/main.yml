@@ -2,28 +2,29 @@
 # Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
 ---
 avi_resource_types:
-  - labelgroup
-  - systemlimits
-  - licenseledgerdetails
-  - useraccountprofile
-  - controllerproperties
-  - cloudproperties
-  - licensestatus
   - seproperties
+  - labelgroup
+  - useraccountprofile
+  - cloudproperties
+  - systemlimits
+  - licensestatus
+  - controllerproperties
+  - licenseledgerdetails
   - tenant
-  - cloudconnectoruser
+  - ipaddrgroup
+  - stringgroup
+  - sslprofile
+  - fileobject
   - hardwaresecuritymodulegroup
   - alertscriptconfig
+  - cloudconnectoruser
   - customipamdnsprofile
-  - networkprofile
-  - stringgroup
-  - ipaddrgroup
-  - fileobject
-  - sslprofile
   - applicationpersistenceprofile
   - alertemailconfig
   - snmptrapprofile
   - autoscalelaunchconfig
+  - tenantsystemconfiguration
+  - networkprofile
   - securitypolicy
   - protocolparser
   - jwtserverprofile
@@ -32,82 +33,81 @@ avi_resource_types:
   - testsedatastorelevel3
   - botipreputationtypemapping
   - botconfigconsolidator
-  - tenantsystemconfiguration
   - federationcheckpoint
-  - gslbgeodbprofile
-  - albservicesconfig
-  - siteversion
-  - statediffoperation
   - image
+  - albservicesfileupload
+  - securitymanagerdata
+  - statediffoperation
+  - gslbgeodbprofile
   - taskjournal
-  - controllerportalregistration
-  - dynamicdnsrecord
+  - webhook
   - role
   - serviceauthprofile
-  - controllersite
   - trustedhostprofile
-  - inventoryfaultconfig
-  - albservicesfileupload
-  - webhook
-  - securitymanagerdata
-  - cluster
   - albservicesfiledownload
-  - vsgs
   - poolgroupdeploymentpolicy
+  - vsgs
+  - dynamicdnsrecord
+  - siteversion
   - memorybalancerrequest
+  - inventoryfaultconfig
+  - cluster
+  - controllerportalregistration
   - albservicesjob
-  - backupconfiguration
-  - clusterclouddetails
-  - certificatemanagementprofile
-  - ipamdnsproviderprofile
+  - albservicesconfig
+  - controllersite
+  - wafprofile
+  - natpolicy
   - analyticsprofile
   - wafpolicypsmgroup
-  - wafprofile
   - botmapping
   - csrfpolicy
-  - natpolicy
   - pkiprofile
   - ipreputationdb
   - geodb
+  - certificatemanagementprofile
+  - clusterclouddetails
+  - backupconfiguration
+  - ipamdnsproviderprofile
   - microservicegroup
   - errorpageprofile
   - testsedatastorelevel2
   - gslb
+  - upgradestatussummary
   - statediffsnapshot
   - upgradestatusinfo
-  - upgradestatussummary
   - systemreport
   - authmappingprofile
-  - scheduler
-  - sslkeyandcertificate
   - applicationprofile
   - wafpolicy
   - botdetectionpolicy
+  - sslkeyandcertificate
+  - scheduler
   - networksecuritypolicy
   - testsedatastorelevel1
-  - backup
-  - cloud
   - healthmonitor
+  - cloud
   - alertsyslogconfig
-  - webapput
-  - vrfcontext
-  - vcenterserver
-  - prioritylabels
-  - nsxtsegmentruntime
+  - backup
   - gslbservice
+  - vrfcontext
+  - prioritylabels
+  - vcenterserver
+  - webapput
+  - nsxtsegmentruntime
   - actiongroupconfig
   - availabilityzone
   - alertconfig
   - serverautoscalepolicy
   - network
+  - pool
   - serviceenginegroup
   - serviceenginegroup_advanced
-  - pool
   - trafficcloneprofile
   - vsvip
+  - poolgroup
   - serviceengine
   - networkservice
-  - poolgroup
   - httppolicyset
   - dnspolicy
   - vsdatascriptset
