@@ -186,12 +186,26 @@ options:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as GSLB_SERVICE_ALGORITHM_PRIORITY.
         type: str
+    record_type:
+        description:
+            - Field to specify the type of gslb service.
+            - Enum options - GSLB_SERVICE_RECORD_TYPE_A_AAAA_CNAME, GSLB_SERVICE_RECORD_TYPE_SRV.
+            - Field introduced in 31.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as GSLB_SERVICE_RECORD_TYPE_A_AAAA_CNAME.
+        type: str
     resolve_cname:
         description:
             - This field indicates that for a cname query, respond with resolved cnames in the additional section with a records.
             - Field introduced in 18.2.5.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
+        type: bool
+    resolve_srv:
+        description:
+            - If enabled, provide the srv target's resolved ip in the response srv gslb service.
+            - Field introduced in 31.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: bool
     site_persistence_enabled:
         description:
@@ -310,7 +324,9 @@ def main():
         num_dns_ip=dict(type='int',),
         pki_profile_ref=dict(type='str',),
         pool_algorithm=dict(type='str',),
+        record_type=dict(type='str',),
         resolve_cname=dict(type='bool',),
+        resolve_srv=dict(type='bool',),
         site_persistence_enabled=dict(type='bool',),
         tenant_ref=dict(type='str',),
         topology_policy_enabled=dict(type='bool',),
