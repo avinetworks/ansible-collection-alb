@@ -42,6 +42,7 @@
     ttl: "{{ item.ttl | default(omit) }}"
     use_edns_client_subnet: "{{ item.use_edns_client_subnet | default(omit) }}"
     uuid: "{{ item.uuid | default(omit) }}"
+    vrf_uuid_for_gs: "{{ item.vrf_uuid_for_gs | default(omit) }}"
     wildcard_match: "{{ item.wildcard_match | default(omit) }}"
   when:
     - (avi_role_state_mode == "present" and avi_config_state == "present")

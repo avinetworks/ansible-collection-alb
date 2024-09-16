@@ -251,6 +251,14 @@ options:
             - Uuid of the gslb service.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
+    vrf_uuid_for_gs:
+        description:
+            - Vrf name of the dns vs to which this gs is bound to.
+            - In case it is bound to multiple dns vses on the se se, this field will be inherited from the first dns vs in the configuration order.
+            - Field introduced in 31.1.1.
+            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+            - edition.
+        type: str
     wildcard_match:
         description:
             - Enable wild-card match of fqdn  if an exact match is not found in the dns table, the longest match is chosen by wild-carding the fqdn in the dns
@@ -334,6 +342,7 @@ def main():
         url=dict(type='str',),
         use_edns_client_subnet=dict(type='bool',),
         uuid=dict(type='str',),
+        vrf_uuid_for_gs=dict(type='str',),
         wildcard_match=dict(type='bool',),
     )
     argument_specs.update(avi_common_argument_spec())

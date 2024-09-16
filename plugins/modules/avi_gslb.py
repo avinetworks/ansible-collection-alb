@@ -125,6 +125,13 @@ options:
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 3.
         type: int
+    gs_member_fqdn_resolution_on_se:
+        description:
+            - If this knob is enabled, gslb service member fqdn will be resolved by the service engines hosting the gslb service.
+            - Each service engine will resolve and consume the resolved ip addresses locally.
+            - Field introduced in 31.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: bool
     is_federated:
         description:
             - This field indicates that this object is replicated across gslb federation.
@@ -450,6 +457,7 @@ def main():
         enable_config_by_members=dict(type='bool',),
         error_resync_interval=dict(type='int',),
         fileobject_max_file_versions=dict(type='int',),
+        gs_member_fqdn_resolution_on_se=dict(type='bool',),
         is_federated=dict(type='bool',),
         leader_cluster_uuid=dict(type='str', required=True),
         maintenance_mode=dict(type='bool',),

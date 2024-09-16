@@ -3,7 +3,9 @@
   - name: Check for version 
     set_fact:
       error_string: "{{ ansible_distribution }} {{ ansible_distribution_version }} is not supported for creating ServiceEngine"
-  - include: error.yml
+  - name: Include error.yml
+    ansible.builtin.include_tasks:
+      file: error.yml
   when:  (not (ansible_distribution == 'OracleLinux' and ansible_distribution_version is match('8.4'))) and
          (not (ansible_distribution == 'OracleLinux' and ansible_distribution_version is match('8.3'))) and
          (not (ansible_distribution == 'OracleLinux' and ansible_distribution_version is match('8.2'))) and

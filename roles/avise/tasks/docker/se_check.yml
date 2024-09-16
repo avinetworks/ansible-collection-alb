@@ -1,6 +1,6 @@
 ---
 - name: Checks for blocking SE
-  include: check_cloud.yml
+  include_tasks: check_cloud.yml
 
 - name: Check if Avi SE is running in systemd
   command: "systemctl status avise"

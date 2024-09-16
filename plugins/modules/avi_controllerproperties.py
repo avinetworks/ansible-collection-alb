@@ -676,6 +676,13 @@ options:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
+    skip_beego_perf_collection:
+        description:
+            - Skip api performance collection for requests going through the apiserver.
+            - Field introduced in 31.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as False.
+        type: bool
     skopeo_retry_interval:
         description:
             - Time interval (in seconds) between retires for skopeo commands.
@@ -1050,6 +1057,7 @@ def main():
         seupgrade_fabric_pool_size=dict(type='int',),
         seupgrade_segroup_min_dead_timeout=dict(type='int',),
         shared_ssl_certificates=dict(type='bool',),
+        skip_beego_perf_collection=dict(type='bool',),
         skopeo_retry_interval=dict(type='int',),
         skopeo_retry_limit=dict(type='int',),
         soft_min_mem_per_se_limit=dict(type='int',),

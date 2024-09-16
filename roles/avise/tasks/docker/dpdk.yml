@@ -1,9 +1,23 @@
 ---
-- block:
-  - name: Check for version
-    set_fact:
-      error_string: "{{ ansible_distribution }} {{ ansible_distribution_version }} is not supported in dpdk mode"
-  - include: error.yml
+- name: Check for version
+  set_fact:
+    error_string: "{{ ansible_distribution }} {{ ansible_distribution_version }} is not supported in dpdk mode"
+  when:  (not (ansible_distribution == 'OracleLinux' and ansible_distribution_version is match('8.4'))) and
+         (not (ansible_distribution == 'OracleLinux' and ansible_distribution_version is match('8.3'))) and
+         (not (ansible_distribution == 'OracleLinux' and ansible_distribution_version is match('8.2'))) and
+         (not (ansible_distribution == 'OracleLinux' and ansible_distribution_version is match('8.1'))) and
+         (not (ansible_distribution == 'OracleLinux' and ansible_distribution_version is match('7.9'))) and
+         (not (ansible_distribution == 'RedHat' and ansible_distribution_version is match('8.4'))) and
+         (not (ansible_distribution == 'RedHat' and ansible_distribution_version is match('8.3'))) and
+         (not (ansible_distribution == 'RedHat' and ansible_distribution_version is match('8.2'))) and
+         (not (ansible_distribution == 'RedHat' and ansible_distribution_version is match('8.1'))) and
+         (not (ansible_distribution == 'RedHat' and ansible_distribution_version is match('7.9'))) and
+         (not (ansible_distribution == 'Ubuntu' and ansible_distribution_version is match('20.04'))) and
+         (not (ansible_distribution == 'Ubuntu' and ansible_distribution_version is match('22.04'))) and
+         (not (ansible_distribution == 'Ubuntu' and ansible_distribution_version is match('24.04')))
+
+- name: Include error 
+  include_tasks: error.yml
   when:  (not (ansible_distribution == 'OracleLinux' and ansible_distribution_version is match('8.4'))) and
          (not (ansible_distribution == 'OracleLinux' and ansible_distribution_version is match('8.3'))) and
          (not (ansible_distribution == 'OracleLinux' and ansible_distribution_version is match('8.2'))) and
@@ -19,7 +33,7 @@
          (not (ansible_distribution == 'Ubuntu' and ansible_distribution_version is match('24.04')))
 
 - name: Avi SE | Perform specific os tasks
-  include: os/{{ ansible_distribution|lower }}.yml
+  include_tasks: os/{{ ansible_distribution|lower }}.yml
 
 - name: Configure DPDK Pre Parameters
   set_fact:

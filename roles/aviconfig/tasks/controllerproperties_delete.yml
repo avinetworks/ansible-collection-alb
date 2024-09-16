@@ -97,6 +97,7 @@
     seupgrade_fabric_pool_size: "{{ item.seupgrade_fabric_pool_size | default(omit) }}"
     seupgrade_segroup_min_dead_timeout: "{{ item.seupgrade_segroup_min_dead_timeout | default(omit) }}"
     shared_ssl_certificates: "{{ item.shared_ssl_certificates | default(omit) }}"
+    skip_beego_perf_collection: "{{ item.skip_beego_perf_collection | default(omit) }}"
     skopeo_retry_interval: "{{ item.skopeo_retry_interval | default(omit) }}"
     skopeo_retry_limit: "{{ item.skopeo_retry_limit | default(omit) }}"
     soft_min_mem_per_se_limit: "{{ item.soft_min_mem_per_se_limit | default(omit) }}"

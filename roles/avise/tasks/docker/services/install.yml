@@ -10,4 +10,4 @@
   notify: Avi SE | Services | Restart the avise service
 
 - name: Include the corresponding service
-  include: "{{ ansible_service_mgr }}/install.yml"
+  include_tasks: "{{ ansible_service_mgr }}/install.yml"
