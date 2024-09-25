@@ -1,0 +1,25 @@
+#***************************************************************************
+# ------------------------------------------------------------------------
+# Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential
+# ------------------------------------------------------------------------
+#
+
+[Unit]
+Description=Avi Host Service
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+
+ExecStart=/bin/bash /etc/systemd/system/avihost_service_script.sh start
+ExecStop=/bin/bash /etc/systemd/system/avihost_service_script.sh stop
+# When we run ifup command via avihost service,
+# the dhclient if spawned though being a child of PID 1
+# is under avihost cgroup.
+# In case of avihost service crash / restart the dhclient process must not be killed.
+# Making the KillMode=process there by no process other than the main python process
+# which is stateless is respawned.
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target

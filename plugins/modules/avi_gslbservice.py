@@ -206,6 +206,7 @@ options:
             - If enabled, provide the srv target's resolved ip in the response srv gslb service.
             - Field introduced in 31.1.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
     site_persistence_enabled:
         description:

@@ -14,14 +14,13 @@
     api_context: "{{ avi_api_context | default(omit) }}"
     avi_api_update_method: "{{ item.avi_api_update_method | default(omit) }}"
     avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
+    az_clusters: "{{ item.az_clusters | default(omit) }}"
     az_datastore: "{{ item.az_datastore | default(omit) }}"
     cloud_ref: "{{ item.cloud_ref | default(omit) }}"
-    cluster_ids: "{{ item.cluster_ids | default(omit) }}"
     configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
     name: "{{ item.name | default(omit) }}"
     tenant_ref: "{{ item.tenant_ref | default(omit) }}"
     uuid: "{{ item.uuid | default(omit) }}"
-    vcenter_ref: "{{ item.vcenter_ref | default(omit) }}"
     vcenter_refs: "{{ item.vcenter_refs | default(omit) }}"
   when:
     - (avi_role_state_mode == "present" and avi_config_state == "present")
