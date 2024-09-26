@@ -2,10 +2,17 @@
 - name: Check for version
   set_fact:
     error_string: "{{ ansible_distribution }} {{ ansible_distribution_version }} is not supported in dpdk mode"
-  when:  (not (ansible_distribution == 'OracleLinux' and ansible_distribution_version is match('8.4'))) and
+  when:  (not (ansible_distribution == 'OracleLinux' and ansible_distribution_version is match('8.10'))) and
+         (not (ansible_distribution == 'OracleLinux' and ansible_distribution_version is match('8.9'))) and
+         (not (ansible_distribution == 'OracleLinux' and ansible_distribution_version is match('8.8'))) and
+         (not (ansible_distribution == 'OracleLinux' and ansible_distribution_version is match('8.7'))) and
+         (not (ansible_distribution == 'OracleLinux' and ansible_distribution_version is match('8.6'))) and
+         (not (ansible_distribution == 'OracleLinux' and ansible_distribution_version is match('8.5'))) and
+         (not (ansible_distribution == 'OracleLinux' and ansible_distribution_version is match('8.4'))) and
          (not (ansible_distribution == 'OracleLinux' and ansible_distribution_version is match('8.3'))) and
          (not (ansible_distribution == 'OracleLinux' and ansible_distribution_version is match('8.2'))) and
          (not (ansible_distribution == 'OracleLinux' and ansible_distribution_version is match('8.1'))) and
+         (not (ansible_distribution == 'OracleLinux' and ansible_distribution_version is match('8.0'))) and
          (not (ansible_distribution == 'OracleLinux' and ansible_distribution_version is match('7.9'))) and
          (not (ansible_distribution == 'RedHat' and ansible_distribution_version is match('8.4'))) and
          (not (ansible_distribution == 'RedHat' and ansible_distribution_version is match('8.3'))) and
@@ -18,10 +25,17 @@
 
 - name: Include error 
   include_tasks: error.yml
-  when:  (not (ansible_distribution == 'OracleLinux' and ansible_distribution_version is match('8.4'))) and
+  when:  (not (ansible_distribution == 'OracleLinux' and ansible_distribution_version is match('8.10'))) and
+         (not (ansible_distribution == 'OracleLinux' and ansible_distribution_version is match('8.9'))) and
+         (not (ansible_distribution == 'OracleLinux' and ansible_distribution_version is match('8.8'))) and
+         (not (ansible_distribution == 'OracleLinux' and ansible_distribution_version is match('8.7'))) and
+         (not (ansible_distribution == 'OracleLinux' and ansible_distribution_version is match('8.6'))) and
+         (not (ansible_distribution == 'OracleLinux' and ansible_distribution_version is match('8.5'))) and
+         (not (ansible_distribution == 'OracleLinux' and ansible_distribution_version is match('8.4'))) and
          (not (ansible_distribution == 'OracleLinux' and ansible_distribution_version is match('8.3'))) and
          (not (ansible_distribution == 'OracleLinux' and ansible_distribution_version is match('8.2'))) and
          (not (ansible_distribution == 'OracleLinux' and ansible_distribution_version is match('8.1'))) and
+         (not (ansible_distribution == 'OracleLinux' and ansible_distribution_version is match('8.0'))) and
          (not (ansible_distribution == 'OracleLinux' and ansible_distribution_version is match('7.9'))) and
          (not (ansible_distribution == 'RedHat' and ansible_distribution_version is match('8.4'))) and
          (not (ansible_distribution == 'RedHat' and ansible_distribution_version is match('8.3'))) and
