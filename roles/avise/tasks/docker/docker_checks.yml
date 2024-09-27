@@ -25,7 +25,7 @@
         error_string: "Docker is not running, please start Docker"
     - name: Include error tasks if Docker is not running
       ansible.builtin.include_tasks: error.yml
-  when: result.stdout == "0" and se_deploy_type == "docker"
+  when: se_deploy_type == "docker" and result.stdout == "0"
 
 - name: Get Docker version
   shell: "{{ se_deploy_type }} --version | awk '{print $3}' | sed -e 's/,//'"
@@ -37,7 +37,7 @@
         error_string: "Docker version {{ result.stdout }} not supported for spawning ServiceEngine container, please upgrade Docker to 1.6.1 or greater"
     - name: Include error tasks if Docker version is too low
       ansible.builtin.include_tasks: error.yml
-  when: result.stdout is version('1.6.1', '<') and se_deploy_type == "docker"
+  when: se_deploy_type == "docker" and result.stdout is version('1.6.1', '<')
 
 - block:
     - name: Set error message if Podman version is less than 3.0.1
@@ -45,7 +45,7 @@
         error_string: "Podman version {{ result.stdout }} not supported for spawning ServiceEngine container, please upgrade Podman to 3.0.1 or greater"
     - name: Include error tasks if Podman version is too low
       ansible.builtin.include_tasks: error.yml
-  when: result.stdout is version('3.0.1', '<') and se_deploy_type == "podman"
+  when: se_deploy_type == "podman" and result.stdout is version('3.0.1', '<')
 
 - block:
     - name: Verify the Docker storage
