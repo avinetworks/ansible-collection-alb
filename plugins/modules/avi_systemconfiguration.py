@@ -118,13 +118,6 @@ options:
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
-    enable_telemetry:
-        description:
-            - Enables sending anonymous operational metrics to avi.
-            - Field introduced in 31.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as True.
-        type: bool
     fips_mode:
         description:
             - Fips mode current state.
@@ -215,6 +208,12 @@ options:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: str
+    telemetry_configuration:
+        description:
+            - Telemetry configuration.
+            - Field introduced in 31.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: dict
     trusted_host_profiles_refs:
         description:
             - Trusted host profiles for host header validation.
@@ -319,7 +318,6 @@ def main():
         email_configuration=dict(type='dict',),
         enable_cors=dict(type='bool',),
         enable_host_header_check=dict(type='bool',),
-        enable_telemetry=dict(type='bool',),
         fips_mode=dict(type='bool',),
         global_tenant_config=dict(type='dict',),
         host_key_algorithm_exclude=dict(type='str',),
@@ -336,6 +334,7 @@ def main():
         snmp_configuration=dict(type='dict',),
         ssh_ciphers=dict(type='list', elements='str',),
         ssh_hmacs=dict(type='list', elements='str',),
+        telemetry_configuration=dict(type='dict',),
         trusted_host_profiles_refs=dict(type='list', elements='str',),
         truststore_pkiprofile_ref=dict(type='str',),
         url=dict(type='str',),

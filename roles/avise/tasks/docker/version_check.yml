@@ -6,7 +6,12 @@
   - name: Include error.yml
     ansible.builtin.include_tasks:
       file: error.yml
-  when:  (not (ansible_distribution == 'OracleLinux' and ansible_distribution_version is match('8.10'))) and
+  when:  (not (ansible_distribution == 'OracleLinux' and ansible_distribution_version is match('9.4'))) and
+         (not (ansible_distribution == 'OracleLinux' and ansible_distribution_version is match('9.3'))) and
+         (not (ansible_distribution == 'OracleLinux' and ansible_distribution_version is match('9.2'))) and
+         (not (ansible_distribution == 'OracleLinux' and ansible_distribution_version is match('9.1'))) and
+         (not (ansible_distribution == 'OracleLinux' and ansible_distribution_version is match('9.0'))) and
+         (not (ansible_distribution == 'OracleLinux' and ansible_distribution_version is match('8.10'))) and
          (not (ansible_distribution == 'OracleLinux' and ansible_distribution_version is match('8.9'))) and
          (not (ansible_distribution == 'OracleLinux' and ansible_distribution_version is match('8.8'))) and
          (not (ansible_distribution == 'OracleLinux' and ansible_distribution_version is match('8.7'))) and
@@ -18,10 +23,23 @@
          (not (ansible_distribution == 'OracleLinux' and ansible_distribution_version is match('8.1'))) and
          (not (ansible_distribution == 'OracleLinux' and ansible_distribution_version is match('8.0'))) and
          (not (ansible_distribution == 'OracleLinux' and ansible_distribution_version is match('7.9'))) and
+         (not (ansible_distribution == 'RedHat' and ansible_distribution_version is match('9.5'))) and
+         (not (ansible_distribution == 'RedHat' and ansible_distribution_version is match('9.4'))) and
+         (not (ansible_distribution == 'RedHat' and ansible_distribution_version is match('9.3'))) and
+         (not (ansible_distribution == 'RedHat' and ansible_distribution_version is match('9.2'))) and
+         (not (ansible_distribution == 'RedHat' and ansible_distribution_version is match('9.1'))) and
+         (not (ansible_distribution == 'RedHat' and ansible_distribution_version is match('9.0'))) and
+         (not (ansible_distribution == 'RedHat' and ansible_distribution_version is match('8.10'))) and
+         (not (ansible_distribution == 'RedHat' and ansible_distribution_version is match('8.9'))) and
+         (not (ansible_distribution == 'RedHat' and ansible_distribution_version is match('8.8'))) and
+         (not (ansible_distribution == 'RedHat' and ansible_distribution_version is match('8.7'))) and
+         (not (ansible_distribution == 'RedHat' and ansible_distribution_version is match('8.6'))) and
+         (not (ansible_distribution == 'RedHat' and ansible_distribution_version is match('8.5'))) and
          (not (ansible_distribution == 'RedHat' and ansible_distribution_version is match('8.4'))) and
          (not (ansible_distribution == 'RedHat' and ansible_distribution_version is match('8.3'))) and
          (not (ansible_distribution == 'RedHat' and ansible_distribution_version is match('8.2'))) and
          (not (ansible_distribution == 'RedHat' and ansible_distribution_version is match('8.1'))) and
+         (not (ansible_distribution == 'RedHat' and ansible_distribution_version is match('8.0'))) and
          (not (ansible_distribution == 'RedHat' and ansible_distribution_version is match('7.9'))) and
          (not (ansible_distribution == 'Ubuntu' and ansible_distribution_version is match('20.04'))) and
          (not (ansible_distribution == 'Ubuntu' and ansible_distribution_version is match('22.04'))) and
