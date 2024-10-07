@@ -1,6 +1,6 @@
 ---
 - name: Checking minimum requirements
-  include: requirements.yml
+  include_tasks: requirements.yml
 
 - name: Avi SE | Docker | Check if specified image already exists.
   shell: "{{ se_deploy_type }} images | grep avinetworks/se | grep {{ se_version }} | wc -l"
@@ -29,8 +29,8 @@
   become: true
 
 - name: Avi SE | Install DPDK
-  include: dpdk.yml
+  include_tasks: dpdk.yml
   when: se_dpdk
 
 - name: Avi SE | Install the Avi SE service
-  include: services/install.yml
+  include_tasks: services/install.yml

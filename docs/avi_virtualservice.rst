@@ -2039,7 +2039,7 @@ Parameters
                   - These are static entries and no health monitoring is performed against the ip addresses.
                 </div>
                                 <div style="font-size: small">
-                  - Maximum of 1000 items allowed.
+                  - Maximum of 2000 items allowed.
                 </div>
                                 <div style="font-size: small">
                   - Allowed in enterprise edition with any value, enterprise with cloud services edition.

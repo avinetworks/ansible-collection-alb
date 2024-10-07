@@ -64,6 +64,12 @@ options:
             - Field introduced in 18.2.10, 20.1.1.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: bool
+    dryrun_info:
+        description:
+            - Upgrade dry-run operation details.
+            - Field introduced in 31.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: dict
     duration:
         description:
             - Duration of upgrade operation in seconds.
@@ -359,7 +365,7 @@ options:
         description:
             - Upgrade operations requested.
             - Enum options - UPGRADE, PATCH, ROLLBACK, ROLLBACKPATCH, SEGROUP_RESUME, EVAL_UPGRADE, EVAL_PATCH, EVAL_ROLLBACK, EVAL_ROLLBACKPATCH,
-            - EVAL_SEGROUP_RESUME, EVAL_RESTORE, RESTORE.
+            - EVAL_SEGROUP_RESUME, EVAL_RESTORE, RESTORE, UPGRADE_DRYRUN.
             - Field introduced in 18.2.6.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
@@ -433,6 +439,7 @@ def main():
         after_reboot_rollback_fnc=dict(type='str',),
         after_reboot_task_name=dict(type='str',),
         clean=dict(type='bool',),
+        dryrun_info=dict(type='dict',),
         duration=dict(type='int',),
         enable_patch_rollback=dict(type='bool',),
         enable_rollback=dict(type='bool',),

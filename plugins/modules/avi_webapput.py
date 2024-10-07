@@ -46,6 +46,13 @@ options:
         description:
             - Patch value to use when using avi_api_update_method as patch.
         type: str
+    cloud_ref:
+        description:
+            - Cloud of the webapput object-level0.
+            - It is a reference to an object of type cloud.
+            - Field introduced in 30.2.2.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: str
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
@@ -208,6 +215,7 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
+        cloud_ref=dict(type='str',),
         configpb_attributes=dict(type='dict',),
         default_first_int=dict(type='int',),
         default_second_int=dict(type='int',),

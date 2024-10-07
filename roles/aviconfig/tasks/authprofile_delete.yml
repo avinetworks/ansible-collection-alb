@@ -22,7 +22,6 @@
     markers: "{{ item.markers | default(omit) }}"
     name: "{{ item.name | default(omit) }}"
     oauth_profile: "{{ item.oauth_profile | default(omit) }}"
-    pa_agent_ref: "{{ item.pa_agent_ref | default(omit) }}"
     saml: "{{ item.saml | default(omit) }}"
     tacacs_plus: "{{ item.tacacs_plus | default(omit) }}"
     tenant_ref: "{{ item.tenant_ref | default(omit) }}"

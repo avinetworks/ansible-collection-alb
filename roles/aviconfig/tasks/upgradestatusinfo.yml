@@ -17,6 +17,7 @@
     after_reboot_rollback_fnc: "{{ item.after_reboot_rollback_fnc | default(omit) }}"
     after_reboot_task_name: "{{ item.after_reboot_task_name | default(omit) }}"
     clean: "{{ item.clean | default(omit) }}"
+    dryrun_info: "{{ item.dryrun_info | default(omit) }}"
     duration: "{{ item.duration | default(omit) }}"
     enable_patch_rollback: "{{ item.enable_patch_rollback | default(omit) }}"
     enable_rollback: "{{ item.enable_rollback | default(omit) }}"

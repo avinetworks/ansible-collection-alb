@@ -95,14 +95,6 @@ options:
             - Field introduced in 21.1.3.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: dict
-    pa_agent_ref:
-        description:
-            - Pingaccessagent uuid.
-            - It is a reference to an object of type pingaccessagent.
-            - Field deprecated in 30.2.1.
-            - Field introduced in 18.2.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-        type: str
     saml:
         description:
             - Saml settings.
@@ -211,7 +203,6 @@ def main():
         markers=dict(type='list', elements='dict',),
         name=dict(type='str', required=True),
         oauth_profile=dict(type='dict',),
-        pa_agent_ref=dict(type='str',),
         saml=dict(type='dict',),
         tacacs_plus=dict(type='dict',),
         tenant_ref=dict(type='str',),

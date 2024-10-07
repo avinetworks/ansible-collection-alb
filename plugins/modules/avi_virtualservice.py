@@ -571,7 +571,7 @@ options:
         description:
             - List of static dns records applied to this virtual service.
             - These are static entries and no health monitoring is performed against the ip addresses.
-            - Maximum of 1000 items allowed.
+            - Maximum of 2000 items allowed.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
         elements: dict

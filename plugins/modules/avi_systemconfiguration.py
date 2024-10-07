@@ -111,6 +111,13 @@ options:
             - edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
+    enable_host_header_check:
+        description:
+            - Host header check.
+            - Field introduced in 31.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as False.
+        type: bool
     fips_mode:
         description:
             - Fips mode current state.
@@ -171,6 +178,12 @@ options:
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as default.
         type: str
+    sddcmanager_fqdn:
+        description:
+            - Fqdn of sddc manager in vcf responsible for management of this alb controller cluster.
+            - Field introduced in 22.1.6,31.1.1.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+        type: str
     secure_channel_configuration:
         description:
             - Configure secure channel properties.
@@ -195,6 +208,30 @@ options:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: str
+    telemetry_configuration:
+        description:
+            - Telemetry configuration.
+            - Field introduced in 31.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: dict
+    trusted_host_profiles_refs:
+        description:
+            - Trusted host profiles for host header validation.
+            - Only function when enable_host_header_check is set to true.
+            - It is a reference to an object of type trustedhostprofile.
+            - Field introduced in 31.1.1.
+            - Maximum of 20 items allowed.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: list
+        elements: str
+    truststore_pkiprofile_ref:
+        description:
+            - Reference to pkiprofile used for validating the ca certificates for external comminications from avi load balancer controller  this acts as trust
+            - store for avi load balancer controller.
+            - It is a reference to an object of type pkiprofile.
+            - Field introduced in 31.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: str
     url:
         description:
             - Avi controller URL of the object.
@@ -280,6 +317,7 @@ def main():
         docker_mode=dict(type='bool',),
         email_configuration=dict(type='dict',),
         enable_cors=dict(type='bool',),
+        enable_host_header_check=dict(type='bool',),
         fips_mode=dict(type='bool',),
         global_tenant_config=dict(type='dict',),
         host_key_algorithm_exclude=dict(type='str',),
@@ -291,10 +329,14 @@ def main():
         proxy_configuration=dict(type='dict',),
         rekey_time_limit=dict(type='str',),
         rekey_volume_limit=dict(type='str',),
+        sddcmanager_fqdn=dict(type='str',),
         secure_channel_configuration=dict(type='dict',),
         snmp_configuration=dict(type='dict',),
         ssh_ciphers=dict(type='list', elements='str',),
         ssh_hmacs=dict(type='list', elements='str',),
+        telemetry_configuration=dict(type='dict',),
+        trusted_host_profiles_refs=dict(type='list', elements='str',),
+        truststore_pkiprofile_ref=dict(type='str',),
         url=dict(type='str',),
         uuid=dict(type='str',),
         welcome_workflow_complete=dict(type='bool',),

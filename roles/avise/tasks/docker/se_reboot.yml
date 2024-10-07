@@ -1,6 +1,6 @@
 ---
 - name: Checks for blocking SE
-  include: check_cloud.yml
+  include_tasks: check_cloud.yml
 
 - name: Reboot the avise service in systemd
   service: name=avise enabled=yes state=restarted

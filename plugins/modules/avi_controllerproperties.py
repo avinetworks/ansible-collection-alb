@@ -47,6 +47,13 @@ options:
         description:
             - Patch value to use when using avi_api_update_method as patch.
         type: str
+    alert_manager_use_evms:
+        description:
+            - Enable to use event manager as source of eventsdisable to use log manager as source of events.
+            - Field introduced in 30.2.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as True.
+        type: bool
     allow_admin_network_updates:
         description:
             - Allow non-admin tenants to update admin vrfcontext and network objects.
@@ -160,7 +167,7 @@ options:
         description:
             - Time in minutes to wait between consecutive cloud discovery cycles.
             - Allowed values are 1-1440.
-            - Field introduced in 30.2.1.
+            - Field introduced in 22.1.5, 30.2.1.
             - Unit is min.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 5.
@@ -176,7 +183,7 @@ options:
         description:
             - Time in minutes to wait between consecutive cloud reconcile cycles.
             - Allowed values are 1-1440.
-            - Field introduced in 30.2.1.
+            - Field introduced in 22.1.5, 30.2.1.
             - Unit is min.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 5.
@@ -184,6 +191,7 @@ options:
     cluster_ip_gratuitous_arp_period:
         description:
             - Period for cluster ip gratuitous arp job.
+            - Allowed values are 1-1440.
             - Unit is min.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 60.
@@ -302,6 +310,15 @@ options:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as True.
         type: bool
+    enable_nsx_streaming_agent:
+        description:
+            - When set to true, avi controller will connect to dynamic config streaming agent on nsx manager to get live updates.
+            - If it cannot connect, it will fallback to using rest apis based periodic polling.
+            - Dynamic streaming is supported from nsx version 4.2.1 onwards.
+            - Field introduced in 31.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as True.
+        type: bool
     enable_per_process_stop:
         description:
             - Enable stopping of individual processes if process cross the given threshold limit, even when the total controller memory usage is belowits
@@ -318,6 +335,33 @@ options:
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
+    event_manager_max_goroutines:
+        description:
+            - Maximum number of goroutines for event manager process.
+            - Allowed values are 1-64.
+            - Field introduced in 30.2.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 8.
+        type: int
+    event_manager_max_subscribers:
+        description:
+            - Maximum number of subscribers for event manager process.
+            - Allowed values are 1-6.
+            - Special values are 0 - disabled.
+            - Field introduced in 30.2.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 5.
+        type: int
+    event_manager_processing_time_threshold:
+        description:
+            - Log instances for event manager processing delay; recorded whenever event processing delay exceeds configured interval specified in seconds.
+            - Allowed values are 1-5.
+            - Special values are 0 - disabled.
+            - Field introduced in 30.2.1.
+            - Unit is sec.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 4.
+        type: int
     false_positive_learning_config:
         description:
             - False positive learning configuration.
@@ -346,13 +390,6 @@ options:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 1440.
         type: int
-    file_reference_mappings:
-        description:
-            - List of mapping for file reference and their absolute path.
-            - Field introduced in 30.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-        type: list
-        elements: dict
     fileobject_max_file_versions:
         description:
             - This is the max number of file versions that will be retained for a file referenced by the local fileobject.
@@ -639,20 +676,27 @@ options:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
+    skip_beego_perf_collection:
+        description:
+            - Skip api performance collection for requests going through the apiserver.
+            - Field introduced in 31.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as False.
+        type: bool
     skopeo_retry_interval:
         description:
             - Time interval (in seconds) between retires for skopeo commands.
+            - Field deprecated in 31.1.1.
             - Field introduced in 30.1.1.
             - Unit is sec.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as 5.
         type: int
     skopeo_retry_limit:
         description:
             - Number of times to try skopeo commands for remote image registries.
+            - Field deprecated in 31.1.1.
             - Field introduced in 30.1.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as 3.
         type: int
     soft_min_mem_per_se_limit:
         description:
@@ -669,6 +713,12 @@ options:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: int
+    statecache_properties:
+        description:
+            - Configure statecache behavior for config, se, resmgr.
+            - Field introduced in 31.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: dict
     system_report_cleanup_interval:
         description:
             - Time in minutes to wait between cleanup of systemreports.
@@ -924,6 +974,7 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
+        alert_manager_use_evms=dict(type='bool',),
         allow_admin_network_updates=dict(type='bool',),
         allow_ip_forwarding=dict(type='bool',),
         allow_unauthenticated_apis=dict(type='bool',),
@@ -958,13 +1009,16 @@ def main():
         edit_system_limits=dict(type='bool',),
         enable_api_sharding=dict(type='bool',),
         enable_memory_balancer=dict(type='bool',),
+        enable_nsx_streaming_agent=dict(type='bool',),
         enable_per_process_stop=dict(type='bool',),
         enable_resmgr_log_cache_print=dict(type='bool',),
+        event_manager_max_goroutines=dict(type='int',),
+        event_manager_max_subscribers=dict(type='int',),
+        event_manager_processing_time_threshold=dict(type='int',),
         false_positive_learning_config=dict(type='dict',),
         fatal_error_lease_time=dict(type='int',),
         federated_datastore_cleanup_duration=dict(type='int',),
         file_object_cleanup_period=dict(type='int',),
-        file_reference_mappings=dict(type='list', elements='dict',),
         fileobject_max_file_versions=dict(type='int',),
         gslb_purge_batch_size=dict(type='int',),
         gslb_purge_sleep_time_ms=dict(type='int',),
@@ -1003,10 +1057,12 @@ def main():
         seupgrade_fabric_pool_size=dict(type='int',),
         seupgrade_segroup_min_dead_timeout=dict(type='int',),
         shared_ssl_certificates=dict(type='bool',),
+        skip_beego_perf_collection=dict(type='bool',),
         skopeo_retry_interval=dict(type='int',),
         skopeo_retry_limit=dict(type='int',),
         soft_min_mem_per_se_limit=dict(type='int',),
         ssl_certificate_expiry_warning_days=dict(type='list', elements='int',),
+        statecache_properties=dict(type='dict',),
         system_report_cleanup_interval=dict(type='int',),
         system_report_limit=dict(type='int',),
         unresponsive_se_reboot=dict(type='int',),

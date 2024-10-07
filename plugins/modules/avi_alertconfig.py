@@ -107,7 +107,7 @@ options:
         type: str
     obj_uuid:
         description:
-            - Uuid of the resource for which alert was raised.
+            - Instance of the resource for which alert was raised.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
     object_type:

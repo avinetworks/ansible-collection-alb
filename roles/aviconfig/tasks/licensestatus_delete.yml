@@ -15,6 +15,7 @@
     avi_api_update_method: "{{ item.avi_api_update_method | default(omit) }}"
     avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
     configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
+    essentials_enforced_at: "{{ item.essentials_enforced_at | default(omit) }}"
     saas_status: "{{ item.saas_status | default(omit) }}"
     service_update: "{{ item.service_update | default(omit) }}"
     tenant_uuid: "{{ item.tenant_uuid | default(omit) }}"

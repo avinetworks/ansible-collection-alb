@@ -78,6 +78,12 @@ options:
         description:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
+    diameter_service_profile:
+        description:
+            - Specifies various diameter service related controls for virtual service.
+            - Field introduced in 31.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: dict
     dns_service_profile:
         description:
             - Specifies various dns service related controls for virtual service.
@@ -154,7 +160,7 @@ options:
         description:
             - Specifies which application layer proxy is enabled for the virtual service.
             - Enum options - APPLICATION_PROFILE_TYPE_L4, APPLICATION_PROFILE_TYPE_HTTP, APPLICATION_PROFILE_TYPE_SYSLOG, APPLICATION_PROFILE_TYPE_DNS,
-            - APPLICATION_PROFILE_TYPE_SSL, APPLICATION_PROFILE_TYPE_SIP.
+            - APPLICATION_PROFILE_TYPE_SSL, APPLICATION_PROFILE_TYPE_SIP, APPLICATION_PROFILE_TYPE_DIAMETER.
             - Allowed in enterprise edition with any value, essentials edition(allowed values- application_profile_type_l4), basic edition(allowed values-
             - application_profile_type_l4,application_profile_type_http), enterprise with cloud services edition.
         required: true
@@ -270,6 +276,7 @@ def main():
         configpb_attributes=dict(type='dict',),
         created_by=dict(type='str',),
         description=dict(type='str',),
+        diameter_service_profile=dict(type='dict',),
         dns_service_profile=dict(type='dict',),
         dos_rl_profile=dict(type='dict',),
         http_profile=dict(type='dict',),

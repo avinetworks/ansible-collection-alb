@@ -63,6 +63,12 @@ options:
         description:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
+    diameter_app_persistence_profile:
+        description:
+            - Specifies the diameter persistence profile parameters.
+            - Field introduced in 31.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: dict
     hdr_persistence_profile:
         description:
             - Specifies the custom http header persistence profile parameters.
@@ -105,7 +111,7 @@ options:
         description:
             - Method used to persist clients to the same server for a duration of time or a session.
             - Enum options - PERSISTENCE_TYPE_CLIENT_IP_ADDRESS, PERSISTENCE_TYPE_HTTP_COOKIE, PERSISTENCE_TYPE_TLS, PERSISTENCE_TYPE_CLIENT_IPV6_ADDRESS,
-            - PERSISTENCE_TYPE_CUSTOM_HTTP_HEADER, PERSISTENCE_TYPE_APP_COOKIE, PERSISTENCE_TYPE_GSLB_SITE.
+            - PERSISTENCE_TYPE_CUSTOM_HTTP_HEADER, PERSISTENCE_TYPE_APP_COOKIE, PERSISTENCE_TYPE_GSLB_SITE, PERSISTENCE_TYPE_APP_DIAMETER.
             - Allowed in enterprise edition with any value, essentials edition(allowed values-
             - persistence_type_client_ip_address,persistence_type_http_cookie), basic edition(allowed values-
             - persistence_type_client_ip_address,persistence_type_http_cookie), enterprise with cloud services edition.
@@ -195,6 +201,7 @@ def main():
         app_cookie_persistence_profile=dict(type='dict',),
         configpb_attributes=dict(type='dict',),
         description=dict(type='str',),
+        diameter_app_persistence_profile=dict(type='dict',),
         hdr_persistence_profile=dict(type='dict',),
         http_cookie_persistence_profile=dict(type='dict',),
         ip_persistence_profile=dict(type='dict',),

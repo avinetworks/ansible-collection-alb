@@ -46,6 +46,19 @@ options:
         description:
             - Patch value to use when using avi_api_update_method as patch.
         type: str
+    az_clusters:
+        description:
+            - Group of clusters belongs to the az.
+            - Field introduced in 31.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: list
+        elements: dict
+    az_datastore:
+        description:
+            - Datastores associated with the az.
+            - Field introduced in 31.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: dict
     cloud_ref:
         description:
             - Availability zone belongs to cloud.
@@ -88,6 +101,7 @@ options:
         description:
             - Group of vcenter list belong to availabilty zone.
             - It is a reference to an object of type vcenterserver.
+            - Field deprecated in 31.1.1.
             - Field introduced in 20.1.1.
             - Minimum of 1 items required.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
@@ -139,6 +153,8 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
+        az_clusters=dict(type='list', elements='dict',),
+        az_datastore=dict(type='dict',),
         cloud_ref=dict(type='str',),
         configpb_attributes=dict(type='dict',),
         name=dict(type='str', required=True),
