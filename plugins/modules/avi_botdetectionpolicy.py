@@ -50,39 +50,39 @@ options:
         description:
             - Allow the user to skip botmanagement for selected requests.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: dict
     client_behavior_detector:
         description:
             - The client behavior configuration used in this policy.
             - Field introduced in 30.2.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     description:
         description:
             - Human-readable description of this bot detection policy.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     ip_location_detector:
         description:
             - The ip location configuration used in this policy.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         required: true
         type: dict
     ip_reputation_detector:
         description:
             - The ip reputation configuration used in this policy.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         required: true
         type: dict
     name:
         description:
             - The name of this bot detection policy.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         required: true
         type: str
     system_bot_mapping_ref:
@@ -90,21 +90,21 @@ options:
             - System-defined rules for classification.
             - It is a reference to an object of type botmapping.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     system_consolidator_ref:
         description:
             - The installation provides an updated ruleset for consolidating the results of different decider phases.
             - It is a reference to an object of type botconfigconsolidator.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     tenant_ref:
         description:
             - The unique identifier of the tenant to which this policy belongs.
             - It is a reference to an object of type tenant.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     url:
         description:
@@ -114,7 +114,7 @@ options:
         description:
             - The user-agent configuration used in this policy.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         required: true
         type: dict
     user_bot_mapping_ref:
@@ -124,7 +124,7 @@ options:
             - If a rule matches, processing terminates and the system-defined rules will not run.
             - It is a reference to an object of type botmapping.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     user_consolidator_ref:
         description:
@@ -133,13 +133,13 @@ options:
             - If it successfully sets a consolidation, the system consolidator will not change it.
             - It is a reference to an object of type botconfigconsolidator.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     uuid:
         description:
             - A unique identifier to this bot detection policy.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi

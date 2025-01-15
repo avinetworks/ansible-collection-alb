@@ -20,6 +20,7 @@
     aws_secret_access: "{{ item.aws_secret_access | default(omit) }}"
     backup_file_prefix: "{{ item.backup_file_prefix | default(omit) }}"
     backup_passphrase: "{{ item.backup_passphrase | default(omit) }}"
+    bundle_mode: "{{ item.bundle_mode | default(omit) }}"
     configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
     maximum_backups_stored: "{{ item.maximum_backups_stored | default(omit) }}"
     name: "{{ item.name | default(omit) }}"

@@ -1,7 +1,0 @@
----
-# centos specific tasks file for avinetworks.avise
-- name: Avi SE | Docker | CentOS | Deploy network-scripts
-  template: src=templates/ifcfg-avi.j2 dest=/etc/sysconfig/network-scripts/ifcfg-avi_eth{{ item }} mode=0644
-  with_items:
-    - "{{ range(0,10)|list }}"
-  become: true

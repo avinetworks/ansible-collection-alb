@@ -1,0 +1,27 @@
+# Automatically Generated File
+# Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
+---
+- name: Avi LocalWorkerFdsVersion | Delete LocalWorkerFdsVersion
+  no_log: "{{ avi_role_config_log_mode | default(False) }}"
+  vmware.alb.avi_localworkerfdsversion:
+    controller: "{{ avi_controller | default(omit) }}"
+    username: "{{ avi_username | default(omit) }}"
+    password: "{{ avi_password | default(omit) }}"
+    tenant: "{{ item.tenant | default(omit) }}"
+    api_version: "{{ api_version | default(omit) }}"
+    avi_credentials: "{{ avi_credentials | default(omit) }}"
+    api_context: "{{ avi_api_context | default(omit) }}"
+    state: "{{ avi_role_state_mode }}"
+    avi_api_update_method: "{{ item.avi_api_update_method | default(omit) }}"
+    avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
+    name: "{{ item.name | default(omit) }}"
+    tenant_ref: "{{ item.tenant_ref | default(omit) }}"
+    timeline: "{{ item.timeline | default(omit) }}"
+    uuid: "{{ item.uuid | default(omit) }}"
+    version: "{{ item.version | default(omit) }}"
+  when:
+    - (item.name | length > 0)
+    - (not (item.system_default | default(false)))
+    - (avi_config_state == "absent" or avi_role_state_mode == "absent")
+    - (item.state | default("present") == avi_role_state_mode or avi_config_state == "absent")
+  with_items: "{{ avi_role_cfg.localworkerfdsversion | default([]) }}"

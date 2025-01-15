@@ -19,6 +19,7 @@
     configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
     created_by: "{{ item.created_by | default(omit) }}"
     description: "{{ item.description | default(omit) }}"
+    diameter_service_profile: "{{ item.diameter_service_profile | default(omit) }}"
     dns_service_profile: "{{ item.dns_service_profile | default(omit) }}"
     dos_rl_profile: "{{ item.dos_rl_profile | default(omit) }}"
     http_profile: "{{ item.http_profile | default(omit) }}"

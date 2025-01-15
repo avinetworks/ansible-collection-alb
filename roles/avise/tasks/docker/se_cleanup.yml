@@ -1,6 +1,6 @@
 ---
 - name: Checks for blocking SE
-  include: check_cloud.yml
+  include_tasks: check_cloud.yml
   when: se_action == "cleanup"
 
 - block:

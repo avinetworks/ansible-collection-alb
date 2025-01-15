@@ -1,6 +1,6 @@
 ---
 - name: Avi SE | Perform Autoregistration
-  include: autoregistration.yml
+  include_tasks: autoregistration.yml
   when: not lsc_mode
 
 - name: Avi SE | Set SE Image Name
@@ -9,7 +9,7 @@
   when: se_version is defined
 
 - name: Checks for blocking SE creation
-  include: block_se.yml
+  include_tasks: block_se.yml
 
 - name: Set facts
   set_fact:
@@ -23,10 +23,10 @@
     se_used_logsdisk: "{{ 0 }}"
 
 - name: Include docker checks
-  include: docker_checks.yml
+  include_tasks: docker_checks.yml
 
 - name: Include disk checks
-  include: disk_checks.yml
+  include_tasks: disk_checks.yml
 
 - block:
   - name: Check if AVI SE is running in systemd
@@ -44,7 +44,7 @@
     set_fact:
       error_string: "running"
     when: (output.stdout is defined) and (output.stdout == "1") and (not se_force)
-  - include: error.yml
+  - include_tasks: error.yml
     when: (output.stdout is defined) and (output.stdout == "1") and (not se_force)
   when: ansible_service_mgr == "systemd"
   become: true
@@ -65,13 +65,13 @@
     set_fact:
       error_string: "running"
     when: (output.stdout is defined) and (output.stdout == "1") and (not se_force)
-  - include: error.yml
+  - include_tasks: error.yml
     when: (output.stdout is defined) and (output.stdout == "1") and (not se_force)
   when: ansible_service_mgr != "systemd"
   become: true
 
 - name: Clean up the existing SE if any
-  include: se_cleanup.yml
+  include_tasks: se_cleanup.yml
 
 - name: Set se cores if all
   set_fact:
@@ -204,12 +204,15 @@
     se_memory_mb: "{{ se_memory_gb|float * 1024 }}"
 
 - block:
-  - name: Set error message
-    set_fact:
-      error_string: "ServiceEngine needs minimum 1GB per core, available cores {{ se_cores }} and available memory {{ se_memory_gb }} GB"
-  - name: Include error.yml file
-    include: error.yml
+    - name: Set error message
+      set_fact:
+        error_string: "ServiceEngine needs minimum 1GB per core, available cores {{ se_cores }} and available memory {{ se_memory_gb }} GB"
   when: se_memory_gb|int < se_cores|int
+
+- name: Include error tasks
+  ansible.builtin.include_tasks: error.yml
+  when: se_memory_gb|int < se_cores|int
+
 
 - name: Validate Parameters
   assert:
@@ -274,13 +277,20 @@
     - name: Fetch the process name
       shell: echo '{{ ns_res.stdout }}' | grep -w {{ failed_port }} | awk '{print $NF}'
       register: proc_res
-    - name: Set error string to display user
+
+    - name: Set error string to display to the user
       set_fact:
-          error_string: "Cannot create ServiceEngine as port {{ failed_port }} is in use by process {{ proc_res.stdout }} on this host"
+        error_string: "Cannot create ServiceEngine as port {{ failed_port }} is in use by process {{ proc_res.stdout }} on this host"
       when: proc_res.stdout is defined
-    - include: error.yml
   when: failed_port is defined
 
+# Moved the include_tasks outside of the block
+- name: Include error tasks
+  ansible.builtin.include_tasks: error.yml
+  when:
+    - failed_port is defined
+    - proc_res.stdout is defined  # Optional: if you only want to include error.yml when proc_res.stdout is defined
+
 - name: Avi Host service checks
-  include: avihost.yml
+  include_tasks: avihost.yml
   when: ansible_service_mgr == "systemd"

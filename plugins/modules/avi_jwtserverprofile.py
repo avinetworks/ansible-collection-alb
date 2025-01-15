@@ -50,14 +50,13 @@ options:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     controller_internal_auth:
         description:
             - Jwt auth configuration for profile_type controller_internal_auth.
             - Field introduced in 20.1.6.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: dict
     is_federated:
         description:
@@ -65,34 +64,34 @@ options:
             - If the field is set to false, then the object is visible within the controller-cluster.
             - If the field is set to true, then the object is replicated across the federation.
             - Field introduced in 20.1.6.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
     issuer:
         description:
             - Uniquely identifiable name of the token issuer, only allowed with profile_type client_auth.
             - Field introduced in 20.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     jwks_keys:
         description:
             - Jwks key set used for validating the jwt, only allowed with profile_type client_auth.
             - Field introduced in 20.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     jwt_profile_type:
         description:
             - Type of jwt server profile which defines the usage type.
             - Enum options - CLIENT_AUTH, CONTROLLER_INTERNAL_AUTH.
             - Field introduced in 20.1.6.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as CLIENT_AUTH.
         type: str
     name:
         description:
             - Name of the jwt profile.
             - Field introduced in 20.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         required: true
         type: str
     tenant_ref:
@@ -100,7 +99,7 @@ options:
             - Uuid of the tenant.
             - It is a reference to an object of type tenant.
             - Field introduced in 20.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     url:
         description:
@@ -110,7 +109,7 @@ options:
         description:
             - Uuid of the jwtprofile.
             - Field introduced in 20.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi

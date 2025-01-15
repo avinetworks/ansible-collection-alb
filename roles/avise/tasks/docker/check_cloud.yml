@@ -1,6 +1,6 @@
 ---
 - name: Read existing docker run params
-  include: docker_run.yml
+  include_tasks: docker_run.yml
 
 - block:
   - name: Read existing cloud uuid
@@ -18,7 +18,7 @@
   - name: Check the cloud uuids
     set_fact:
       error_string: "Cannot create ServiceEngine since it is running on Cloud '{{ cname.stdout }}' on Controller '{{ cip.stdout }}'"
-  - include: error.yml
+  - include_tasks: error.yml
   when: >
     se_service_file.stat.exists and c_uuid.stdout is defined and cname.stdout is defined and cip.stdout is defined
     and c_uuid.stdout|string != cloud_uuid|string

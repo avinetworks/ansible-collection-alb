@@ -5,8 +5,15 @@
     msg: SeGroup upgrade in progress
   when: (se_action == "start") and (ups is defined) and ups
 
-- include: version_check.yml
-  when: se_action != "verify"
+- name: Print se_action value
+  ansible.builtin.debug:
+    msg: "The value of se_action is {{ se_action }}"
+
+- name: Include version check tasks
+  ansible.builtin.include_tasks:
+    file: version_check.yml
+  when: se_action != "verify"    
 
 - name: Avi SE actions
-  include: "se_{{ se_action }}.yml"
+  ansible.builtin.include_tasks:
+    file: "se_{{ se_action }}.yml"

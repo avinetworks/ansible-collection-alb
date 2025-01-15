@@ -53,31 +53,30 @@ options:
             - Enum options - ALLOW_EXPIRED_CRL, ALLOW_ALL_ERRORS.
             - Field introduced in 30.1.1.
             - Maximum of 1 items allowed.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: list
         elements: str
     ca_certs:
         description:
             - List of certificate authorities (root and intermediate) trusted that is used for certificate validation.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: dict
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     created_by:
         description:
             - Creator name.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     crl_check:
         description:
             - When enabled, avi will verify via crl checks that certificates in the trust chain have not been revoked.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as True.
         type: bool
     crl_file_refs:
@@ -85,23 +84,16 @@ options:
             - Refers to fileobject containing crl body.
             - It is a reference to an object of type fileobject.
             - Field introduced in 30.2.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: list
         elements: str
-    crls:
-        description:
-            - List of certificate revocation lists.this field is now represented by a file via the fileobject semantics.
-            - Field deprecated in 30.2.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-        type: list
-        elements: dict
     ignore_peer_chain:
         description:
             - When enabled, avi will not trust intermediate and root certs presented by a client.
             - Instead, only the chain certs configured in the certificate authority section will be used to verify trust of the client's cert.
-            - Allowed in enterprise edition with any value, essentials edition(allowed values- true), basic edition(allowed values- true), enterprise with
-            - cloud services edition.
-            - Special default for essentials edition is true, basic edition is true, enterprise is false.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+            - Allowed in essentials (allowed values- true), basic (allowed values- true) edition.
+            - Special default for essentials edition is true, basic edition is true, enterprise edition is false.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
     is_federated:
@@ -110,27 +102,26 @@ options:
             - If the field is set to false, then the object is visible within the controller-cluster and its associated service-engines.
             - If the field is set to true, then the object is replicated across the federation.
             - Field introduced in 17.1.3.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
     markers:
         description:
             - List of labels to be used for granular rbac.
             - Field introduced in 20.1.5.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: dict
     name:
         description:
             - Name of the pki profile.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
     tenant_ref:
         description:
             - It is a reference to an object of type tenant.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     url:
         description:
@@ -138,14 +129,14 @@ options:
         type: str
     uuid:
         description:
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     validate_only_leaf_crl:
         description:
             - When enabled, avi will only validate the revocation status of the leaf certificate using crl.
             - To enable validation for the entire chain, disable this option and provide all the relevant crls.
-            - Allowed in enterprise edition with any value, essentials edition(allowed values- true), basic edition(allowed values- true), enterprise with
-            - cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+            - Allowed in essentials (allowed values- true), basic (allowed values- true) edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as True.
         type: bool
 extends_documentation_fragment:
@@ -199,7 +190,6 @@ def main():
         created_by=dict(type='str',),
         crl_check=dict(type='bool',),
         crl_file_refs=dict(type='list', elements='str',),
-        crls=dict(type='list', elements='dict',),
         ignore_peer_chain=dict(type='bool',),
         is_federated=dict(type='bool',),
         markers=dict(type='list', elements='dict',),

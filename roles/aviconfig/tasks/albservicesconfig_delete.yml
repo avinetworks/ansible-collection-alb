@@ -23,7 +23,6 @@
     ip_reputation_config: "{{ item.ip_reputation_config | default(omit) }}"
     mode: "{{ item.mode | default(omit) }}"
     name: "{{ item.name | default(omit) }}"
-    operations_config: "{{ item.operations_config | default(omit) }}"
     polling_interval: "{{ item.polling_interval | default(omit) }}"
     portal_url: "{{ item.portal_url | default(omit) }}"
     saas_licensing_config: "{{ item.saas_licensing_config | default(omit) }}"

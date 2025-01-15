@@ -50,22 +50,21 @@ options:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 30.1.1.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     dns_virtualservice_refs:
         description:
             - Dns virtual services hosting fqdn records for applications configured within this tenant.
             - It is a reference to an object of type virtualservice.
             - Field introduced in 30.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: list
         elements: str
     name:
         description:
             - Name of the tenant system configuration object.
             - Field introduced in 30.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         required: true
         type: str
     tenant_ref:
@@ -73,7 +72,7 @@ options:
             - Unique identifier of the tenant that this object belongs to.
             - It is a reference to an object of type tenant.
             - Field introduced in 30.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     url:
         description:
@@ -83,7 +82,7 @@ options:
         description:
             - Tenant system configuration uuid.
             - Field introduced in 30.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi
