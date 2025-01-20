@@ -50,94 +50,94 @@ options:
         description:
             - Check if the patch rollback is possible on this node.
             - Field introduced in 18.2.6.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
     enable_rollback:
         description:
             - Check if the rollback is possible on this node.
             - Field introduced in 18.2.6.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
     end_time:
         description:
             - End time of upgrade operations.
             - Field introduced in 18.2.6.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     image_ref:
         description:
             - Image uuid for identifying the current base image.
             - It is a reference to an object of type image.
             - Field introduced in 18.2.6.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     name:
         description:
             - Name of the system such as cluster name, se group name and se name.
             - Field introduced in 18.2.6.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     node_type:
         description:
             - Type of the system such as controller_cluster, se_group or se.
             - Enum options - NODE_CONTROLLER_CLUSTER, NODE_SE_GROUP, NODE_SE_TYPE.
             - Field introduced in 18.2.6.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     obj_cloud_ref:
         description:
             - Cloud that this object belongs to.
             - It is a reference to an object of type cloud.
             - Field introduced in 18.2.6.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     obj_state:
         description:
             - Current status of the upgrade operations.
             - Field introduced in 18.2.6.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     patch_image_ref:
         description:
             - Image uuid for identifying the current patch.
             - It is a reference to an object of type image.
             - Field introduced in 18.2.6.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     start_time:
         description:
             - Start time of upgrade operations.
             - Field introduced in 18.2.6.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     tasks_completed:
         description:
             - Upgrade tasks completed.
             - Field introduced in 18.2.6.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: int
     tenant_ref:
         description:
             - Tenant that this object belongs to.
             - It is a reference to an object of type tenant.
             - Field introduced in 18.2.6.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     total_tasks:
         description:
             - Total upgrade tasks.
             - Field introduced in 18.2.6.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: int
     upgrade_ops:
         description:
             - Upgrade operations requested.
             - Enum options - UPGRADE, PATCH, ROLLBACK, ROLLBACKPATCH, SEGROUP_RESUME, EVAL_UPGRADE, EVAL_PATCH, EVAL_ROLLBACK, EVAL_ROLLBACKPATCH,
-            - EVAL_SEGROUP_RESUME, EVAL_RESTORE, RESTORE.
+            - EVAL_SEGROUP_RESUME, EVAL_RESTORE, RESTORE, UPGRADE_DRYRUN.
             - Field introduced in 18.2.6.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     url:
         description:
@@ -147,13 +147,13 @@ options:
         description:
             - Uuid identifier for the system such as cluster, se group and se.
             - Field introduced in 18.2.6.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     version:
         description:
             - Current base image applied to this node.
             - Field introduced in 18.2.6.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi

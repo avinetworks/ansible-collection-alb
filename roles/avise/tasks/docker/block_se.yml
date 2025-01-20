@@ -1,22 +1,29 @@
 ---
 - block:
-  - name: Block SE creation on controller host when inband and dpdk enabled
-    stat: path=/etc/systemd/system/avicontroller.service
-    register: st
+    - name: Block SE creation on controller host when inband and DPDK enabled
+      stat:
+        path: /etc/systemd/system/avicontroller.service
+      register: st
 
-  - name: Get management IP
-    shell: "cat /etc/systemd/system/avicontroller.service | grep MANAGEMENT_IP="
-    register: res
-    when: st.stat.exists
-    ignore_errors: yes
-    changed_when: false
+    - name: Get management IP
+      shell: "cat /etc/systemd/system/avicontroller.service | grep MANAGEMENT_IP="
+      register: res
+      when: st.stat.exists
+      ignore_errors: yes
+      changed_when: false
 
-  - name: Set error message
-    set_fact:
-      error_string: "Cannot create ServiceEngine with both inband management and DPDK enabled, since AVI controller is running on the host"
-  - include: error.yml
-    when: (res.rc is defined ) and (res.rc == 0)
+    - name: Set error message
+      set_fact:
+        error_string: "Cannot create ServiceEngine with both inband management and DPDK enabled, since AVI controller is running on the host"
   when: se_dpdk and se_inband_mgmt
 
+- name: Include error tasks
+  ansible.builtin.include_tasks: error.yml
+  when:
+    - se_dpdk
+    - se_inband_mgmt
+    - res.rc is defined
+    - res.rc == 0
+
 - name: Checks for blocking SE
-  include: check_cloud.yml
+  include_tasks: check_cloud.yml

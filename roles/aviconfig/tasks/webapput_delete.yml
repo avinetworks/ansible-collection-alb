@@ -14,6 +14,7 @@
     state: "{{ avi_role_state_mode }}"
     avi_api_update_method: "{{ item.avi_api_update_method | default(omit) }}"
     avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
+    cloud_ref: "{{ item.cloud_ref | default(omit) }}"
     configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
     default_first_int: "{{ item.default_first_int | default(omit) }}"
     default_second_int: "{{ item.default_second_int | default(omit) }}"

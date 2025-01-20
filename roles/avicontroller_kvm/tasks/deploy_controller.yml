@@ -47,11 +47,11 @@
   command: >
     genisoimage -output {{ CI_ISO }} -volid cidata -joliet -r {{ AVI_USER_DATA }} {{ AVI_META_DATA }}
 
-- name: "Avi Controller | KVM | Deploy Controller | Run if os_version is greater than 17.04 OR OS is CentOS AND pinning is True"
+- name: "Avi Controller | KVM | Deploy Controller | Run if os_version is greater than 20.04 OR OS is RHEL OR OS is OEL AND pinning is True"
   command: >
-    virt-install --import --name {{ kvm_vm_hostname }} --ram {{ kvm_vm_ram }} --vcpus {{ kvm_vm_vcpus }} --disk {{ IMAGE }},format=qcow2,bus=virtio,size={{ kvm_vm_os_disk_size }} --disk {{ CI_ISO }},device=cdrom --network type={{ kvm_network_type }},source={{ kvm_host_mgmt_intf }},source_mode={{ kvm_network_source_mode }},model={{ kvm_network_model }} --os-type=linux --os-variant=ubuntu16.04 --cpuset=auto --noautoconsole
+    virt-install --import --name {{ kvm_vm_hostname }} --ram {{ kvm_vm_ram }} --vcpus {{ kvm_vm_vcpus }} --disk {{ IMAGE }},format=qcow2,bus=virtio,size={{ kvm_vm_os_disk_size }} --disk {{ CI_ISO }},device=cdrom --network type={{ kvm_network_type }},source={{ kvm_host_mgmt_intf }},source_mode={{ kvm_network_source_mode }},model={{ kvm_network_model }} --os-type=linux --os-variant=ubuntu20.04 --cpuset=auto --noautoconsole
   register: vm_xml_content
-  when: 'hostvars[inventory_hostname].ansible_distribution_version | float >= 17.04 or hostvars[inventory_hostname].ansible_distribution == "CentOS" and kvm_pinning'
+  when: 'hostvars[inventory_hostname].ansible_distribution_version | float >= 20.04 or hostvars[inventory_hostname].ansible_distribution == "RedHat" or hostvars[inventory_hostname].ansible_distribution == "OracleLinux" and kvm_pinning'
 
 - name: "Avi Controller | KVM | Deploy Controller | Run if pinning is False"
   command: >

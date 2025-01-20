@@ -28,19 +28,19 @@ populate_container_platform()
   cont_plat_sock="/var/run/docker.sock"
 
   # Possible values for $distribution which we support
-  # "ubuntu" (or) "ol" (or) "rhel" (or) "centos"
+  # "ubuntu" (or) "ol" (or) "rhel"
   distribution=$(grep "^ID=" /etc/os-release | cut -d"=" -f2 | sed 's/"//g')
 
   # Possible known values for $version which we support
   # On Ubuntu:
-  #   version = "16.04" (or) "18.04" (or) "20.04"
-  # On RHEL / OL / CENTOS:
-  #   version = "7.*" (or) "8.*"
+  #   version = "24.04" (or) "22.04" (or) "20.04"
+  # On RHEL / OL :
+  #   version = "8.*" (or) "9.*"
   version=$(grep "^VERSION_ID=" /etc/os-release | cut -d"=" -f2 | sed 's/"//g')
 
-  # cont_plat is podman only on OL / RHEL / CENTOS 8.*
-  if [[ $distribution == "ol" || $distribution == "centos" || $distribution == "rhel" ]]; then
-    if [[ $version =~ ^8.* ]]; then
+  # cont_plat is podman only on OL / RHEL 8.* or 9.*
+  if [[ $distribution == "ol" || $distribution == "rhel" ]]; then
+    if [[ $version =~ ^8.* || $version =~ ^9.* ]]; then
       cont_plat="podman"
       cont_plat_sock="/run/podman/podman.sock"
     fi

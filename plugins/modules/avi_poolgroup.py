@@ -51,75 +51,66 @@ options:
         description:
             - Checksum of cloud configuration for poolgroup.
             - Internally set by cloud connector.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     cloud_ref:
         description:
             - It is a reference to an object of type cloud.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     created_by:
         description:
             - Name of the user who created the object.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     deactivate_primary_pool_on_down:
         description:
             - Deactivate primary pool for selection when down until it is activated by user via clear poolgroup command.
             - Field introduced in 20.1.7, 21.1.2, 21.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
     deployment_policy_ref:
         description:
             - When setup autoscale manager will automatically promote new pools into production when deployment goals are met.
             - It is a reference to an object of type poolgroupdeploymentpolicy.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     description:
         description:
             - Description of pool group.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
-    enable_http2:
-        description:
-            - Enable http/2 for traffic from virtualservice to all the backend servers in all the pools configured under this poolgroup.
-            - Field deprecated in 30.2.1.
-            - Field introduced in 20.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-        type: bool
     fail_action:
         description:
             - Enable an action - close connection, http redirect, or local http response - when a pool group failure happens.
             - By default, a connection will be closed, in case the pool group experiences a failure.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: dict
     implicit_priority_labels:
         description:
             - Whether an implicit set of priority labels is generated.
             - Field introduced in 17.1.9,17.2.3.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
     markers:
         description:
             - List of labels to be used for granular rbac.
             - Field introduced in 20.1.5.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: dict
     members:
         description:
             - List of pool group members object of type poolgroupmember.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: dict
     min_servers:
@@ -127,14 +118,14 @@ options:
             - The minimum number of servers to distribute traffic to.
             - Allowed values are 1-65535.
             - Special values are 0 - disable.
-            - Allowed in enterprise edition with any value, essentials edition(allowed values- 0), basic edition(allowed values- 0), enterprise with cloud
-            - services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+            - Allowed in essentials (allowed values- 0), basic (allowed values- 0) edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 0.
         type: int
     name:
         description:
             - The name of the pool group.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
     priority_labels_ref:
@@ -142,7 +133,7 @@ options:
             - Uuid of the priority labels.
             - If not provided, pool group member priority label will be interpreted as a number with a larger number considered higher priority.
             - It is a reference to an object of type prioritylabels.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     service_metadata:
         description:
@@ -150,12 +141,12 @@ options:
             - In openshift/kubernetes environments, app metadata info is stored.
             - Any user input to this field will be overwritten by avi vantage.
             - Field introduced in 17.2.14,18.1.5,18.2.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     tenant_ref:
         description:
             - It is a reference to an object of type tenant.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     url:
         description:
@@ -164,7 +155,7 @@ options:
     uuid:
         description:
             - Uuid of the pool group.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi
@@ -218,7 +209,6 @@ def main():
         deactivate_primary_pool_on_down=dict(type='bool',),
         deployment_policy_ref=dict(type='str',),
         description=dict(type='str',),
-        enable_http2=dict(type='bool',),
         fail_action=dict(type='dict',),
         implicit_priority_labels=dict(type='bool',),
         markers=dict(type='list', elements='dict',),

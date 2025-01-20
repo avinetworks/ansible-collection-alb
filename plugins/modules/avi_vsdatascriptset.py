@@ -51,58 +51,56 @@ options:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     created_by:
         description:
             - Creator name.
             - Field introduced in 17.1.11,17.2.4.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     datascript:
         description:
             - Datascripts to execute.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: dict
     description:
         description:
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     geo_db_ref:
         description:
             - Geo location mapping database used by this datascriptset.
             - It is a reference to an object of type geodb.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     ip_reputation_db_ref:
         description:
             - Ip reputation database that can be used by datascript functions.
             - It is a reference to an object of type ipreputationdb.
             - Field introduced in 20.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     ipgroup_refs:
         description:
             - Uuid of ip groups that could be referred by vsdatascriptset objects.
             - It is a reference to an object of type ipaddrgroup.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: list
         elements: str
     markers:
         description:
             - List of labels to be used for granular rbac.
             - Field introduced in 20.1.5.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: dict
     name:
         description:
             - Name for the virtual service datascript collection.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
     pki_profile_refs:
@@ -110,21 +108,21 @@ options:
             - Uuids of pkiprofile objects that could be referred by vsdatascriptset objects.
             - It is a reference to an object of type pkiprofile.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: list
         elements: str
     pool_group_refs:
         description:
             - Uuid of pool groups that could be referred by vsdatascriptset objects.
             - It is a reference to an object of type poolgroup.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: str
     pool_refs:
         description:
             - Uuid of pools that could be referred by vsdatascriptset objects.
             - It is a reference to an object of type pool.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: list
         elements: str
     protocol_parser_refs:
@@ -132,7 +130,7 @@ options:
             - List of protocol parsers that could be referred by vsdatascriptset objects.
             - It is a reference to an object of type protocolparser.
             - Field introduced in 18.2.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: list
         elements: str
     rate_limiters:
@@ -140,7 +138,7 @@ options:
             - The rate limit definitions needed for this datascript.
             - The name is composed of the virtual service name and the datascript name.
             - Field introduced in 18.2.9.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: list
         elements: dict
     ssl_key_certificate_refs:
@@ -148,7 +146,7 @@ options:
             - Uuids of sslkeyandcertificate objects that could be referred by vsdatascriptset objects.
             - It is a reference to an object of type sslkeyandcertificate.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: list
         elements: str
     ssl_profile_refs:
@@ -156,20 +154,20 @@ options:
             - Uuids of sslprofile objects that could be referred by vsdatascriptset objects.
             - It is a reference to an object of type sslprofile.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: list
         elements: str
     string_group_refs:
         description:
             - Uuid of string groups that could be referred by vsdatascriptset objects.
             - It is a reference to an object of type stringgroup.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: list
         elements: str
     tenant_ref:
         description:
             - It is a reference to an object of type tenant.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     url:
         description:
@@ -178,7 +176,7 @@ options:
     uuid:
         description:
             - Uuid of the virtual service datascript collection.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi

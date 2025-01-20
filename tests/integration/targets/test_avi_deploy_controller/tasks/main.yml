@@ -1,4 +1,8 @@
 ---
+- name: "Avi Controller | VMware | Install ovftool"
+  shell: "yes | /root/ansible_collections/vmware/alb/VMware-ovftool-4.4.0-16360108-lin.x86_64.bundle"
+  become: yes
+
 - name: "Avi Controller | VMware | Delete VMware controller if exist"
   avi_deploy_controller:
     state: "absent"
