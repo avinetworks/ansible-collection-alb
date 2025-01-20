@@ -1,0 +1,32 @@
+# Automatically Generated File
+# Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
+---
+- name: Avi GslbCRMRuntime | Create or Update GslbCRMRuntime
+  no_log: "{{ avi_role_config_log_mode | default(False) }}"
+  vmware.alb.avi_gslbcrmruntime:
+    controller: "{{ avi_controller | default(omit) }}"
+    username: "{{ avi_username | default(omit) }}"
+    password: "{{ avi_password | default(omit) }}"
+    tenant: "{{ item.tenant | default(omit) }}"
+    state: "{{ avi_role_state_mode }}"
+    api_version: "{{ api_version | default(omit) }}"
+    avi_credentials: "{{ avi_credentials | default(omit) }}"
+    api_context: "{{ avi_api_context | default(omit) }}"
+    avi_api_update_method: "{{ item.avi_api_update_method | default(omit) }}"
+    avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
+    cluster_uuid: "{{ item.cluster_uuid | default(omit) }}"
+    events: "{{ item.events | default(omit) }}"
+    fds_info: "{{ item.fds_info | default(omit) }}"
+    local_info: "{{ item.local_info | default(omit) }}"
+    name: "{{ item.name | default(omit) }}"
+    obj_uuid: "{{ item.obj_uuid | default(omit) }}"
+    remote_info: "{{ item.remote_info | default(omit) }}"
+    replication_policy: "{{ item.replication_policy | default(omit) }}"
+    site_name: "{{ item.site_name | default(omit) }}"
+    status_info: "{{ item.status_info | default(omit) }}"
+    tenant_ref: "{{ item.tenant_ref | default(omit) }}"
+    uuid: "{{ item.uuid | default(omit) }}"
+  when:
+    - (avi_role_state_mode == "present" and avi_config_state == "present")
+    - (item.state | default("present") == avi_role_state_mode or avi_config_state == "absent")
+  with_items: "{{ avi_role_cfg.gslbcrmruntime | default([]) }}"

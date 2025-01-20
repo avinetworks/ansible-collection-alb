@@ -1,120 +1,123 @@
 ---
-- name: Check if docker is installed
+- name: Check if Docker is installed
   shell: "which {{ se_deploy_type }} | wc -l"
   register: result
   changed_when: false
 
 - block:
-  - name: Set error messgae if docker is not installed
-    set_fact:
-      error_string: "Docker is not installed. Please install docker for ServiceEngine container to be started"
-  - name: Include error.yml
-    include: error.yml
+    - name: Set error message if Docker is not installed
+      set_fact:
+        error_string: "Docker is not installed. Please install Docker for ServiceEngine container to be started"
+    - name: Include error tasks if Docker is not installed
+      ansible.builtin.include_tasks: error.yml
   when: result.stdout == "0"
 
 - block:
-  - name: Check if docker is running
-    shell: "ps -ef | grep docker | grep -v grep | wc -l"
-    register: result
-    changed_when: false and se_deploy_type == "docker"
+    - name: Check if Docker is running
+      shell: "ps -ef | grep docker | grep -v grep | wc -l"
+      register: result
+      changed_when: false
+  when: se_deploy_type == "docker"
 
 - block:
-  - name: set error messgae if docker is not running
-    set_fact:
-      error_string: "Docker is not running, please start docker"
-  - name: Include error.yml
-    include: error.yml
-  when: result.stdout == "0" and se_deploy_type == "docker"
+    - name: Set error message if Docker is not running
+      set_fact:
+        error_string: "Docker is not running, please start Docker"
+    - name: Include error tasks if Docker is not running
+      ansible.builtin.include_tasks: error.yml
+  when: se_deploy_type == "docker" and result.stdout == "0"
 
-- name: docker version check
+- name: Get Docker version
   shell: "{{ se_deploy_type }} --version | awk '{print $3}' | sed -e 's/,//'"
   register: result
 
 - block:
-  - name: Set error message if docker version is less than 1.6.1
-    set_fact:
-      error_string: "Docker version {{ result.stdout }} not supported for spawning ServiceEngine container, please upgrade docker to 1.6.1 or greater"
-  - name: Include error.yml
-    include: error.yml
-  when: result.stdout is version('1.6.1', '<') and se_deploy_type == "docker"
+    - name: Set error message if Docker version is less than 1.6.1
+      set_fact:
+        error_string: "Docker version {{ result.stdout }} not supported for spawning ServiceEngine container, please upgrade Docker to 1.6.1 or greater"
+    - name: Include error tasks if Docker version is too low
+      ansible.builtin.include_tasks: error.yml
+  when: se_deploy_type == "docker" and result.stdout is version('1.6.1', '<')
 
 - block:
-  - name: Set error message if Podman version is less than 3.0.1
-    set_fact:
-      error_string: "Podman version {{ result.stdout }} not supported for spawning ServiceEngine container, please upgrade podman to 3.0.1 or greater"
-  - name: Include error.yml
-    include: error.yml
-  when: result.stdout is version('3.0.1', '<') and se_deploy_type == "podman"
+    - name: Set error message if Podman version is less than 3.0.1
+      set_fact:
+        error_string: "Podman version {{ result.stdout }} not supported for spawning ServiceEngine container, please upgrade Podman to 3.0.1 or greater"
+    - name: Include error tasks if Podman version is too low
+      ansible.builtin.include_tasks: error.yml
+  when: se_deploy_type == "podman" and result.stdout is version('3.0.1', '<')
 
 - block:
-  - name: Verify the docker storage
-    shell: "{{ se_deploy_type }} info | grep 'Data loop file:' | awk '{print $4}'"
-    register: docker_dir
-  - name: Set docker disk directory
-    set_fact:
-      docker_disk_dir: "{{ docker_dir.stdout }}"
-    when: docker_dir.stdout != ""
+    - name: Verify the Docker storage
+      shell: "{{ se_deploy_type }} info | grep 'Data loop file:' | awk '{print $4}'"
+      register: docker_dir
+    - name: Set Docker disk directory
+      set_fact:
+        docker_disk_dir: "{{ docker_dir.stdout }}"
+      when: docker_dir.stdout != ""
   when: docker_disk_dir is not defined
   become: true
 
 - block:
-  - name: Get docker directory
-    shell: "{{ se_deploy_type }} info | grep '^ Root Dir:' | awk '{print $3}'"
-    register: docker_dir
-  - name: Set docker disk directory
-    set_fact:
-      docker_disk_dir: "{{ docker_dir.stdout }}"
-    when: docker_dir.stdout != ""
+    - name: Get Docker directory
+      shell: "{{ se_deploy_type }} info | grep '^ Root Dir:' | awk '{print $3}'"
+      register: docker_dir
+    - name: Set Docker disk directory
+      set_fact:
+        docker_disk_dir: "{{ docker_dir.stdout }}"
+      when: docker_dir.stdout != ""
   when: docker_disk_dir is not defined
   become: true
 
 - block:
-  - name: Get docker directory
-    shell: "{{ se_deploy_type }} info | grep 'docker Root Dir:' | awk '{print $4}'"
-    register: docker_dir
-  - name: Set docker disk directory
-    set_fact:
-      docker_disk_dir: "{{ docker_dir.stdout }}"
-    when: docker_dir.stdout != ""
+    - name: Get Docker directory
+      shell: "{{ se_deploy_type }} info | grep 'docker Root Dir:' | awk '{print $4}'"
+      register: docker_dir
+    - name: Set Docker disk directory
+      set_fact:
+        docker_disk_dir: "{{ docker_dir.stdout }}"
+      when: docker_dir.stdout != ""
   when: docker_disk_dir is not defined
   become: true
 
 - block:
-  - name: Get docker disk available size
-    shell: "df {{ docker_disk_dir }} -P | grep -iv Used | awk '{print $4}'"
-    register: size_avail
-  - name: Set docker size
-    set_fact:
-      docker_size_avail: "{{ size_avail.stdout }}"
+    - name: Get Docker disk available size
+      shell: "df {{ docker_disk_dir }} -P | grep -iv Used | awk '{print $4}'"
+      register: size_avail
+    - name: Set Docker size
+      set_fact:
+        docker_size_avail: "{{ size_avail.stdout }}"
   when: docker_disk_dir is defined
   become: true
 
 - block:
-  - name: Get available size
-    shell: "{{ se_deploy_type }} info | grep 'Data Space Available:' | awk '{print $4}'"
-    register: size_avail
-  - name: Get available size
-    shell: "{{ se_deploy_type }} info | grep 'Data Space Available:' | awk '{print $5}'"
-    register: format
-  - name: Set docker available size in TB
-    set_fact:
-      docker_size_avail: "{{ size_avail.stdout|int * 1024 * 1024 * 1024 }}"
-    when: format.stdout == "TB"
-  - name: Set docker available size in GB
-    set_fact:
-      docker_size_avail: "{{ size_avail.stdout|int * 1024 * 1024 }}"
-    when: format.stdout == "GB"
-  - name: Set docker available size in MB
-    set_fact:
-      docker_size_avail: "{{ size_avail.stdout|int * 1024 }}"
-    when: format.stdout == "MB"
+    - name: Get available size
+      shell: "{{ se_deploy_type }} info | grep 'Data Space Available:' | awk '{print $4}'"
+      register: size_avail
+    - name: Get available size format
+      shell: "{{ se_deploy_type }} info | grep 'Data Space Available:' | awk '{print $5}'"
+      register: format
+    - name: Set Docker available size in TB
+      set_fact:
+        docker_size_avail: "{{ size_avail.stdout|int * 1024 * 1024 * 1024 }}"
+      when: format.stdout == "TB"
+    - name: Set Docker available size in GB
+      set_fact:
+        docker_size_avail: "{{ size_avail.stdout|int * 1024 * 1024 }}"
+      when: format.stdout == "GB"
+    - name: Set Docker available size in MB
+      set_fact:
+        docker_size_avail: "{{ size_avail.stdout|int * 1024 }}"
+      when: format.stdout == "MB"
   when: docker_size_avail is not defined
   become: true
 
 - block:
-  - name: Set error message
-    set_fact:
-      error_string: "Docker disk size is not sufficient, available is {{ docker_size_avail|int / (1024 * 1024) }} GB, required disk size is {{ docker_size_req|int / (1024 * 1024) }} GB"
-  - name: Include error.yml
-    include: error.yml
+    - name: Set error message
+      set_fact:
+        error_string: "Docker disk size is not sufficient, available is {{ docker_size_avail|int / (1024 * 1024) }} GB, required disk size is {{ docker_size_req|int / (1024 * 1024) }} GB"
+    - name: Include error tasks if Docker disk size is insufficient
+      ansible.builtin.include_tasks: error.yml
   when: docker_size_avail is defined and docker_size_avail|int < docker_size_req|int
+
+

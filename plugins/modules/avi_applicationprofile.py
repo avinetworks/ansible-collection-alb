@@ -52,111 +52,116 @@ options:
             - Specifies app service type for an application.
             - Enum options - APP_SERVICE_TYPE_L7_HORIZON, APP_SERVICE_TYPE_L4_BLAST, APP_SERVICE_TYPE_L4_PCOIP, APP_SERVICE_TYPE_L4_FTP.
             - Field introduced in 21.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     cloud_config_cksum:
         description:
             - Checksum of application profiles.
             - Internally set by cloud connector.
             - Field introduced in 17.2.14, 18.1.5, 18.2.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     created_by:
         description:
             - Name of the application profile creator.
             - Field introduced in 17.2.14, 18.1.5, 18.2.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     description:
         description:
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
+    diameter_service_profile:
+        description:
+            - Specifies various diameter service related controls for virtual service.
+            - Field introduced in 31.1.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+        type: dict
     dns_service_profile:
         description:
             - Specifies various dns service related controls for virtual service.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: dict
     dos_rl_profile:
         description:
             - Specifies various security related controls for virtual service.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: dict
     http_profile:
         description:
             - Specifies the http application proxy profile parameters.
-            - Allowed in enterprise edition with any value, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, basic, enterprise with cloud services edition.
         type: dict
     l4_ssl_profile:
         description:
             - Specifies various l4 ssl service related controls for virtual service.
             - Field introduced in 22.1.2.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: dict
     markers:
         description:
             - List of labels to be used for granular rbac.
             - Field introduced in 20.1.5.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: dict
     name:
         description:
             - The name of the application profile.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
     preserve_client_ip:
         description:
             - Specifies if client ip needs to be preserved for backend connection.
             - Not compatible with connection multiplexing.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
     preserve_client_port:
         description:
             - Specifies if we need to preserve client port while preserving client ip for backend connections.
             - Field introduced in 17.2.7.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: bool
     preserve_dest_ip_port:
         description:
             - Specifies if destination ip and port needs to be preserved for backend connection.
             - Field introduced in 20.1.1.
-            - Allowed in enterprise edition with any value, essentials edition(allowed values- false), basic edition(allowed values- false), enterprise with
-            - cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+            - Allowed in essentials (allowed values- false), basic (allowed values- false) edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
     sip_service_profile:
         description:
             - Specifies various sip service related controls for virtual service.
             - Field introduced in 17.2.8, 18.1.3, 18.2.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: dict
     tcp_app_profile:
         description:
             - Specifies the tcp application proxy profile parameters.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     tenant_ref:
         description:
             - It is a reference to an object of type tenant.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     type:
         description:
             - Specifies which application layer proxy is enabled for the virtual service.
             - Enum options - APPLICATION_PROFILE_TYPE_L4, APPLICATION_PROFILE_TYPE_HTTP, APPLICATION_PROFILE_TYPE_SYSLOG, APPLICATION_PROFILE_TYPE_DNS,
-            - APPLICATION_PROFILE_TYPE_SSL, APPLICATION_PROFILE_TYPE_SIP.
-            - Allowed in enterprise edition with any value, essentials edition(allowed values- application_profile_type_l4), basic edition(allowed values-
-            - application_profile_type_l4,application_profile_type_http), enterprise with cloud services edition.
+            - APPLICATION_PROFILE_TYPE_SSL, APPLICATION_PROFILE_TYPE_SIP, APPLICATION_PROFILE_TYPE_DIAMETER.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+            - Allowed in essentials (allowed values- application_profile_type_l4), basic (allowed values-
+            - application_profile_type_l4,application_profile_type_http) edition.
         required: true
         type: str
     url:
@@ -166,7 +171,7 @@ options:
     uuid:
         description:
             - Uuid of the application profile.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi
@@ -270,6 +275,7 @@ def main():
         configpb_attributes=dict(type='dict',),
         created_by=dict(type='str',),
         description=dict(type='str',),
+        diameter_service_profile=dict(type='dict',),
         dns_service_profile=dict(type='dict',),
         dos_rl_profile=dict(type='dict',),
         http_profile=dict(type='dict',),

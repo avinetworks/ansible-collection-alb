@@ -50,27 +50,33 @@ options:
         description:
             - Relative path to the report archive file on filesystem.the archive includes exported system configuration and current object as json.
             - Field introduced in 22.1.6, 30.2.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     controller_patch_image_ref:
         description:
             - Controller patch image associated with the report.
             - It is a reference to an object of type image.
             - Field introduced in 22.1.6, 30.2.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     downloadable:
         description:
             - Indicates whether this report is downloadable as an archive.
             - Field introduced in 22.1.6, 30.2.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
+    dryrun_info:
+        description:
+            - Dry-run report.
+            - Field introduced in 31.1.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+        type: dict
     events:
         description:
             - List of events associated with the report.
             - Field introduced in 22.1.6, 30.2.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: list
         elements: dict
     image_ref:
@@ -78,28 +84,35 @@ options:
             - System image associated with the report.
             - It is a reference to an object of type image.
             - Field introduced in 22.1.6, 30.2.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     name:
         description:
             - Name of the report derived from operation in a readable format.
             - Ex  upgrade_system_1a5c.
             - Field introduced in 22.1.6, 30.2.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     obj_state:
         description:
             - Report state combines all applicable states.
             - Ex  readiness_reports.system_readiness.state.
             - Field introduced in 22.1.6, 30.2.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: dict
+    operation:
+        description:
+            - Nature of operation.
+            - Ex  controller upgrade, system patch, etc.
+            - Field introduced in 31.1.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+        type: str
     readiness_reports:
         description:
             - Readiness state of the system.
             - Ex  upgrade pre-check results.
             - Field introduced in 22.1.6, 30.2.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: list
         elements: dict
     se_patch_image_ref:
@@ -107,20 +120,34 @@ options:
             - Se patch image associated with the report.
             - It is a reference to an object of type image.
             - Field introduced in 22.1.6, 30.2.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     summary:
         description:
             - Summary of the report.
             - Field introduced in 22.1.6, 30.2.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: dict
+    tasks:
+        description:
+            - List of tasks associated with the report.
+            - Field introduced in 30.2.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+        type: list
+        elements: dict
     tenant_ref:
         description:
             - Tenant uuid associated with the object.
             - It is a reference to an object of type tenant.
             - Field introduced in 22.1.6, 30.2.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+        type: str
+    type:
+        description:
+            - Type of report.
+            - Pre-checks, dry-run or an upgrade operation.
+            - Field introduced in 31.1.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     url:
         description:
@@ -130,7 +157,7 @@ options:
         description:
             - Uuid identifier for the report.
             - Field introduced in 22.1.6, 30.2.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi
@@ -180,14 +207,18 @@ def main():
         archive_ref=dict(type='str',),
         controller_patch_image_ref=dict(type='str',),
         downloadable=dict(type='bool',),
+        dryrun_info=dict(type='dict',),
         events=dict(type='list', elements='dict',),
         image_ref=dict(type='str',),
         name=dict(type='str',),
         obj_state=dict(type='dict',),
+        operation=dict(type='str',),
         readiness_reports=dict(type='list', elements='dict',),
         se_patch_image_ref=dict(type='str',),
         summary=dict(type='dict',),
+        tasks=dict(type='list', elements='dict',),
         tenant_ref=dict(type='str',),
+        type=dict(type='str',),
         url=dict(type='str',),
         uuid=dict(type='str',),
     )

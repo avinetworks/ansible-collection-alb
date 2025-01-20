@@ -1,0 +1,45 @@
+# Automatically Generated File
+# Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
+---
+- name: Avi GslbSMRuntime | Delete GslbSMRuntime
+  no_log: "{{ avi_role_config_log_mode | default(False) }}"
+  vmware.alb.avi_gslbsmruntime:
+    controller: "{{ avi_controller | default(omit) }}"
+    username: "{{ avi_username | default(omit) }}"
+    password: "{{ avi_password | default(omit) }}"
+    tenant: "{{ item.tenant | default(omit) }}"
+    api_version: "{{ api_version | default(omit) }}"
+    avi_credentials: "{{ avi_credentials | default(omit) }}"
+    api_context: "{{ avi_api_context | default(omit) }}"
+    state: "{{ avi_role_state_mode }}"
+    avi_api_update_method: "{{ item.avi_api_update_method | default(omit) }}"
+    avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
+    cluster_leader: "{{ item.cluster_leader | default(omit) }}"
+    cluster_uuid: "{{ item.cluster_uuid | default(omit) }}"
+    dns_configs: "{{ item.dns_configs | default(omit) }}"
+    dns_info: "{{ item.dns_info | default(omit) }}"
+    enabled: "{{ item.enabled | default(omit) }}"
+    events: "{{ item.events | default(omit) }}"
+    health_monitor_info: "{{ item.health_monitor_info | default(omit) }}"
+    leader_cluster_uuid: "{{ item.leader_cluster_uuid | default(omit) }}"
+    member_type: "{{ item.member_type | default(omit) }}"
+    name: "{{ item.name | default(omit) }}"
+    node_uuid: "{{ item.node_uuid | default(omit) }}"
+    num_of_retries: "{{ item.num_of_retries | default(omit) }}"
+    obj_state: "{{ item.obj_state | default(omit) }}"
+    obj_uuid: "{{ item.obj_uuid | default(omit) }}"
+    oper_status: "{{ item.oper_status | default(omit) }}"
+    remote_info: "{{ item.remote_info | default(omit) }}"
+    role: "{{ item.role | default(omit) }}"
+    site_name: "{{ item.site_name | default(omit) }}"
+    site_type: "{{ item.site_type | default(omit) }}"
+    sw_version: "{{ item.sw_version | default(omit) }}"
+    tenant_ref: "{{ item.tenant_ref | default(omit) }}"
+    uuid: "{{ item.uuid | default(omit) }}"
+    view_id: "{{ item.view_id | default(omit) }}"
+  when:
+    - (item.name | length > 0)
+    - (not (item.system_default | default(false)))
+    - (avi_config_state == "absent" or avi_role_state_mode == "absent")
+    - (item.state | default("present") == avi_role_state_mode or avi_config_state == "absent")
+  with_items: "{{ avi_role_cfg.gslbsmruntime | default([]) }}"

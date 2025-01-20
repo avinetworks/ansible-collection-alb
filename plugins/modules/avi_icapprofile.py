@@ -53,7 +53,7 @@ options:
             - If disabled, preview_size request body will be buffered if enable_preview is set to true, and rest of the request body will be streamed to the
             - icap server.
             - Field introduced in 20.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as True.
         type: bool
     buffer_size:
@@ -64,7 +64,7 @@ options:
             - Allowed values are 1-51200.
             - Field introduced in 20.1.1.
             - Unit is kb.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 51200.
         type: int
     buffer_size_exceed_action:
@@ -74,7 +74,7 @@ options:
             - If this is set to fail closed, the request will be rejected with 413 status code.
             - Enum options - ICAP_FAIL_OPEN, ICAP_FAIL_CLOSED.
             - Field introduced in 20.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as ICAP_FAIL_OPEN.
         type: str
     cloud_ref:
@@ -83,26 +83,25 @@ options:
             - This must match the cloud referenced in the pool group below.
             - It is a reference to an object of type cloud.
             - Field introduced in 20.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     description:
         description:
             - A description for this icap profile.
             - Field introduced in 20.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     enable_preview:
         description:
             - Use the icap preview feature as described in rfc 3507 section 4.5.
             - Field introduced in 20.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as True.
         type: bool
     fail_action:
@@ -113,28 +112,28 @@ options:
             - If this is set to fail closed, the request will be rejected with a 500 status code.
             - Enum options - ICAP_FAIL_OPEN, ICAP_FAIL_CLOSED.
             - Field introduced in 20.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as ICAP_FAIL_OPEN.
         type: str
     name:
         description:
             - Name of the icap profile.
             - Field introduced in 20.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
     nsx_defender_config:
         description:
             - Nsxdefender specific icap configurations.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: dict
     pool_group_ref:
         description:
             - The pool group which is used to connect to icap servers.
             - It is a reference to an object of type poolgroup.
             - Field introduced in 20.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
     preview_size:
@@ -147,7 +146,7 @@ options:
             - Allowed values are 0-5000.
             - Field introduced in 20.1.1.
             - Unit is bytes.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 5000.
         type: int
     response_timeout:
@@ -157,7 +156,7 @@ options:
             - Allowed values are 50-3600000.
             - Field introduced in 20.1.1.
             - Unit is milliseconds.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 60000.
         type: int
     service_uri:
@@ -165,7 +164,7 @@ options:
             - The path and query component of the icap url.
             - Host name and port will be taken from the pool.
             - Field introduced in 20.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
     slow_response_warning_threshold:
@@ -174,7 +173,7 @@ options:
             - Allowed values are 50-3600000.
             - Field introduced in 20.1.1.
             - Unit is milliseconds.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 10000.
         type: int
     tenant_ref:
@@ -182,7 +181,7 @@ options:
             - Tenant which this object belongs to.
             - It is a reference to an object of type tenant.
             - Field introduced in 20.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     url:
         description:
@@ -192,14 +191,14 @@ options:
         description:
             - Uuid of the icap profile.
             - Field introduced in 20.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     vendor:
         description:
             - The vendor of the icap server.
             - Enum options - ICAP_VENDOR_GENERIC, ICAP_VENDOR_OPSWAT, ICAP_VENDOR_LASTLINE.
             - Field introduced in 20.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as ICAP_VENDOR_OPSWAT.
         type: str
 extends_documentation_fragment:

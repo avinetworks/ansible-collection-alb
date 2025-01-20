@@ -50,41 +50,40 @@ options:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 30.1.1.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     description:
         description:
             - Description for the service auth profile.
             - Field introduced in 30.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     name:
         description:
             - Name of the service auth profile.
             - Field introduced in 30.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         required: true
         type: str
     service_oauth_profile:
         description:
             - Oauth profile - common endpoint information for service authentication.
             - Field introduced in 30.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: dict
     tenant_ref:
         description:
             - Tenant ref for the service auth profile.
             - It is a reference to an object of type tenant.
             - Field introduced in 30.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     type:
         description:
             - Type of the service auth profile.
             - Enum options - SERVICE_AUTH_OAUTH.
             - Field introduced in 30.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         required: true
         type: str
     url:
@@ -95,7 +94,7 @@ options:
         description:
             - Uuid of the service auth profile.
             - Field introduced in 30.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi

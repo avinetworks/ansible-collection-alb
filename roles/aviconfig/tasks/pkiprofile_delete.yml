@@ -20,7 +20,6 @@
     created_by: "{{ item.created_by | default(omit) }}"
     crl_check: "{{ item.crl_check | default(omit) }}"
     crl_file_refs: "{{ item.crl_file_refs | default(omit) }}"
-    crls: "{{ item.crls | default(omit) }}"
     ignore_peer_chain: "{{ item.ignore_peer_chain | default(omit) }}"
     is_federated: "{{ item.is_federated | default(omit) }}"
     markers: "{{ item.markers | default(omit) }}"

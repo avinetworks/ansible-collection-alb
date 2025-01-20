@@ -146,7 +146,7 @@ Parameters
                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -172,7 +172,7 @@ Parameters
                   - Maximum of 7 items allowed.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -192,7 +192,7 @@ Parameters
                   - Re-join cluster nodes automatically in the event one of the node is reset to factory.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as True.
@@ -215,7 +215,7 @@ Parameters
                   - It is a reference to an object of type tenant.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -249,7 +249,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -266,13 +266,10 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - A v4 virtual ip address.
+                  - A v4 virtual ip address for the cluster that always points to the v4 ip of the leader node in cluster.
                 </div>
                                 <div style="font-size: small">
-                  - This v4 ip address will be dynamically reconfigured so that it always is the ip of the cluster leader.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -289,16 +286,13 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - A v6 virtual ip address.
-                </div>
-                                <div style="font-size: small">
-                  - This v6 ip address will be dynamically reconfigured so that it always is the ip of the cluster leader.
+                  - A v6 virtual ip address for the cluster that always points to the v6 ip of the leader node in cluster.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 30.2.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>

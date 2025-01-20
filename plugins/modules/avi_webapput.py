@@ -46,91 +46,97 @@ options:
         description:
             - Patch value to use when using avi_api_update_method as patch.
         type: str
+    cloud_ref:
+        description:
+            - Cloud of the webapput object-level0.
+            - It is a reference to an object of type cloud.
+            - Field introduced in 30.2.2.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+        type: str
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 21.1.5, 22.1.1.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     default_first_int:
         description:
             - Default uint64 field.
             - Field introduced in 30.1.2.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 1.
         type: int
     default_second_int:
         description:
             - Default int64 field.
             - Field introduced in 30.1.2.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 2.
         type: int
     default_string:
         description:
             - Default string field.
             - Field introduced in 30.1.2.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as default string.
         type: str
     default_third_int:
         description:
             - Default int32 field.
             - Field introduced in 30.1.2.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 3.
         type: int
     mandatory_test:
         description:
             - Optional message for nested f_mandatory test cases defined at level1.
             - Field introduced in 21.1.5, 22.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: dict
     mandatory_tests:
         description:
             - Repeated message for nested f_mandatory test cases-level1.
             - Field introduced in 21.1.5, 22.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: list
         elements: dict
     name:
         description:
             - Name of the webapput object-level0.
             - Field introduced in 21.1.5, 22.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         required: true
         type: str
     sensitive_test:
         description:
             - Optional message for nested f_sensitive test cases defined at level1.
             - Field introduced in 22.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: dict
     sensitive_tests:
         description:
             - Repeated message for nested f_sensitive test cases-level1.
             - Field introduced in 22.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: list
         elements: dict
     skip_optional_check_tests:
         description:
             - Optional bool for nested skip_optional_check test cases-level1.
             - Field introduced in 22.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: bool
     string_length_test:
         description:
             - Optional message for nested  max string length test cases.
             - Field introduced in 21.1.5, 22.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: dict
     string_length_tests:
         description:
             - Repeated message for nested  max string length test cases.
             - Field introduced in 21.1.5, 22.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: list
         elements: dict
     tenant_ref:
@@ -138,20 +144,20 @@ options:
             - Tenant of the webapput object-level0.
             - It is a reference to an object of type tenant.
             - Field introduced in 21.1.5, 22.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     test_sensitive_string:
         description:
             - The string for sensitive (secret) field.
             - Object-level0.
             - Field introduced in 22.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     test_string:
         description:
             - The maximum string length.
             - Field introduced in 21.1.5, 22.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     url:
         description:
@@ -161,7 +167,7 @@ options:
         description:
             - Uuid of the webapput object-level0.
             - Field introduced in 21.1.5, 22.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi
@@ -208,6 +214,7 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
+        cloud_ref=dict(type='str',),
         configpb_attributes=dict(type='dict',),
         default_first_int=dict(type='int',),
         default_second_int=dict(type='int',),

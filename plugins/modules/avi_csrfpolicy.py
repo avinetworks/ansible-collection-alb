@@ -50,27 +50,34 @@ options:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 30.2.1.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     cookie_name:
         description:
             - Name of the cookie to be used for csrf token.
             - Field introduced in 30.2.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as X-CSRF-TOKEN.
+        type: str
+    csrf_file_ref:
+        description:
+            - The file object that contains csrf javascript content.
+            - Must be of type 'csrf'.
+            - It is a reference to an object of type fileobject.
+            - Field introduced in 31.1.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     description:
         description:
             - Human-readable description of this csrf protection policy.
             - Field introduced in 30.2.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     name:
         description:
             - The name of this csrf protection policy.
             - Field introduced in 30.2.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         required: true
         type: str
     rules:
@@ -79,7 +86,7 @@ options:
             - applied.
             - Field introduced in 30.2.1.
             - Minimum of 1 items required.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         required: true
         type: list
         elements: dict
@@ -88,17 +95,20 @@ options:
             - The unique identifier of the tenant to which this policy belongs.
             - It is a reference to an object of type tenant.
             - Field introduced in 30.2.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     token_validity_time_min:
         description:
-            - Csrf token is rotated when this time expires.
-            - Tokens will be acceptable for twice the token_validity_time time.
+            - A csrf token is rotated when this amount of time has passed.
+            - Even after that, tokens will be accepted until twice this amount of time has passed.
+            - Note, however, that other timeouts from the underlying session layer also affect how long a given token can be used.
+            - A token will be invalidated (rotated or deleted) after one of 'token_validity_time_min' (this value), 'session_establishment_timeout',
+            - 'session_idle_timeout', 'session_maximum_timeout' is reached, whichever occurs first.
             - Allowed values are 10-1440.
             - Special values are 0- unlimited.
             - Field introduced in 30.2.1.
             - Unit is min.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 360.
         type: int
     url:
@@ -109,7 +119,7 @@ options:
         description:
             - A unique identifier to this csrf protection policy.
             - Field introduced in 30.2.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi
@@ -158,6 +168,7 @@ def main():
         avi_patch_value=dict(type='str',),
         configpb_attributes=dict(type='dict',),
         cookie_name=dict(type='str',),
+        csrf_file_ref=dict(type='str',),
         description=dict(type='str',),
         name=dict(type='str', required=True),
         rules=dict(type='list', elements='dict', required=True),

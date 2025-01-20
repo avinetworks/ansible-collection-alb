@@ -16,6 +16,7 @@
     avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
     configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
     cookie_name: "{{ item.cookie_name | default(omit) }}"
+    csrf_file_ref: "{{ item.csrf_file_ref | default(omit) }}"
     description: "{{ item.description | default(omit) }}"
     name: "{{ item.name | default(omit) }}"
     rules: "{{ item.rules | default(omit) }}"

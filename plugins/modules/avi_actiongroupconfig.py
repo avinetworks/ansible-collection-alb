@@ -50,37 +50,36 @@ options:
         description:
             - Reference of the action script configuration to be used.
             - It is a reference to an object of type alertscriptconfig.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     autoscale_trigger_notification:
         description:
             - Trigger notification to autoscale manager.
-            - Allowed in enterprise edition with any value, essentials edition(allowed values- false), basic edition(allowed values- false), enterprise with
-            - cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+            - Allowed in essentials (allowed values- false), basic (allowed values- false) edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     description:
         description:
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     email_config_ref:
         description:
             - Select the email notification configuration to use when sending alerts via email.
             - It is a reference to an object of type alertemailconfig.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     external_only:
         description:
             - Generate alert only to external destinations.
-            - Allowed in enterprise edition with any value, essentials edition(allowed values- false), basic edition(allowed values- false), enterprise with
-            - cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+            - Allowed in essentials (allowed values- false), basic (allowed values- false) edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         required: true
         type: bool
@@ -88,31 +87,31 @@ options:
         description:
             - When an alert is generated, mark its priority via the alert level.
             - Enum options - ALERT_LOW, ALERT_MEDIUM, ALERT_HIGH.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as ALERT_LOW.
         required: true
         type: str
     name:
         description:
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
     snmp_trap_profile_ref:
         description:
             - Select the snmp trap notification to use when sending alerts via snmp trap.
             - It is a reference to an object of type snmptrapprofile.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     syslog_config_ref:
         description:
             - Select the syslog notification configuration to use when sending alerts via syslog.
             - It is a reference to an object of type alertsyslogconfig.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     tenant_ref:
         description:
             - It is a reference to an object of type tenant.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     url:
         description:
@@ -120,7 +119,7 @@ options:
         type: str
     uuid:
         description:
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi

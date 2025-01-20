@@ -52,57 +52,72 @@ options:
             - It is a reference to an object of type fileobject.
             - Field introduced in 20.1.1.
             - Maximum of 1 items allowed.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+        type: list
+        elements: str
+    base_file_v6_refs:
+        description:
+            - Ip reputation db base file for ipv6.
+            - It is a reference to an object of type fileobject.
+            - Field introduced in 31.1.1.
+            - Maximum of 1 items allowed.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: list
         elements: str
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     description:
         description:
             - Description.
             - Field introduced in 20.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     incremental_file_refs:
         description:
             - Ip reputation db incremental update files.
             - It is a reference to an object of type fileobject.
             - Field introduced in 20.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+        type: list
+        elements: str
+    incremental_file_v6_refs:
+        description:
+            - Ip reputation db incremental update files for ipv6.
+            - It is a reference to an object of type fileobject.
+            - Field introduced in 31.1.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: list
         elements: str
     markers:
         description:
             - List of labels to be used for granular rbac.
             - Field introduced in 20.1.5.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: dict
     name:
         description:
             - Ip reputation db name.
             - Field introduced in 20.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
     service_status:
         description:
             - If this object is managed by the ip reputation service, this field contain the status of this syncronization.
             - Field introduced in 20.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     tenant_ref:
         description:
             - Tenant that this object belongs to.
             - It is a reference to an object of type tenant.
             - Field introduced in 20.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     url:
         description:
@@ -112,14 +127,20 @@ options:
         description:
             - Uuid of this object.
             - Field introduced in 20.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+        type: str
+    v6_version:
+        description:
+            - A version number for ipv6 files for the object.
+            - Field introduced in 31.1.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     vendor:
         description:
             - Organization providing ip reputation data.
             - Enum options - IP_REPUTATION_VENDOR_WEBROOT.
             - Field introduced in 20.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
     version:
@@ -127,7 +148,7 @@ options:
             - A version number for this database object.
             - This is informal for the consumer of this api only, a tool which manages this object can store version information here.
             - Field introduced in 20.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi
@@ -175,15 +196,18 @@ def main():
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
         base_file_refs=dict(type='list', elements='str',),
+        base_file_v6_refs=dict(type='list', elements='str',),
         configpb_attributes=dict(type='dict',),
         description=dict(type='str',),
         incremental_file_refs=dict(type='list', elements='str',),
+        incremental_file_v6_refs=dict(type='list', elements='str',),
         markers=dict(type='list', elements='dict',),
         name=dict(type='str', required=True),
         service_status=dict(type='dict',),
         tenant_ref=dict(type='str',),
         url=dict(type='str',),
         uuid=dict(type='str',),
+        v6_version=dict(type='str',),
         vendor=dict(type='str', required=True),
         version=dict(type='str',),
     )
